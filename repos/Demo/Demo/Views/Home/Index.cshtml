@@ -1,0 +1,46 @@
+﻿
+@model IEnumerable<AppoinmentModel>
+@{
+    ViewData["Title"] = "Appointment Admin Panel";
+}
+
+<h1>Appointment Admin Panel</h1>
+
+<!-- Display Appointments Table -->
+<h2>Appointments</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Appointment ID</th>
+                <th>Patient Name</th>
+                <th>Doctor Name</th>
+                <th>Appointment Date</th>
+                <th>Status</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <td>@i.AppoinmentId</td>
+                    <td>@i.PatientName</td>
+                    <td>@i.DoctorName</td>
+
+                    <td>@i.AppointmentDate</td>
+                    <td>@i.status</td>
+                    <td>@i.Description</td>
+                    
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@i.AppoinmentId" class="btn btn-primary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@i.AppoinmentId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<a href="@Url.Action("Create")" class="btn btn-success">Create New Appointment</a>

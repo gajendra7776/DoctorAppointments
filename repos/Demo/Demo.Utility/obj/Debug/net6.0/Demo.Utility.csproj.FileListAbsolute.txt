@@ -1,0 +1,12 @@
+C:\Users\Admin\source\repos\Demo\Demo.Utility\bin\Debug\net6.0\Demo.Utility.deps.json
+C:\Users\Admin\source\repos\Demo\Demo.Utility\bin\Debug\net6.0\Demo.Utility.dll
+C:\Users\Admin\source\repos\Demo\Demo.Utility\bin\Debug\net6.0\Demo.Utility.pdb
+C:\Users\Admin\source\repos\Demo\Demo.Utility\obj\Debug\net6.0\Demo.Utility.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\Demo\Demo.Utility\obj\Debug\net6.0\Demo.Utility.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\source\repos\Demo\Demo.Utility\obj\Debug\net6.0\Demo.Utility.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\Demo\Demo.Utility\obj\Debug\net6.0\Demo.Utility.AssemblyInfo.cs
+C:\Users\Admin\source\repos\Demo\Demo.Utility\obj\Debug\net6.0\Demo.Utility.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\Demo\Demo.Utility\obj\Debug\net6.0\Demo.Utility.dll
+C:\Users\Admin\source\repos\Demo\Demo.Utility\obj\Debug\net6.0\refint\Demo.Utility.dll
+C:\Users\Admin\source\repos\Demo\Demo.Utility\obj\Debug\net6.0\Demo.Utility.pdb
+C:\Users\Admin\source\repos\Demo\Demo.Utility\obj\Debug\net6.0\ref\Demo.Utility.dll
