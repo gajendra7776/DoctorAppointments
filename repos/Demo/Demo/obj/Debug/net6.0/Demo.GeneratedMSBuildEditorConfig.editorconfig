@@ -5,49 +5,156 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
-build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Demo
 build_property.RootNamespace = Demo
-build_property.ProjectDir = C:\Users\Admin\source\repos\Demo\Demo\
+build_property.ProjectDir = C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Admin\source\repos\Demo\Demo
+build_property.MSBuildProjectDirectory = C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Admin/source/repos/Demo/Demo/Views/Home/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGUuY3NodG1s
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Doctor/Views/Doctor/DoctorPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXERvY3RvclxEb2N0b3JQYW5lbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Demo/Demo/Views/Home/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0LmNzaHRtbA==
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Doctor/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Demo/Demo/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Doctor/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Demo/Demo/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Login/Views/Login/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTG9naW5cVmlld3NcTG9naW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Demo/Demo/Views/Shared/Error.cshtml]
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Login/Views/Login/PageNotfound.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTG9naW5cVmlld3NcTG9naW5cUGFnZU5vdGZvdW5kLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Login/Views/Login/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTG9naW5cVmlld3NcTG9naW5cUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Login/Views/Login/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTG9naW5cVmlld3NcTG9naW5cUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Login/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTG9naW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Login/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTG9naW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/Management/Appoinments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xNYW5hZ2VtZW50XEFwcG9pbm1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/Management/AppoinmentsByDoctor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xNYW5hZ2VtZW50XEFwcG9pbm1lbnRzQnlEb2N0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/Management/CreateAppoinment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xNYW5hZ2VtZW50XENyZWF0ZUFwcG9pbm1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/Management/CreateDoctor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xNYW5hZ2VtZW50XENyZWF0ZURvY3Rvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/Management/DisplayDoctor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xNYW5hZ2VtZW50XERpc3BsYXlEb2N0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/Management/EditAppoinment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xNYW5hZ2VtZW50XEVkaXRBcHBvaW5tZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/Management/EditDoctor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xNYW5hZ2VtZW50XEVkaXREb2N0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/User/Views/User/BookAppoint.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xVc2VyXEJvb2tBcHBvaW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/User/Views/User/CreateAppointments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xVc2VyXENyZWF0ZUFwcG9pbnRtZW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/User/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/User/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Demo/Demo/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/ErrorHandle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9ySGFuZGxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/MvcGrid/_Grid.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE12Y0dyaWRcX0dyaWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/MvcGrid/_Pager.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE12Y0dyaWRcX1BhZ2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/PartialsViews/_HeaderForDoctor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzVmlld3NcX0hlYWRlckZvckRvY3Rvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/PartialsViews/_HeaderForManagAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzVmlld3NcX0hlYWRlckZvck1hbmFnQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/PartialsViews/_UserFooter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzVmlld3NcX1VzZXJGb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/_FilterByStatus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9GaWx0ZXJCeVN0YXR1cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/_HeaderForDocApp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXJGb3JEb2NBcHAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Demo/Demo/Views/_ViewImports.cshtml]
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Demo/Demo/Views/_ViewStart.cshtml]
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/source/repos/Demo/Demo/Views/Shared/_Layout.cshtml]
+[C:/Users/pce65/Desktop/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-xwylo3ageb

@@ -1,0 +1,133 @@
+﻿@using Demo.Models.DummyModels
+@using NonFactors.Mvc.Grid
+@using System.Web.Mvc
+@model Demo.Models.DummyModels.AdminInstances
+
+@{
+    int hId = @Model.HospitalId;
+    ViewData["Title"] = "Doctor Details";
+}
+<style>
+    .tick-mark {
+        cursor: pointer;
+    }
+</style>
+@*   20 June - Added Filter Functionality By Mvc Grid Package
+*@
+<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
+
+<div>
+    @if (TempData["success"] != null)
+    {
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.success('@TempData["success"]');
+        </script>
+    }
+    @if (TempData["NotFound"] != null)
+    {
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.warning('@TempData["NotFound"]');
+        </script>
+    }
+</div>
+
+<div class="container mt-3">
+    @if (User.IsInRole("ManagementAdmin") || User.IsInRole("SuperAdmin"))
+        {
+            <partial name="PartialsViews/_HeaderForManagAdmin" />
+        }
+    @if (User.IsInRole("ManagementAdmin") && Model.DoctorDetails.Any())
+    {
+        var hospitalName = Model.DoctorDetails.First().HospitalName;
+        <h3 style="color:black">Doctor Details Of @hospitalName</h3>
+    }
+    else
+    {
+        <h3>Doctor Details</h3>
+
+    }
+    <div class="mt-4">
+        <a asp-route-id="@Model.HospitalId" asp-area="Management" asp-action="CreateDoctor" asp-controller="Management" class="btn btn-success">Create Doctor</a>
+    </div>
+    <div class="mt-5">
+        @(Html
+        .Grid(Model.DoctorDetails)
+        .Build(columns =>
+        {
+            @*columns.Add(model => Html.CheckBox("Check_" + model.DoctorID)).Titled(Html.CheckBox("CheckAll"));
+                columns.Add().RenderedAs((model, row) => row + 1).Titled(Html.CheckBox("CheckAll")).Css("text-center");*@
+
+        columns.Add(model => model.DoctorName).Titled("DoctorName");
+        if(!(User.IsInRole("ManagementAdmin"))){
+        columns.Add(model => model.HospitalName).Titled("HospitalName");
+        }
+        columns.Add(model => model.DoctorType).Titled("DoctorType");
+
+        columns.Add(model => model.Status ? "Active" : "Inactive")
+        .Titled("Status")
+        .Filterable(true)
+        .Sortable(true)
+        .Encoded(false);
+
+            @*        21 June -  Changed Edit Delete Methods According To Area
+            *@
+        columns.Add().Titled("Edit").RenderedAs((model, row) =>
+        {
+
+        return Html.ActionLink("Edit", "EditDoctor", new { area = "Management", id = model.DoctorID }, new { @class = "btn btn-primary" });
+        });
+
+        columns.Add().Titled("Delete").RenderedAs((model, row) =>
+        {
+        return Html.ActionLink("Delete", "DelateDoctor", new { area = "Management", id = model.DoctorID,hospitalId = hId }, new { @class = "btn btn-danger" });
+        });
+
+        if(User.IsInRole("ManagementAdmin")){
+
+            columns.Add().Titled("Appointment").RenderedAs((model, row) =>
+            {
+            return Html.ActionLink("MyAllAppoinments", "AppoinmentsByDoctor", new { area = "Management", doctorId = model.DoctorID,hospitalId = model.HospitalId }, new { @class = "btn btn-primary" });
+            });
+        }
+        else{
+             columns.Add().Titled("Appointment").RenderedAs((model, row) =>
+        {
+        return Html.ActionLink("Show Appointments", "AppoinmentsByDoctor", new { area = "Management", doctorId = model.DoctorID }, new { @class = "btn btn-primary" });
+        });
+        }
+       
+
+        }).Using(GridFilterMode.Header)
+        .Empty("No data found")
+        .Filterable()
+        .Pageable(pager =>
+        {
+        pager.PageSizes = new Dictionary<Int32, String> { { 0, "All" }, { 2, "2" }, { 4, "4" },{5, "5" }};
+        pager.ShowPageSizes = true;
+        pager.PagesToDisplay = 3;
+        pager.CurrentPage = 1;
+        pager.RowsPerPage = 5;
+        })
+        .Sortable()
+        )
+
+    </div>
+    @*        22 June -  Changed Edit Method According To Area
+        27 June  - Changed Edit Method For Management and Super Admin
+    *@
+
+</div>
+<script src="~/js/mvc-grid/mvc-grid.js"></script>
+
+<script>
+        document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+        document.getElementById("CheckAll").addEventListener("change", function () {
+        document.querySelectorAll("[id^='Check_'").forEach(checkbox => checkbox.checked = this.checked);
+    });
+</script>

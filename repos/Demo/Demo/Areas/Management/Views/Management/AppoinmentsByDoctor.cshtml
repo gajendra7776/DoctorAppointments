@@ -1,0 +1,205 @@
+﻿@using Demo.Models.DummyModels
+@using NonFactors.Mvc.Grid
+@using System.Web.Mvc
+@using PagedList
+@using cloudscribe.Pagination
+@model IPagedList<PatientAppoinmentModel>
+
+@{
+    ViewData["Title"] = "Doctor Details";
+}
+<style>
+    .tick-mark {
+        cursor: pointer;
+    }
+</style>
+@*   20 June - Added Filter Functionality By Mvc Grid Package
+*@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
+
+
+<div class="container mt-3">
+    @if (!(User.IsInRole("Doctor")))
+    {
+        <partial name="_HeaderForDocApp" />
+    }
+    else
+    {
+        <partial name="_Header" />
+    }
+
+    @if (TempData["success"] != null)
+    {
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.success('@TempData["success"]');
+        </script>
+    }
+    @*
+        @if (Model != null && Model..Any())
+        {
+        var userName = Model.Appointments.FirstOrDefault()?.DoctorName;
+        <h4>Total Appoinments of Dr.@userName</h4>
+        }*@
+    <div class="mt-2">
+        <div class="row">
+            <div class="col-md">
+                @if (User.IsInRole("Doctor"))
+                {
+                    <a asp-route-doctorId="@ViewBag.Did" asp-area="Management" asp-action="CreateAppoinment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
+                }
+                else
+                {
+                    <a asp-route-id="@ViewBag.HospitalId" asp-area="Management" asp-action="CreateAppoinment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
+
+                }
+            </div>
+            <div class="col-md">
+                <label for="appointmentStatus">Status:</label>
+                <select id="appointmentStatus" class="form-control">
+                    <option value="All">All</option>
+                    <option value="Approve">Approved</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Missed">Missed</option>
+                    <option value="Reject">Rejected</option>
+                    <option value="Completed">Treated/Completed</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="appointmentsContainer">
+        <div class="mt-5" id="stt">
+           <partial name="_FilterByStatus" />
+           @*@(Html
+            .Grid(Model)
+            .Build(columns =>
+            {
+            columns.Add(model => model.UserName).Titled("UserName");
+            columns.Add(model => model.DoctorName).Titled("Doctornames");
+            columns.Add(model => model.AppointmentStatus).Titled("Status").RenderedAs((model, row) =>
+            {
+            var approveId = "approve_" + model.AppointmentID;
+            var rejectId = "reject_" + model.AppointmentID;
+
+            var approveUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Approve" });
+            var rejectUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Reject" });
+            var statusText = model.AppointmentStatus == "Approve" ? "Approved" : "Rejected";
+            var statusClass = model.AppointmentStatus == "Approve" ? "text-success" : "text-danger";
+            if(model.AppointmentStatus == "Pending"){
+            statusText = "Pending";
+            statusClass = "text-warning";
+            }
+            if(model.AppointmentStatus == "Missed"){
+            statusText = "Missed";
+            statusClass = "text-danger";
+            }
+            if(model.AppointmentStatus == "Completed"){
+            statusText = "Completed";
+            statusClass = "text-success";
+            }
+
+            if(!(model.AppointmentStatus == "Completed" || model.AppointmentStatus == "Missed")){
+
+            }
+            return Html.Raw($"<span  id='{approveId}' class='tick-mark {(model.AppointmentStatus == "Approve" ? "selected" : "")}' onclick='updateAppointmentStatus(\"{approveId}\", \"{approveUrl}\")'>&#10004;</span>" +
+            $"<span id='{rejectId}' class='tick-mark {(model.AppointmentStatus == "Reject" ? "selected" : "")}' onclick='updateAppointmentStatus(\"{rejectId}\", \"{rejectUrl}\")'>&#10008;</span>" +
+            $"<span id='status_{model.AppointmentID}' class='{statusClass}'>{statusText}</span>");
+            })
+            .Encoded(false);
+
+            columns.Add().Titled("Edit").RenderedAs((model, row) =>
+            {
+
+            return Html.ActionLink("Edit", "EditAppoinment", new { area = "Management", id = model.AppointmentID }, new { @class = "btn btn-primary" });
+            });
+
+            columns.Add().Titled("Delete").RenderedAs((model, row) =>
+            {
+            return Html.ActionLink("Delete", "DelateAppoinment", new { area = "Management", id = model.AppointmentID }, new { @class = "btn btn-danger" });
+            });
+
+            }).Using(GridFilterMode.Header)
+            .Empty("No data found")
+            .Filterable()
+            .Sortable()
+            )*@
+
+        </div>
+    </div>
+   
+  
+</div>
+
+<script src="~/js/mvc-grid/mvc-grid.js"></script>
+
+<script>
+    document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+</script>
+
+
+<script>
+       $(document).ready(function() {
+       
+    });
+    
+    $(document).on('click', '.pagination li', function (e) {
+    e.preventDefault();
+    $('.pagination li').each(function () {
+        $(this).removeClass('active');
+    })
+    $(this).addClass('active');
+    console.log($(this).children().attr("id"))
+    pager();
+    });
+        $("#appointmentStatus").on("change", function() {  pager();  });
+        function pager(){
+             var pageIndex = $('.pagination .active a').attr("id");
+            var selectedStatus = $('#appointmentStatus').val();
+            var doctorId = '@ViewBag.Did';
+               
+            $.ajax({
+                url: "/Management/Management/GetFilteredAppointments",
+                type: "POST",
+                data: { status: selectedStatus, doctorId: doctorId ,pageindex: pageIndex},
+                success: function(response) {
+                    $("#stt").html(response);
+                     $('.pagination').html($(response).find('.pagination').html());
+                },
+                error: function() {
+                    alert("An error occurred");
+                }
+            });
+    
+           }
+        function updateAppointmentStatus(elementId, url) {
+            $.ajax({
+                type: "POST",
+                url: url,
+                success: function(data) {
+                    if (data.success) {
+                        var statusText = data.st === 'Approve' ? 'Approved' : 'Rejected';
+                        var statusClass = data.st === 'Approve' ? 'text-success' : 'text-danger';
+                        var statusElement = $('#status_' + data.id);
+                        statusElement.text(statusText).removeClass('text-success text-danger text-warning').addClass(statusClass);
+                    } else {
+                        alert('Failed to update appointment status.');
+                    }
+                },
+                error: function() {
+                    alert("An error occurred while updating appointment status.");
+                }
+            });
+        }
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+@*<script src="~/js/filter.js"></script>*@

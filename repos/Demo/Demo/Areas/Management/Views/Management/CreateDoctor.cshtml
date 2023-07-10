@@ -1,0 +1,99 @@
+﻿@model Demo.Models.DoctorDetails
+
+<body>
+    <div class="container mt-5">
+        <h1 class="mt-5">Create Doctor</h1>
+
+        <form asp-area="Management" asp-action="CreateDoctor" asp-controller="Management" id="Createform" method="post">
+            <div class="form-group">
+                <label asp-for="DoctorName" class="control-label">Doctor Name</label>
+                <input asp-for="DoctorName" id="patientName" class="form-control" />
+                <span asp-validation-for="DoctorName" class="text-danger"></span>
+            </div>
+            <!-- Doctor Dropdown List -->
+            <div class="form-group">
+                <label asp-for="HospitalId" for="hospitalSelect">Hospital:</label>
+                <select asp-for="HospitalId" id="hospitalSelect" name="HospitalId" class="form-control">
+                    <option value="hospitalId">Select Hospital</option>
+                </select>
+                <span asp-validation-for="HospitalId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DoctorTypeID" for="doctorTypeSelect">Doctor Type:</label>
+                <select asp-for="DoctorTypeID" id="doctorTypeSelect" name="DoctorTypeID" class="form-control">
+                    <option value="doctorTypeId">Select Doctor Type</option>
+                </select>
+                <span asp-validation-for="DoctorTypeID" class="text-danger"></span>
+            </div>
+
+            <!-- Add other form fields here -->
+            <div class="btn-group mt-3">
+                <button type="submit" id="submitBtn" class="btn btn-primary mr-3">Create</button>
+                @if (User.IsInRole("ManagementAdmin"))
+                {
+                    <a asp-route-hospitalId="@Model.HospitalId" asp-area="Management" asp-action="DisplayDoctor" asp-controller="Management" class="btn btn-primary">Back To List</a>
+                }
+                else
+                {
+                    <a asp-route-hospitalId="@Model.HospitalId" asp-area="Management" asp-action="DisplayDoctor" asp-controller="Management" class="btn btn-primary">Back To List</a>
+                }
+            </div>
+
+
+        </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+                    $(document).ready(function () {
+
+                      var selectedHospitalId = @Model.HospitalId;
+                   $.ajax({
+            url: '/User/User/GetHospitals',
+            success: function (response) {
+                var hospitalSelect = $('#hospitalSelect');
+                hospitalSelect.empty();
+                hospitalSelect.append('<option value="">Select Hospital</option>');
+                $.each(response, function (index, hospital) {
+                    hospitalSelect.append('<option value="' + hospital.hospitalId + '">' + hospital.hospitalName + '</option>');
+                });
+
+                // Check if the selectedHospitalId has the correct value
+              if (selectedHospitalId && selectedHospitalId !== "0") {
+            hospitalSelect.val(selectedHospitalId);
+        } else {
+            hospitalSelect.val(""); // Set the default value to empty
+        }
+            }
+        });
+
+                     $.ajax({
+                            url: '/User/User/GetDoctorTypeListAll',
+                            success: function (response) {
+                                var doctorTypeSelect = $('#doctorTypeSelect');
+                                doctorTypeSelect.empty();
+                                doctorTypeSelect.append('<option value="">Select Doctor Type</option>');
+                                $.each(response, function (index, doctorType) {
+                                    doctorTypeSelect.append('<option value="' + doctorType.doctorTypeId + '">' + doctorType.doctorTypeName + '</option>');
+                                });
+                                }
+                                //doctorTypeSelect.val(@Model.DoctorTypeID);
+                });
+                 });
+    </script>
+
+    @section Scripts {
+    @{
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+                integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }
+
+
+</body>
+
+
+

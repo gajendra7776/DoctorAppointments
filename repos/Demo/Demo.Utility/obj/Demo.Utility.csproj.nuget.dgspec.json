@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\source\\repos\\Demo\\Demo.Utility\\Demo.Utility.csproj": {}
+    "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo.Utility\\Demo.Utility.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\source\\repos\\Demo\\Demo.Utility\\Demo.Utility.csproj": {
+    "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo.Utility\\Demo.Utility.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\Demo\\Demo.Utility\\Demo.Utility.csproj",
+        "projectUniqueName": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo.Utility\\Demo.Utility.csproj",
         "projectName": "Demo.Utility",
-        "projectPath": "C:\\Users\\Admin\\source\\repos\\Demo\\Demo.Utility\\Demo.Utility.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\source\\repos\\Demo\\Demo.Utility\\obj\\",
+        "projectPath": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo.Utility\\Demo.Utility.csproj",
+        "packagesPath": "C:\\Users\\pce65\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo.Utility\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pce65\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,14 +44,33 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.ViewFeatures": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "NonFactors.Grid.Mvc6": {
+              "target": "Package",
+              "version": "[7.2.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -55,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

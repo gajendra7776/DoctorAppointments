@@ -1,0 +1,58 @@
+﻿@model Demo.Models.UserModel
+
+<head>
+    <link rel="stylesheet" href="~/css/Login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+         
+          @if (TempData["Invalid"] != null)
+    {
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.error('@TempData["Invalid"]');
+        </script>
+    }
+        <div class="text-center" style="color:red;font-style:bold; font-size:20px"> <span class="mt-2">@ViewBag.Invalid</span></div>
+        <form method="post">
+
+
+            <div class="form-group">
+                
+                <label asp-for="Email" for="username">Email</label>
+                <input asp-for="Email" type="text" class="form-control" placeholder="Email" autocomplete="off">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" for="password">Password</label>
+                <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Enter your password" autocomplete="off">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                 <label for="userType">Select User Type:</label>
+                 
+                <select class="form-control" name="RoleID">
+                  <option value="">Choose...</option>
+                  <option value="2">Doctor</option>
+                  <option value="3">Admin</option>
+                  <option value="1">Patient</option>
+                </select>
+            </div>*@
+
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+
+            <div class="form-group mt-2">
+                <p class="text-center" style="font-size: 0.8rem; color: #8d8a8a;">Don't have account? <a href="@Url.Action("Register")">Register Here</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+@*
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}*@

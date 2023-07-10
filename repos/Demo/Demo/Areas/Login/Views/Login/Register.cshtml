@@ -1,0 +1,45 @@
+﻿@using Demo.Models
+@model Demo.Models.UserModel
+
+<head>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>Register Page</title>
+   <link rel="stylesheet" href="~/css/Register.css">
+</head>
+<body>
+    <div class="register-container">
+        <h2>Register</h2>
+        
+        <div class="text-center" style="color:red;font-style:bold; font-size:20px"> <span class="mt-2">@ViewData["Message"]</span></div>
+        <form method="post" asp-controller="Login">
+            <div class="form-group">
+                <label asp-for="UserName">Username</label>
+                <input asp-for="UserName" type="text" class="form-control" id="username" placeholder="Enter your username" autocomplete="off">
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" >Email</label>
+                <input asp-for="Email" type="email" class="form-control" id="email" placeholder="Enter your email" autocomplete="off">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">PassWord</label>
+                <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Enter your password" autocomplete="off">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassWord">Confirm Password</label>
+                <input asp-for="ConfirmPassWord" type="password" class="form-control" id="password" placeholder="Enter Confirm password" autocomplete="off">
+                <span asp-validation-for="ConfirmPassWord" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+    </div>
+    @section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+</body>
+

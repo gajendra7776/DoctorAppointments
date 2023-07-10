@@ -1,4 +1,5 @@
 ﻿using Demo.Models;
+using Demo.Models.DummyModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,16 @@ namespace Demo.DataAccess.Data
         {
         }
 
-        public DbSet<AppoinmentModel> Appointments { get; set; }
+        public DbSet<ManagementModel> Management_Admin { get; set; }
+        public DbSet<UserModel> User { get; set; }
+        public DbSet<AppointmentHelper> Patient_Appoinments { get; set; }
+      
+      
+        public DbSet<RoleModel> RoleType { get; set; }
+       // public DbSet<DoctorDetails> DoctorDetails { get; set; }  
+        public DbSet<DoctorHelper> DoctorDetails { get; set; }  
+        public DbSet<Hospital> Hospital { get; set; }
+        public DbSet<DoctorType> DoctorType { get; set; }  
 
     }
 }
