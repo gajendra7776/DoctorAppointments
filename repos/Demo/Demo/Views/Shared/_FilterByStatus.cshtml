@@ -8,6 +8,8 @@
             {
             columns.Add(model => model.UserName).Titled("UserName");
             columns.Add(model => model.DoctorName).Titled("Doctornames").Filterable(true);
+            columns.Add(model => model.AppointmentTime).Titled("Time");
+            columns.Add(model => model.AppointmentDate).Titled("Date");
             columns.Add(model => model.AppointmentStatus).Titled("Status").RenderedAs((model, row) =>
             {
             var approveId = "approve_" + model.AppointmentID;
@@ -42,7 +44,7 @@
             columns.Add().Titled("Edit").RenderedAs((model, row) =>
             {
 
-            return Html.ActionLink("Edit", "EditAppoinment", new { area = "Management", id = model.AppointmentID }, new { @class = "btn btn-primary" });
+            return Html.ActionLink("Edit", "AddEditAppointment", new { area = "Management", appId = model.AppointmentID }, new { @class = "btn btn-primary" });
             });
 
             columns.Add().Titled("Delete").RenderedAs((model, row) =>

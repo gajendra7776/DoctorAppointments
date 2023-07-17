@@ -44,7 +44,7 @@
         </div>
     </div>
     <div>
-        <a asp-route-id="@ViewBag.userId" asp-area="User" asp-action="CreateAppointments" asp-controller="User" class="btn btn-success">Create Appointment</a>
+        <a asp-area="Management" asp-action="AddEditAppointment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
     </div>
      @*28 June - User Appoinments *@
     <div class="mt-5 mb-5" id="stt">
@@ -63,9 +63,7 @@
         columns.Add().Titled("Edit").RenderedAs((model, row) =>
         {
 
-        return Html.ActionLink("Edit", "EditAppoinment", new { area = "Management", controller="Management", id = model.AppointmentID }, new { @class = "btn btn-primary" });
-
-
+        return Html.ActionLink("Edit", "AddEditAppointment", new { area = "Management", controller="Management", appId = model.AppointmentID }, new { @class = "btn btn-primary" });
         });
         columns.Add().Titled("Delete").RenderedAs((model, row) =>
         {

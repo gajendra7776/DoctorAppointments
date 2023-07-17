@@ -1,0 +1,54 @@
+﻿@model Demo.Models.Hospital
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"></script>
+<div class="container ">
+    @if (User.IsInRole("SuperAdmin"))
+    {
+        <partial name="PartialsViews/_HeaderForManagAdmin" />
+    }
+    <h3 class="mt-5">Create Hospital</h3>
+
+    <form asp-action="AddEditHospital" method="post">
+        <div class="form-group">
+            <label asp-for="HospitalName" class="control-label">Hospital Name</label>
+            <input asp-for="HospitalName" id="patientName" class="form-control" />
+            <span asp-validation-for="HospitalName" class="text-danger"></span>
+        </div>
+        <!-- Doctor Dropdown List -->
+        <div class="form-group mt-2">
+            <label>Description:</label>
+            <textarea asp-for="Description" class="form-control" id="diseaseDescription" name="Description" rows="3" placeholder="Enter Hospital description"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        @if (Model != null)
+        {
+            <div class="form-group mt-2">
+                <label asp-for="blnActive" class="control-label">Status:</label>
+                <select asp-for="blnActive" name="Status" class="form-control" name="blnActive">
+                    <option value="True">True</option>
+                    <option value="False">False</option>
+                </select>
+                <span asp-validation-for="blnActive" class="text-danger"></span>
+            </div>
+        }
+
+
+        <!-- Add other form fields here -->
+
+        <button type="submit" id="submitBtn" class="btn btn-primary mt-4 ">Create</button>
+        <a asp-area="SuperAdmin" asp-action="Managements" asp-controller="SuperAdmin" class="btn btn-primary mt-4 ms-3">Back To List</a>
+
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+    }
+

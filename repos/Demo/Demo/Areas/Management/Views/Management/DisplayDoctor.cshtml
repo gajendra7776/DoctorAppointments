@@ -1,8 +1,14 @@
 ﻿@using Demo.Models.DummyModels
+@using Microsoft.AspNetCore.Html
 @using NonFactors.Mvc.Grid
 @using System.Web.Mvc
 @model Demo.Models.DummyModels.AdminInstances
-
+@inject IHttpContextAccessor Accessor
+@{
+    var userId = @Accessor.HttpContext.Session.GetInt32("UserId");
+    var doctorId = @Accessor.HttpContext.Session.GetInt32("DoctorId");
+    var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
+}
 @{
     int hId = @Model.HospitalId;
     ViewData["Title"] = "Doctor Details";
@@ -39,9 +45,9 @@
 
 <div class="container mt-3">
     @if (User.IsInRole("ManagementAdmin") || User.IsInRole("SuperAdmin"))
-        {
-            <partial name="PartialsViews/_HeaderForManagAdmin" />
-        }
+    {
+        <partial name="PartialsViews/_HeaderForManagAdmin" />
+    }
     @if (User.IsInRole("ManagementAdmin") && Model.DoctorDetails.Any())
     {
         var hospitalName = Model.DoctorDetails.First().HospitalName;
@@ -53,7 +59,7 @@
 
     }
     <div class="mt-4">
-        <a asp-route-id="@Model.HospitalId" asp-area="Management" asp-action="CreateDoctor" asp-controller="Management" class="btn btn-success">Create Doctor</a>
+        <a asp-area="Management" asp-action="AddEditDoctor" asp-controller="Management" class="btn btn-success">Create Doctor</a>
     </div>
     <div class="mt-5">
         @(Html
@@ -80,7 +86,7 @@
         columns.Add().Titled("Edit").RenderedAs((model, row) =>
         {
 
-        return Html.ActionLink("Edit", "EditDoctor", new { area = "Management", id = model.DoctorID }, new { @class = "btn btn-primary" });
+        return Html.ActionLink("Edit", "AddEditDoctor", new { area = "Management", id = model.DoctorID }, new { @class = "btn btn-primary" });
         });
 
         columns.Add().Titled("Delete").RenderedAs((model, row) =>
@@ -88,20 +94,41 @@
         return Html.ActionLink("Delete", "DelateDoctor", new { area = "Management", id = model.DoctorID,hospitalId = hId }, new { @class = "btn btn-danger" });
         });
 
-        if(User.IsInRole("ManagementAdmin")){
-
-            columns.Add().Titled("Appointment").RenderedAs((model, row) =>
-            {
-            return Html.ActionLink("MyAllAppoinments", "AppoinmentsByDoctor", new { area = "Management", doctorId = model.DoctorID,hospitalId = model.HospitalId }, new { @class = "btn btn-primary" });
-            });
-        }
-        else{
-             columns.Add().Titled("Appointment").RenderedAs((model, row) =>
+        columns.Add(model=> model.DoctorID).Titled("Appointment").RenderedAs((model, row) =>
         {
-        return Html.ActionLink("Show Appointments", "AppoinmentsByDoctor", new { area = "Management", doctorId = model.DoctorID }, new { @class = "btn btn-primary" });
-        });
+        if(Model.patientAppoinmentModels.Any(a=> a.DoctorID == model.DoctorID))
+        {
+            if (User.IsInRole("ManagementAdmin"))
+            {
+            return Html.ActionLink("Show Appointments", "AppoinmentsByDoctor", new { area = "Management", doctorId = model.DoctorID,hospitalId = model.HospitalId }, new { @class = "btn btn-primary btn-block" });
+            }
+            else
+            {
+            return Html.ActionLink("Show Appointments", "AppoinmentsByDoctor", new { area = "Management", doctorId = model.DoctorID }, new { @class = "btn btn-primary btn-block" });
+            }
         }
-       
+        else
+        {
+            return Html.ActionLink(" No Appointments", "AppoinmentsByDoctor", new { area = "Management", doctorId = model.DoctorID }, new { @class = "btn btn-primary btn-block disabled"  } );
+        }
+        });
+
+
+
+            @*        if(User.IsInRole("ManagementAdmin")){
+
+                columns.Add().Titled("Appointment").RenderedAs((model, row) =>
+                {
+                return Html.ActionLink("Show Appointments", "AppoinmentsByDoctor", new { area = "Management", doctorId = model.DoctorID,hospitalId = model.HospitalId }, new { @class = "btn btn-primary" });
+                });
+                }
+                else{
+                columns.Add().Titled("Appointment").RenderedAs((model, row) =>
+                {
+                return Html.ActionLink("Show Appointments", "AppoinmentsByDoctor", new { area = "Management", doctorId = model.DoctorID }, new { @class = "btn btn-primary" });
+                });
+                }*@
+
 
         }).Using(GridFilterMode.Header)
         .Empty("No data found")
@@ -130,4 +157,7 @@
         document.getElementById("CheckAll").addEventListener("change", function () {
         document.querySelectorAll("[id^='Check_'").forEach(checkbox => checkbox.checked = this.checked);
     });
+</script>
+<script>
+    document.
 </script>

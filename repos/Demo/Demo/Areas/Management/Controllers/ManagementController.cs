@@ -92,10 +92,12 @@ namespace Demo.Controllers
         public IActionResult DisplayDoctor(int hospitalId = 0)
         {
             List<DoctorDetails> doctorDetails = _commonmethods.GetDoctorsByManagement(hospitalId);
+            List<PatientAppoinmentModel> palist = _commonmethods.GetAppointmentsByManagement(0);
             var viewModel = new AdminInstances
             {
                 DoctorDetails = doctorDetails,
-                HospitalId = hospitalId
+                HospitalId = hospitalId,
+                patientAppoinmentModels = palist
             };
 
             return View(viewModel);
@@ -108,6 +110,7 @@ namespace Demo.Controllers
                 return View();
             }
             _common.RemoveDoctor(id);
+            TempData["success"] = "Doctor Deleted Successful";
             if (hospitalId == 0)
             {
                 return RedirectToAction("DisplayDoctor");
@@ -120,6 +123,7 @@ namespace Demo.Controllers
 
         public IActionResult Appoinments(int hospitalId = 0)
         {
+
             List<PatientAppoinmentModel> appointments = _commonmethods.GetAppointmentsByManagement(hospitalId);
             var viewModel = new AdminInstances
             {
@@ -288,6 +292,71 @@ namespace Demo.Controllers
             return Json(new { success = true, st, id });
         }
 
+       
+
+        public IActionResult AddEditAppointment(int appId = 0)
+        {
+            if (appId <= 0)
+            {
+                return View();
+            }
+            PatientAppoinmentModel data = new PatientAppoinmentModel();
+
+            data = _common.GetAppoinmentData(appId);
+            return View(data);
+        }
+        [HttpPost]
+        public IActionResult AddEditAppointment(PatientAppoinmentModel model)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            var doctorId = HttpContext.Session.GetInt32("DoctorId");
+            var adminId = HttpContext.Session.GetInt32("ManagementAdminId");
+
+            int result = 0;
+            string successMessage = "";
+            string errorMessage = "";
+            
+            if (model != null && model.AppointmentID != 0  )
+            {
+                int id = model.AppointmentID;
+                result = _common.EditAppoinment(model, id);
+                successMessage = "Appointment Edited Successfully";
+                errorMessage = "Slot is not Available, Select Different Slot";
+            }
+            else
+            {
+                result = _common.CreateNewAppoinment(model);
+                successMessage = "Appointment Added Successfully";
+                errorMessage = "Slot is not Available, Select Different Slot";
+            }
+
+            TempData["success"] = (result == 1) ? successMessage : errorMessage;
+            if (result == 1)
+            {
+                if (User.IsInRole("User"))
+                {
+                    return RedirectToAction("BookAppoint", "User", new { area = "User", userId = userId });
+                }
+                else if (User.IsInRole("Doctor"))
+                {
+                    return RedirectToAction("AppoinmentsByDoctor", "Management", new { area = "Management", doctorId = doctorId });
+                }
+                else if (User.IsInRole("ManagementAdmin"))
+                {
+                    return RedirectToAction("Appoinments", "Management", new { area = "Management", hospitalId = adminId });
+                }
+                else
+                {
+                    return RedirectToAction("Appoinments", "Management", new { area = "Management" });
+                }
+            }
+            else
+            {
+                return RedirectToAction("AddEditAppointment", "Management", new { area = "Management" });
+            }
+            return View(model);
+        }
+
         public IActionResult DeleteAppoinment(int id, int hospitalId = 0)
         {
             if (id <= 0)
@@ -295,16 +364,62 @@ namespace Demo.Controllers
                 return View();
             }
             _common.RemoveAppoinment(id);
-            if (User.IsInRole("Doctor") || User.IsInRole("SuperAdmin"))
+            TempData["success"] = "Appointment Deleted Successful";
+            if (User.IsInRole("Doctor"))
             {
                 return RedirectToAction("AppoinmentsByDoctor", "Management", new { area = "Management", doctorId = hospitalId });
             }
-            return RedirectToAction("Appoinments", new { hospitalId = hospitalId });
+            else if (User.IsInRole("SuperAdmin"))
+            {
+                return RedirectToAction("DisplayDoctor", "Management", new { area = "Management" });
+            }
+            return RedirectToAction("DisplayDoctor", new { hospitalId = hospitalId });
+        }
+
+
+        public IActionResult AddEditDoctor(int id)
+        {
+            if (id <= 0)
+            {
+                return View();
+            }
+            DoctorDetails doctors = new DoctorDetails();
+            doctors = _common.EditDocotrGetData(id);
+            return View(doctors);
         }
         [HttpPost]
-        public IActionResult GetFilteredAppointments(string status, int doctorId,int pageindex=1)
+        public IActionResult AddEditDoctor(DoctorDetails model)
         {
-            
+            var adminId = HttpContext.Session.GetInt32("ManagementAdminId");
+            string successMessage = "";
+            if (model != null && model.DoctorID != 0)
+            {
+                int id = model.DoctorID;
+                _common.EditDoctorById(model, id);
+                successMessage = "Doctor Edited Successfully";
+            }
+            else
+            {
+                _common.CreateNewDoctor(model);
+                successMessage = "Doctor Added Successfully";
+            }
+            TempData["success"] = successMessage;
+
+            if (User.IsInRole("ManagementAdmin"))
+            {
+                return RedirectToAction("DisplayDoctor", "Management", new { area = "Management", hospitalId = adminId });
+            }
+            else
+            {
+                return RedirectToAction("DisplayDoctor", "Management", new { area = "Management"});
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult GetFilteredAppointments(string status, int doctorId, int pageindex = 1)
+        {
+
             List<PatientAppoinmentModel> appoints = GetAppointmentsByStatus(status, doctorId);
             int pageSize = 5;
             var Doctor = HttpContext.Session.GetInt32("DoctorId");
@@ -313,7 +428,7 @@ namespace Demo.Controllers
 
             return PartialView("_FilterByStatus", pagedAppointments);
         }
-            
+
         public List<PatientAppoinmentModel> GetAppointmentsByStatus(string status, int doctorId)
         {
             List<PatientAppoinmentModel> appointmentList = new List<PatientAppoinmentModel>();

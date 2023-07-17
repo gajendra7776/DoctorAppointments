@@ -1,7 +1,10 @@
-﻿@model Demo.Models.PatientAppoinmentModel
-
-@*26 June -Create Appoinment UI*@
-
+﻿@inject IHttpContextAccessor Accessor
+@model Demo.Models.PatientAppoinmentModel
+@{
+    var userId = @Accessor.HttpContext.Session.GetString("UserId");
+    var doctorId = @Accessor.HttpContext.Session.GetString("DoctorId");
+    var hospitalId = @Accessor.HttpContext.Session.GetString("ManagementAdminId");
+}
 <title>Create Appointment</title>
 <!-- MDB -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
@@ -44,17 +47,17 @@
                 </select>
                 <span asp-validation-for="DoctorID" class="text-danger"></span>
             </div>
-            
-            
+
+
             @if (!(User.IsInRole("User")))
             {
-               <div class="form-group">
-                <label asp-for="PatientId" for="userSelect">User:</label>
-                <select asp-for="PatientId" id="userSelect" name="PatientId" class="form-control">
-                    <option value="userId">Select User</option>
-                </select>
-                <span asp-validation-for="PatientId" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="PatientId" for="userSelect">User:</label>
+                    <select asp-for="PatientId" id="userSelect" name="PatientId" class="form-control">
+                        <option value="userId">Select User</option>
+                    </select>
+                    <span asp-validation-for="PatientId" class="text-danger"></span>
+                </div>
             }
             @if (User.IsInRole("User"))
             {
@@ -89,20 +92,21 @@
             @*28 June - Update Edit Appoinment For User*@
             @if (User.IsInRole("User"))
             {
-                
-                <a asp-route-userId=@Model.PatientId asp-area="User" asp-action="BookAppoint" asp-controller="User" class="btn btn-primary">Back To List</a>
+
+                <a asp-route-userId=@userId asp-area="User" asp-action="BookAppoint" asp-controller="User" class="btn btn-primary">Back To List</a>
             }
             else if (User.IsInRole("ManagementAdmin"))
             {
-                
-                <a asp-route-hospitalId="@Model.HospitalID" asp-area="Management" asp-action="Appoinments" asp-controller="Management" class="btn btn-primary">Back To List</a>
+
+                <a asp-route-hospitalId="@hospitalId" asp-area="Management" asp-action="Appoinments" asp-controller="Management" class="btn btn-primary">Back To List</a>
             }
             else if (User.IsInRole("Doctor"))
             {
-                 <a asp-route-doctorId="@Model.DoctorID" asp-area="Management" asp-action="AppoinmentsByDoctor" asp-controller="Management" class="btn btn-primary">Back To List</a>
+                <a asp-route-doctorId="@doctorId" asp-area="Management" asp-action="AppoinmentsByDoctor" asp-controller="Management" class="btn btn-primary">Back To List</a>
             }
-            else{
-                
+            else
+            {
+
                 <a asp-area="Management" asp-action="Appoinments" asp-controller="Management" class="btn btn-primary">Back To List</a>
             }
 
@@ -127,6 +131,7 @@
                     });
 
                     // Set the default selected Hospital
+
                     var selectedHospitalId = @Model.HospitalID; // Replace with the appropriate value from the model
                     hospitalSelect.val(selectedHospitalId);
 
@@ -183,8 +188,10 @@
                             doctorTypeSelect.append('<option value="' + doctorType.doctorTypeId + '">' + doctorType.doctorTypeName + '</option>');
                         });
 
-                        var selectedDoctorTypeId = @Model.DoctorTypeId; // Replace with the appropriate value from the model
-                        doctorTypeSelect.val(selectedDoctorTypeId);
+                        var selectedDoctorTypeId = @Model.DoctorTypeId;
+                         if(selectedDoctorTypeId !== "0"){
+                          doctorTypeSelect.val(selectedDoctorTypeId);
+                         }
                     }
                 });
                 var selectedDoctorId = @Model.DoctorID;
@@ -201,10 +208,11 @@
                             doctorSelect.append('<option value="' + doctor.doctorID + '">' + doctor.doctorName + '</option>');
                         });
 
-                        // Set the default selected Doctor
-                         var selectedDoctorId = @Model.DoctorID; // Replace with the appropriate value from the model
-                        doctorSelect.val(selectedDoctorId);
-                        console.log(doctorSelect.val());                        
+                         var selectedDoctorId = @Model.DoctorID;
+                         if(selectedDoctorId !== "0"){
+                             doctorSelect.val(selectedDoctorId);
+                         }
+
                         doctorSelect.trigger('change');
                     }
                 });
@@ -217,15 +225,17 @@
         $.each(response, function(index, user) {
                     userSelect.append('<option value="' + user.userId + '">' + user.userName + '</option>');
                 });
+
                 var selectedUserId = @Model.PatientId;
-                 userSelect.val(selectedUserId);
+                if(selectedUserId !== "0"){
+                   userSelect.val(selectedUserId);
+                }
             }
         });
 
     });
 
 </script>
-
 
 
 

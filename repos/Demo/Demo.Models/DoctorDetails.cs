@@ -39,6 +39,6 @@ namespace Demo.Models
         public int DoctorTypeID { get; set; }
         public string DoctorType { get; set; } = null;
         public int UserId { get; set; }
-        
+            
     }
 }

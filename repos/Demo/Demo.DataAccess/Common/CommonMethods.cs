@@ -72,6 +72,8 @@ namespace Demo.DataAccess.Common
                         appointment.DoctorName = reader["DoctorName"].ToString();
                         appointment.UserName = reader["UserName"].ToString();
                         appointment.DoctorID = Convert.ToInt32(reader["DoctorID"]);
+                        appointment.AppointmentDate = (DateTime)reader["AppointmentDate"];
+                        appointment.AppointmentTime = reader["AppoinmentTime"].ToString();
                         appointmentList.Add(appointment);
                     }
                 }
@@ -108,6 +110,8 @@ namespace Demo.DataAccess.Common
                         appointment.DoctorID = Convert.ToInt32(reader["DoctorID"]);
                         appointment.HospitalID = Convert.ToInt32(reader["HospitalId"]);
                         appointment.PatientId = Convert.ToInt32(reader["PatientId"]);
+                        appointment.AppointmentDate = (DateTime)reader["AppointmentDate"];
+                        appointment.AppointmentTime = reader["AppoinmentTime"].ToString();
                         appointmentList.Add(appointment);
                     }
                 }

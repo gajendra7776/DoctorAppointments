@@ -2,10 +2,7 @@
 @using NonFactors.Mvc.Grid
 @using System.Web.Mvc
 @model Demo.Models.DummyModels.AdminInstances
-@{
-    int hId = @Model.HospitalId;
 
-}
 @{
     ViewData["Title"] = "Doctor Details";
 }
@@ -33,6 +30,7 @@
             toastr.success('@TempData["success"]');
         </script>
     }
+
     @if (User.IsInRole("ManagementAdmin") && Model.Appointments.Any())
     {
         var hospitalName = Model.Appointments.First().HospitalName;
@@ -45,7 +43,7 @@
     <div class="mt-2">
         <div class="row">
             <div class="col-md">
-                <a asp-route-id="@Model.HospitalId" asp-area="Management" asp-action="CreateAppoinment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
+                <a asp-area="Management" asp-action="AddEditAppointment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
             </div>
 
         </div>
@@ -61,6 +59,8 @@
         {
         columns.Add(model => model.UserName).Titled("UserName");
         columns.Add(model => model.DoctorName).Titled("Doctornames");
+        columns.Add(model => model.AppointmentTime).Titled("Time");
+        columns.Add(model => model.AppointmentDate).Titled("Date");
         columns.Add(model => model.AppointmentStatus).Titled("Status").RenderedAs((model, row) =>
         {
         var approveId = "approve_" + model.AppointmentID;
@@ -95,12 +95,12 @@
         columns.Add().Titled("Edit").RenderedAs((model, row) =>
         {
 
-        return Html.ActionLink("Edit", "EditAppoinment", new { area = "Management", id = model.AppointmentID }, new { @class = "btn btn-primary" });
+        return Html.ActionLink("Edit", "AddEditAppointment", new { area = "Management", appId = model.AppointmentID }, new { @class = "btn btn-primary" });
         });
 
         columns.Add().Titled("Delete").RenderedAs((model, row) =>
         {
-        return Html.ActionLink("Delete", "DelateAppoinment", new { area = "Management", id = model.AppointmentID }, new { @class = "btn btn-danger" });
+        return Html.ActionLink("Delete", "DeleteAppoinment", new { area = "Management", id = model.AppointmentID }, new { @class = "btn btn-danger" });
         });
 
         }).Using(GridFilterMode.Header)

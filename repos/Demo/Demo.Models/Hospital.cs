@@ -19,5 +19,6 @@ namespace Demo.Models
         public bool blnActive { get; set;}
         
          ICollection<DoctorDetails> DoctorDetails { get; set; }
+        
     }
 }

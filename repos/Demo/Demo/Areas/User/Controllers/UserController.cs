@@ -24,7 +24,7 @@ namespace Demo.Controllers
 
         public IActionResult CreateAppointments(int id)
         {
-            if(id <= 0)
+            if (id <= 0)
             {
                 return View();
             }
@@ -32,7 +32,7 @@ namespace Demo.Controllers
             model.PatientId = id;
             return View(model);
         }
-        [HttpPost]      
+        [HttpPost]
         public IActionResult CreateAppointments(PatientAppoinmentModel model)
         {
             if (model == null)
@@ -55,7 +55,7 @@ namespace Demo.Controllers
         //28 June - Create BookApoinment Backend
         public IActionResult BookAppoint(int userId)
         {
-            if(userId == 0)
+            if (userId == 0)
             {
                 return View();
             }
@@ -72,27 +72,47 @@ namespace Demo.Controllers
             }
         }
         // 29 June - Delete Appoinment
-        public IActionResult DeleteAppoinment(int id,int userId)
+        public IActionResult DeleteAppoinment(int id, int userId)
         {
             if (id <= 0)
             {
                 return View();
             }
             _common.RemoveAppoinment(id);
-            return RedirectToAction("BookAppoint", new { userId = userId});
+            TempData["success"] = "Appointment Deleted Successfully";
+            return RedirectToAction("BookAppoint", new { userId = userId });
         }
-       
-        
+
+
 
         public JsonResult GetHospitals()
-            {
+        {
             List<Hospital> hospitals = new List<Hospital>();
             hospitals = _common.GetHospitalList();
+            return Json(hospitals);
+        }
+
+        public JsonResult GetFilterHospitals()
+        {
+            List<Hospital> hospitals = new List<Hospital>();
+            hospitals = _common.GetHospitalListFiltered();
             return Json(hospitals);
         }
         public JsonResult GetUsers()
         {
             var users = _db.User.Where(m => m.RoleID == 1).ToList();
+            return Json(users);
+        }
+
+        public JsonResult GetAdmins()
+        {
+            var users = _db.User.ToList();
+            return Json(users);
+        }
+
+        public JsonResult GetEmail(string userId)
+        {
+            var users = _db.User.Where(m => m.UserName == userId).Select(m => m.Email).FirstOrDefault();
             return Json(users);
         }
 

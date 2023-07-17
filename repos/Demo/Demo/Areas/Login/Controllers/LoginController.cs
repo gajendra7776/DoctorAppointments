@@ -87,6 +87,7 @@ namespace Demo.Controllers
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity), authenticationProperties);
                 int id = chkManage.HospitalId;
+                HttpContext.Session.SetInt32("ManagementAdminId", chkManage.HospitalId);
                 TempData["LoginSuccess"] = "Login Successful";
                 return RedirectToAction("DisplayDoctor", "Management", new { area = "Management", hospitalId = chkManage.HospitalId });
             }
@@ -109,7 +110,7 @@ namespace Demo.Controllers
                     };
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity), authenticationProperties);
-
+                    HttpContext.Session.SetInt32("UserId", user.UserId);
                     TempData["LoginSuccess"] = "Login Successful";
                     return RedirectToAction("BookAppoint", "User", new { area = "User", userId = user.UserId});
                 }
@@ -145,7 +146,6 @@ namespace Demo.Controllers
                         AuthenticationProperties authenticationProperties = new AuthenticationProperties()
                         {
                             AllowRefresh = true,
-
                         };
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity), authenticationProperties);

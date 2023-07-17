@@ -3,10 +3,16 @@
 @using System.Web.Mvc
 @using PagedList
 @using cloudscribe.Pagination
+@inject IHttpContextAccessor Accessor
 @model IPagedList<PatientAppoinmentModel>
 
 @{
     ViewData["Title"] = "Doctor Details";
+}
+@{
+    var userId = @Accessor.HttpContext.Session.GetInt32("UserId");
+    var doctorId = @Accessor.HttpContext.Session.GetInt32("DoctorId");
+    var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
 }
 <style>
     .tick-mark {
@@ -39,22 +45,19 @@
             toastr.success('@TempData["success"]');
         </script>
     }
-    @*
-        @if (Model != null && Model..Any())
-        {
-        var userName = Model.Appointments.FirstOrDefault()?.DoctorName;
-        <h4>Total Appoinments of Dr.@userName</h4>
-        }*@
+        
+        <h3>Appointments </h3>
+        
     <div class="mt-2">
         <div class="row">
             <div class="col-md">
                 @if (User.IsInRole("Doctor"))
                 {
-                    <a asp-route-doctorId="@ViewBag.Did" asp-area="Management" asp-action="CreateAppoinment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
+                    <a asp-area="Management" asp-action="AddEditAppointment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
                 }
                 else
                 {
-                    <a asp-route-id="@ViewBag.HospitalId" asp-area="Management" asp-action="CreateAppoinment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
+                    <a asp-area="Management" asp-action="AddEditAppointment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
 
                 }
             </div>

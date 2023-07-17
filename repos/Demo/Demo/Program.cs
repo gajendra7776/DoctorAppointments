@@ -26,7 +26,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     
 });
 
-
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
 var app = builder.Build();
 

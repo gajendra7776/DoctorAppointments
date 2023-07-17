@@ -36,6 +36,29 @@ namespace Demo.DataAccess.Common
             }
             return hospitals;
         }
+        public List<Hospital> GetHospitalListFiltered()
+        {
+            List<Hospital> hospitals = new List<Hospital>();
+            using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("Hospital_FilterByAdmin", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Hospital hospital = new Hospital()
+                    {
+                        HospitalId = (int)(reader["HospitalId"]),
+                        HospitalName = reader["HospitalName"].ToString()
+                    };
+
+                    hospitals.Add(hospital);
+                }
+            }
+            return hospitals;
+        }
 
         public List<DoctorType> GetDoctorTypeList(int hospitalId)
         {

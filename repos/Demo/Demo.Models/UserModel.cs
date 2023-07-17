@@ -25,9 +25,8 @@ namespace Demo.Models
         [Required(ErrorMessage = "Confirm Passowrd is required")]
         [Compare("Password", ErrorMessage ="ConfirmPassword Does Not Match")]
         public string ConfirmPassWord { get; set; }
-        [ForeignKey("ROleId")]
+        [Required(ErrorMessage = "RoleType is required")]
         public int RoleID { get; set; }
-        public RoleModel Role { get; set; }
         
        
     }

@@ -89,6 +89,7 @@ C:\Users\Admin\source\repos\Demo\Demo\bin\Debug\net6.0\Demo.Models.dll
 C:\Users\Admin\source\repos\Demo\Demo\bin\Debug\net6.0\Demo.DataAccess.pdb
 C:\Users\Admin\source\repos\Demo\Demo\bin\Debug\net6.0\Demo.Models.pdb
 C:\Users\Admin\source\repos\Demo\Demo\obj\Debug\net6.0\Demo.csproj.CopyComplete
+C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\appsettings.json
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\libman.json
@@ -101,6 +102,8 @@ C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\ne
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Demo.pdb
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Azure.Core.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\cloudscribe.Pagination.Models.dll
+C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\GridMvc.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Humanizer.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\MessagePack.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\MessagePack.Annotations.dll
@@ -179,6 +182,7 @@ C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\ne
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\NuGet.ProjectModel.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\NuGet.Protocol.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\NuGet.Versioning.dll
+C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\PagedList.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -267,7 +271,6 @@ C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\ne
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
@@ -374,6 +377,3 @@ C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\obj\Debug\ne
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\obj\Debug\net6.0\ref\Demo.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\obj\Debug\net6.0\Demo.pdb
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\obj\Debug\net6.0\Demo.genruntimeconfig.cache
-C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\PagedList.dll
-C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\cloudscribe.Pagination.Models.dll
-C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\GridMvc.dll

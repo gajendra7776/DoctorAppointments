@@ -1,0 +1,66 @@
+﻿@model Demo.Models.UserModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<!-- MDB -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"></script>
+
+
+<div class="container">
+    @if (User.IsInRole("SuperAdmin"))
+    {
+        <partial name="PartialsViews/_HeaderForManagAdmin" />
+    }   
+    <h3 class="mt-5">Create User</h3>
+    <div class="container mt-4">
+        <form asp-area="SuperAdmin" asp-action="AddUser" asp-controller="SuperAdmin"  method="post">
+            <div class="form-group">
+                <label asp-for="UserName">Username</label>
+                <input asp-for="UserName" type="text" class="form-control" id="username" placeholder="Enter your username" autocomplete="off">
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" type="email" class="form-control" id="email" placeholder="Enter your email" autocomplete="off">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">PassWord</label>
+                <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Enter your password" autocomplete="off">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassWord">Confirm Password</label>
+                <input asp-for="ConfirmPassWord" type="password" class="form-control" id="password" placeholder="Enter Confirm password" autocomplete="off">
+                <span asp-validation-for="ConfirmPassWord" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <label asp-for="RoleID" for="appointmentTime">Select Role:</label>
+                <select asp-for="RoleID" name="RoleID" class="form-control">
+                    <option value="">Select Role</option>
+                    <option value="1">User</option>
+                    <option value="2">Doctor</option>
+                    <option value="3">Management</option>
+
+                </select>
+                <span asp-validation-for="RoleID" class="text-danger"></span>
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn btn-primary mt-2">Create</button>
+            <a asp-action="Managements" class="btn btn-primary ms-3 mt-2">Back To List</a>
+
+        </form>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+    }

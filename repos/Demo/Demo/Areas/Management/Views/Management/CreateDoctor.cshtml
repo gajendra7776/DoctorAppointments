@@ -19,12 +19,13 @@
                 <span asp-validation-for="HospitalId" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="DoctorTypeID" for="doctorTypeSelect">Doctor Type:</label>
-                <select asp-for="DoctorTypeID" id="doctorTypeSelect" name="DoctorTypeID" class="form-control">
-                    <option value="doctorTypeId">Select Doctor Type</option>
+             <div class="form-group">
+                <label>Status:</label>
+                <select name="Status" class="form-control">
+                    <option value="True">True</option>
+                    <option value="False">False</option>
                 </select>
-                <span asp-validation-for="DoctorTypeID" class="text-danger"></span>
+                <span asp-validation-for="Status" class="text-danger"></span>
             </div>
 
             <!-- Add other form fields here -->
@@ -39,8 +40,6 @@
                     <a asp-route-hospitalId="@Model.HospitalId" asp-area="Management" asp-action="DisplayDoctor" asp-controller="Management" class="btn btn-primary">Back To List</a>
                 }
             </div>
-
-
         </form>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
