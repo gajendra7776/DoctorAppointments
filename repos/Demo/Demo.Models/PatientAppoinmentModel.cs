@@ -35,6 +35,7 @@ namespace Demo.Models
         public string UserName { get; set; }
         public int DoctorTypeId { get; set; }
         public int PatientId { get; set; }
-       // public DateTime? DeletedAt { get; set; } 
+
+        public DateTime? DeletedAt { get; set; } 
     }
 }

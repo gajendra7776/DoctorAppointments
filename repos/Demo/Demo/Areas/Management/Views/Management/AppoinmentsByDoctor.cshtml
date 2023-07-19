@@ -13,10 +13,12 @@
     var userId = @Accessor.HttpContext.Session.GetInt32("UserId");
     var doctorId = @Accessor.HttpContext.Session.GetInt32("DoctorId");
     var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
+    var count = @Accessor.HttpContext.Session.GetInt32("total");
+   
 }
 <style>
     .tick-mark {
-        cursor: pointer;
+    cursor: pointer;
     }
 </style>
 @*   20 June - Added Filter Functionality By Mvc Grid Package
@@ -24,7 +26,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
-
 
 <div class="container mt-3">
     @if (!(User.IsInRole("Doctor")))
@@ -45,12 +46,49 @@
             toastr.success('@TempData["success"]');
         </script>
     }
-        
-        <h3>Appointments </h3>
-        
-    <div class="mt-2">
+    @if (TempData["error"] != null)
+    {
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.warning('@TempData["error"]');
+        </script>
+    }
+    <div class="row mt-2 ms-4">
+        <div class="col-md-6" style="display: flex; align-content: stretch; justify-content: flex-start;">
+            <h4 class="row col-md-5">Today's Total Appointments: @count</h4>
+            <div class="row col-md-5 ms-3">
+                @if (count != 0 && (@ViewBag.name != null || @ViewBag.time != null || @ViewBag.id!=null ))
+                 {
+                    <span>Patient Name: @ViewBag.name</span>
+                    <span>Timezone: @ViewBag.time</span>
+                    <span>AppointmentId: @ViewBag.id</span>
+                    <button class="btn btn-primary btn-sm col-md-4" onclick="Complete()">
+                    Complete
+                    </button>
+                }
+            </div>
+        </div>
+        <div class="col-md-6" style="display: flex; align-content: stretch; justify-content: flex-end;">
+            <div class="form-group col-md-3">
+                <label for="fromDate">Date From:</label>
+                <input type="date" name="fromDate" class="form-control" id="fromDate" autocomplete="off">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="toDate">Date To:</label>
+                <input type="date" name="toDate" class="form-control" id="toDate" autocomplete="off">
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary btn-sm " style="margin-top: 33px;" onclick="ApproveAll()">
+                    Approve All
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
         <div class="row">
-            <div class="col-md">
+            <div class="col-md-6 ">
                 @if (User.IsInRole("Doctor"))
                 {
                     <a asp-area="Management" asp-action="AddEditAppointment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
@@ -58,10 +96,9 @@
                 else
                 {
                     <a asp-area="Management" asp-action="AddEditAppointment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
-
                 }
             </div>
-            <div class="col-md">
+            <div class="col-md-6">
                 <label for="appointmentStatus">Status:</label>
                 <select id="appointmentStatus" class="form-control">
                     <option value="All">All</option>
@@ -76,68 +113,16 @@
     </div>
 
 
+
     <div id="appointmentsContainer">
         <div class="mt-5" id="stt">
-           <partial name="_FilterByStatus" />
-           @*@(Html
-            .Grid(Model)
-            .Build(columns =>
-            {
-            columns.Add(model => model.UserName).Titled("UserName");
-            columns.Add(model => model.DoctorName).Titled("Doctornames");
-            columns.Add(model => model.AppointmentStatus).Titled("Status").RenderedAs((model, row) =>
-            {
-            var approveId = "approve_" + model.AppointmentID;
-            var rejectId = "reject_" + model.AppointmentID;
-
-            var approveUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Approve" });
-            var rejectUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Reject" });
-            var statusText = model.AppointmentStatus == "Approve" ? "Approved" : "Rejected";
-            var statusClass = model.AppointmentStatus == "Approve" ? "text-success" : "text-danger";
-            if(model.AppointmentStatus == "Pending"){
-            statusText = "Pending";
-            statusClass = "text-warning";
-            }
-            if(model.AppointmentStatus == "Missed"){
-            statusText = "Missed";
-            statusClass = "text-danger";
-            }
-            if(model.AppointmentStatus == "Completed"){
-            statusText = "Completed";
-            statusClass = "text-success";
-            }
-
-            if(!(model.AppointmentStatus == "Completed" || model.AppointmentStatus == "Missed")){
-
-            }
-            return Html.Raw($"<span  id='{approveId}' class='tick-mark {(model.AppointmentStatus == "Approve" ? "selected" : "")}' onclick='updateAppointmentStatus(\"{approveId}\", \"{approveUrl}\")'>&#10004;</span>" +
-            $"<span id='{rejectId}' class='tick-mark {(model.AppointmentStatus == "Reject" ? "selected" : "")}' onclick='updateAppointmentStatus(\"{rejectId}\", \"{rejectUrl}\")'>&#10008;</span>" +
-            $"<span id='status_{model.AppointmentID}' class='{statusClass}'>{statusText}</span>");
-            })
-            .Encoded(false);
-
-            columns.Add().Titled("Edit").RenderedAs((model, row) =>
-            {
-
-            return Html.ActionLink("Edit", "EditAppoinment", new { area = "Management", id = model.AppointmentID }, new { @class = "btn btn-primary" });
-            });
-
-            columns.Add().Titled("Delete").RenderedAs((model, row) =>
-            {
-            return Html.ActionLink("Delete", "DelateAppoinment", new { area = "Management", id = model.AppointmentID }, new { @class = "btn btn-danger" });
-            });
-
-            }).Using(GridFilterMode.Header)
-            .Empty("No data found")
-            .Filterable()
-            .Sortable()
-            )*@
-
+            <partial name="_FilterByStatus" />
+            <!-- Add any additional content here -->
         </div>
     </div>
-   
-  
 </div>
+
+
 
 <script src="~/js/mvc-grid/mvc-grid.js"></script>
 
@@ -148,9 +133,9 @@
 
 <script>
        $(document).ready(function() {
-       
+
     });
-    
+
     $(document).on('click', '.pagination li', function (e) {
     e.preventDefault();
     $('.pagination li').each(function () {
@@ -165,7 +150,7 @@
              var pageIndex = $('.pagination .active a').attr("id");
             var selectedStatus = $('#appointmentStatus').val();
             var doctorId = '@ViewBag.Did';
-               
+
             $.ajax({
                 url: "/Management/Management/GetFilteredAppointments",
                 type: "POST",
@@ -178,7 +163,7 @@
                     alert("An error occurred");
                 }
             });
-    
+
            }
         function updateAppointmentStatus(elementId, url) {
             $.ajax({
@@ -200,7 +185,30 @@
             });
         }
 </script>
-
+<script>
+    function ApproveAll() {
+        var date1 = document.getElementById('fromDate').value
+        var date2 = document.getElementById('toDate').value
+       $.ajax({
+                url: '/Management/Management/ApproveSelectedAppointments',
+                data: { date1: date1, date2: date2,DoctorId: @doctorId},
+                success: function (response) {
+                    location.reload();
+                }
+            });
+    }
+     function Complete() {
+         if (@(ViewBag.id != null ? "true" : "false")){
+       $.ajax({
+                url: '/Management/Management/UpdateStatusComplete',
+                data: { appId:'@ViewBag.id'},
+                success: function (response) {
+                    location.reload();
+                }
+            });
+     }
+    }
+</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 

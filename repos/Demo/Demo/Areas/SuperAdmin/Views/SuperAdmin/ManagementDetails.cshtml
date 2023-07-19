@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ManagementDummy>
+@using Demo.Models.DummyModels
+@using Microsoft.AspNetCore.Html
+@using NonFactors.Mvc.Grid
+@using System.Web.Mvc
+@inject IHttpContextAccessor Accessor
+@{
+    var userId = @Accessor.HttpContext.Session.GetInt32("UserId");
+    var doctorId = @Accessor.HttpContext.Session.GetInt32("DoctorId");
+    var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
+}
+
+<style>
+    .tick-mark {
+        cursor: pointer;
+    }
+</style>
+@*   20 June - Added Filter Functionality By Mvc Grid Package
+*@
+<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
+
+
+
+<div class="container">
+    @if (User.IsInRole("SuperAdmin"))
+    {
+        <partial name="PartialsViews/_HeaderForManagAdmin" />
+    }
+    <h3 class="mt-5">Management Admin Details</h3>
+    <div class="mt-5">
+        @(Html
+        .Grid(Model)
+        .Build(columns =>
+        {
+        columns.Add(model => model.UserName).Titled("AdminName");
+        
+        columns.Add(model => model.HospitalName).Titled("HospitalName");
+        
+        columns.Add(model => model.Email).Titled("Email");
+          
+        columns.Add().Titled("Details").RenderedAs((model, row) =>
+        {
+
+        return Html.ActionLink("Show Details", "AdminDetails", new { id = model.ManagementId}, new { @class = "btn btn-primary btn-block" });
+        });
+
+        }).Using(GridFilterMode.Header)
+        .Empty("No data found")
+        .Filterable()
+        .Pageable(pager =>
+        {
+        pager.PageSizes = new Dictionary<Int32, String> { { 0, "All" }, { 2, "2" }, { 4, "4" },{5, "5" }};
+        pager.ShowPageSizes = true;
+        pager.PagesToDisplay = 3;
+        pager.CurrentPage = 1;
+        pager.RowsPerPage = 5;
+        })
+        .Sortable()
+        )
+
+         <a asp-area="Management" asp-action="DisplayDoctor" asp-controller="Management" class="btn btn-primary">Back</a>
+    </div>
+</div>
+<script src="~/js/mvc-grid/mvc-grid.js"></script>
+
+<script>
+        document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+        document.getElementById("CheckAll").addEventListener("change", function () {
+        document.querySelectorAll("[id^='Check_'").forEach(checkbox => checkbox.checked = this.checked);
+    });
+</script>

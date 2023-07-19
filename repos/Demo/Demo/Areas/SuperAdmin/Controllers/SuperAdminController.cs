@@ -30,14 +30,14 @@ namespace Demo.Areas.SuperAdmin.Controllers
         [HttpPost]
         public IActionResult Managements(ManagementDummy model)
         {
-            if(model != null)
+            if (model != null)
             {
-               int result =  CreateNewAdmin(model);
+                int result = CreateNewAdmin(model);
                 if (result == 1)
                 {
                     TempData["warning"] = "Selected Hospital Already Have Management";
                 }
-                else if (result ==2)
+                else if (result == 2)
                 {
                     TempData["warning"] = "Selected User is Management Of Other Hospital";
                 }
@@ -71,11 +71,11 @@ namespace Demo.Areas.SuperAdmin.Controllers
                     {
                         return 1;
                     }
-                    else if(result.Value.ToString() == "otherHAdmin")
+                    else if (result.Value.ToString() == "otherHAdmin")
                     {
                         return 2;
                     }
-                    else if(result.Value.ToString() == "created")
+                    else if (result.Value.ToString() == "created")
                     {
                         return 3;
                     }
@@ -117,6 +117,78 @@ namespace Demo.Areas.SuperAdmin.Controllers
                 TempData["success"] = "User Added Successfully";
             }
             return RedirectToAction("Managements");
+        }
+        public IActionResult ManagementDetails()
+        {
+            var model = new List<ManagementDummy>();
+            model = GetManagementDetails();
+            return View(model);
+        }
+
+        public IActionResult AdminDetails(int id)
+        {
+            var model = new ManagementDummy();
+            model = GetManagementDetailsByID(id);
+            return View(model);
+        }
+
+        public ManagementDummy GetManagementDetailsByID(int id)
+        {
+            var model = new ManagementDummy();
+
+            using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
+            {
+                SqlCommand command = new SqlCommand("Management_SelectById", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@ManagementId", id);
+
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        model.Hospital = new Hospital();
+                        model.User = new UserModel();
+
+                        model.Hospital.HospitalName = reader["UserName"].ToString();
+                        model.Hospital.Description = reader["Description"].ToString();
+                        model.User.UserName = reader["UserName"].ToString();
+                        model.User.Email = reader["Email"].ToString();
+                        model.User.Password = reader["Password"].ToString();
+                    }
+                }
+            }
+
+            return model;
+        }
+
+
+        public List<ManagementDummy> GetManagementDetails()
+        {
+            List<ManagementDummy> managements = new List<ManagementDummy>();
+            using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("ManagementAdmin_SelectAll", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ManagementDummy hospital = new ManagementDummy()
+                    {
+                        UserName = reader["UserName"].ToString(),
+                        HospitalName = reader["HospitalName"].ToString(),
+                        Email = reader["Email"].ToString(),
+                        ManagementId = (int)reader["ManagementId"]
+                    };
+
+                    managements.Add(hospital);
+                }
+            }
+            return managements;
         }
     }
 }

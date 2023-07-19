@@ -420,6 +420,7 @@ namespace Demo.DataAccess.Common
 
                 using (SqlCommand command = new SqlCommand("DoctorType_GetAllDoctor", connection))
                 {
+
                     command.CommandType = CommandType.StoredProcedure;
                     using (SqlDataReader reader = command.ExecuteReader())
                     {

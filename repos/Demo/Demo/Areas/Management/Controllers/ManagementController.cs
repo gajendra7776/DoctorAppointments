@@ -156,10 +156,38 @@ namespace Demo.Controllers
                     return RedirectToAction("DisplayDoctor", "Management", new { area = "Management", hospitalId = hospitalId });
                 }
             }
+
             int pageSize = 5;
             int pageNumber = page ?? 1;
             IPagedList<PatientAppoinmentModel> pagedAppointments = appointments.ToPagedList(pageNumber, pageSize);
 
+            DateTime today = DateTime.Today;
+            int hour = DateTime.Now.Hour;
+            
+            int data = _db.Patient_Appoinments.Where(x => x.AppointmentDate == today && x.DoctorID == doctorId && x.AppointmentStatus != "Completed").Count();
+            var d = _db.Patient_Appoinments.ToList();
+            var appData = _db.Patient_Appoinments.Where(x => x.AppointmentDate == today && x.DoctorID == doctorId && x.AppointmentStatus != "Completed").FirstOrDefault();
+
+            List<PatientAppoinmentModel> apps = GetData(doctorId, today);
+            if (apps != null)
+            {
+                var matchingAppointments = apps.Where(app =>
+                app.AppointmentStatus == "Approve" &&
+                ((hour >= 7 && hour < 9 && app.AppointmentTime == "9 AM") ||
+                 (hour >= 9 && hour < 11 && app.AppointmentTime == "11 AM") ||
+                 (hour >= 11 && hour < 14 && app.AppointmentTime == "2 PM") ||
+                 (hour >= 14 && hour < 19 && app.AppointmentTime == "5 PM"))).ToList();
+
+
+                if (matchingAppointments.Count > 0)
+                {
+                    var selectedAppointment = matchingAppointments.First();
+                    ViewBag.time = selectedAppointment.AppointmentTime;
+                    ViewBag.id = selectedAppointment.AppointmentID;
+                    ViewBag.name = selectedAppointment.UserName;
+                }
+            }
+            HttpContext.Session.SetInt32("total", data);
             return View(pagedAppointments);
         }
 
@@ -292,7 +320,7 @@ namespace Demo.Controllers
             return Json(new { success = true, st, id });
         }
 
-       
+
 
         public IActionResult AddEditAppointment(int appId = 0)
         {
@@ -315,8 +343,8 @@ namespace Demo.Controllers
             int result = 0;
             string successMessage = "";
             string errorMessage = "";
-            
-            if (model != null && model.AppointmentID != 0  )
+
+            if (model != null && model.AppointmentID != 0)
             {
                 int id = model.AppointmentID;
                 result = _common.EditAppoinment(model, id);
@@ -411,7 +439,7 @@ namespace Demo.Controllers
             }
             else
             {
-                return RedirectToAction("DisplayDoctor", "Management", new { area = "Management"});
+                return RedirectToAction("DisplayDoctor", "Management", new { area = "Management" });
             }
             return View();
         }
@@ -458,6 +486,9 @@ namespace Demo.Controllers
                         appointment.DoctorID = Convert.ToInt32(reader["DoctorID"]);
                         appointment.HospitalID = Convert.ToInt32(reader["HospitalId"]);
                         appointment.PatientId = Convert.ToInt32(reader["PatientId"]);
+                        appointment.AppointmentDate = (DateTime)reader["AppointmentDate"];
+                        appointment.AppointmentTime = reader["AppoinmentTime"].ToString();
+
                         appointmentList.Add(appointment);
                     }
                 }
@@ -467,7 +498,94 @@ namespace Demo.Controllers
         }
 
 
+        public void ApproveSelectedAppointments(DateTime date1, DateTime date2, int DoctorId = 0)
+        {
+            DateTime lowerBound = new DateTime(1753, 1, 1, 0, 0, 0);
+            DateTime upperBound = new DateTime(9999, 12, 31, 23, 59, 59);
+            if (!(date1 >= lowerBound && date1 <= upperBound && date2 >= lowerBound && date2 <= upperBound))
+            {
+                TempData["error"] = "Please Select Valid Date";
+                return;
+            }
+            using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand("Appointments_ApproveSelected", connection))
+                {
+                    var result = new SqlParameter("@result", SqlDbType.VarChar, 50);
+                    result.Direction = ParameterDirection.Output;
+                    command.CommandType = CommandType.StoredProcedure;
 
+                    command.Parameters.AddWithValue("@Date1", date1);
+                    command.Parameters.AddWithValue("@Date2", date2);
+                    command.Parameters.AddWithValue("@DoctorId", DoctorId);
+                    command.Parameters.Add(result);
+                    command.ExecuteNonQuery();
+                    if (result.Value.ToString() == "success")
+                    {
+                        TempData["success"] = "Appointments Approved Successfully";
+
+                    }
+                    else
+                    {
+                        TempData["error"] = "No Appointments Found to be Approve";
+                    }
+                }
+            }
+        }
+        public void UpdateStatusComplete(int appId)
+        {
+            if (appId <= 0)
+            {
+                return;
+            }
+            using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand("UpdateStatus_Complete", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Status", "Completed");
+                    command.Parameters.AddWithValue("@AppId", appId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+        public List<PatientAppoinmentModel> GetData(int doctorId, DateTime date)
+        {
+            if(doctorId <= 0)
+            {
+                return null;
+            }
+            List<PatientAppoinmentModel> managementList = new List<PatientAppoinmentModel>();
+
+            using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
+            {
+                SqlCommand command = new SqlCommand("Appointments_ByDoctorANDdate", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@DoctorId", doctorId);
+                command.Parameters.AddWithValue("@date", date);
+
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        PatientAppoinmentModel management = new PatientAppoinmentModel();
+                        management.AppointmentID = (int)reader["AppointmentID"];
+                        management.UserName = reader["UserName"].ToString();
+                        management.AppointmentTime = reader["AppoinmentTime"].ToString();
+                        management.AppointmentStatus = reader["AppointmentStatus"].ToString();
+                        managementList.Add(management);
+                    }
+                }
+            }
+            return managementList;
+        }
     }
 }
 

@@ -1,0 +1,55 @@
+﻿@model Demo.Models.DummyModels.ManagementDummy
+<div>
+    @if (User.IsInRole("SuperAdmin"))
+    {
+        <partial name="PartialsViews/_HeaderForManagAdmin" />
+    }
+    <div class="container mt-5">
+        <h2>Management Details</h2>
+        <hr />
+
+        <dl class="row">
+            <dt class="col-sm-3">User Name:</dt>
+            <dd class="col-sm-9">@Model.User.UserName</dd>
+
+            <dt class="col-sm-3">Email:</dt>
+            <dd class="col-sm-9">@Model.User.Email</dd>
+
+            <dt class="col-sm-3">Password:</dt>
+            <dd class="col-sm-9 password-container">
+                <input id="password" type="password" value="@Model.User.Password" readonly style="border: none; outline: none;" />
+                <i class="eye-icon fas fa-eye" onclick="togglePasswordVisibility()"></i>
+            </dd>
+        </dl>
+
+        <h2>Hospital Details</h2>
+        <hr />
+
+        <dl class="row">
+            <dt class="col-sm-3">Hospital Name:</dt>
+            <dd class="col-sm-9">@Model.Hospital.HospitalName</dd>
+
+            <dt class="col-sm-3">Description:</dt>
+            <dd class="col-sm-9">@Model.Hospital.Description</dd>
+        </dl>
+    </div>
+    <a  asp-action="ManagementDetails" class="btn btn-primary">Back To List</a>
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordField = document.getElementById('password');
+        var eyeIcon = document.querySelector('.eye-icon');
+
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
+        } else {
+            passwordField.type = 'password';
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+        }
+    }
+</script>

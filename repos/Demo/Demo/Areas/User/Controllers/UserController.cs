@@ -106,7 +106,7 @@ namespace Demo.Controllers
 
         public JsonResult GetAdmins()
         {
-            var users = _db.User.ToList();
+            var users = _db.User.Where(m=> m.RoleID != 4).ToList();
             return Json(users);
         }
 

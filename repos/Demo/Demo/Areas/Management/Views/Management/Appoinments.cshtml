@@ -1,10 +1,12 @@
 ﻿@using Demo.Models.DummyModels
 @using NonFactors.Mvc.Grid
 @using System.Web.Mvc
+@inject IHttpContextAccessor Accessor
 @model Demo.Models.DummyModels.AdminInstances
 
 @{
     ViewData["Title"] = "Doctor Details";
+        var count = @Accessor.HttpContext.Session.GetInt32("total");
 }
 <style>
     .tick-mark {
@@ -30,6 +32,15 @@
             toastr.success('@TempData["success"]');
         </script>
     }
+    @if (TempData["error"] != null)
+    {
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.danger('@TempData["error"]');
+        </script>
+    }
 
     @if (User.IsInRole("ManagementAdmin") && Model.Appointments.Any())
     {
@@ -38,7 +49,24 @@
     }
     else
     {
-        <h3>Appoinment Details</h3>
+            <div class="row mt-2 ms-4">
+        <h4 class="row col-md-3">Today's Total Appointments: @count</h4>
+        <div class="col-md-9 ms-4" style="display: flex; align-content: stretch; justify-content: flex-end;">
+            <div class="form-group col-md-3">
+                <label for="fromDate">Date From:</label>
+                <input type="date" name="fromDate" class="form-control" id="fromDate" autocomplete="off">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="toDate">Date To:</label>
+                <input type="date" name="toDate" class="form-control" id="toDate" autocomplete="off">
+            </div>
+            <div class="col-md-2">
+               <button class="btn btn-primary btn-sm " style="margin-top: 33px;" onclick="ApproveAll()">
+                    Approve All
+                </button>
+            </div>
+        </div>
+    </div>
     }
     <div class="mt-2">
         <div class="row">
@@ -144,6 +172,18 @@
                 alert("An error occurred while updating appointment status.");
             }
         });
+    }
+
+    function ApproveAll() {
+        var date1 = document.getElementById('fromDate').value 
+        var date2 = document.getElementById('toDate').value 
+       $.ajax({
+                url: '/Management/Management/ApproveSelectedAppointments',
+                data: { date1: date1, date2: date2},
+                success: function (response) {
+                    location.reload();
+                }
+            });
     }
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

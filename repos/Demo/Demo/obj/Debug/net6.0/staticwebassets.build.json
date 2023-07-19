@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pphuk0/Q0SiLur7hoht0Cr6Dp8waIYPbQ3fwcg1NHzQ=",
+  "Hash": "wqQ0vmMFbznZBPgY9La2SkES7n+NRkB9479LpUabHVE=",
   "Source": "Demo",
   "BasePath": "_content/Demo",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Demo\\wwwroot",
       "Source": "Demo",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Demo.styles.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Demo.styles.css",
       "SourceId": "Demo",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Demo",
       "RelativePath": "Demo.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Demo.styles.css"
+      "OriginalItemSpec": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Demo.styles.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Demo.bundle.scp.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Demo.bundle.scp.css",
       "SourceId": "Demo",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Demo",
       "RelativePath": "Demo.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Demo.bundle.scp.css"
+      "OriginalItemSpec": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Demo.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\css\\Login.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\css\\Login.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "css/Login.css",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Login.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\css\\mvc-grid\\fonts\\grid-glyphs.woff",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\css\\mvc-grid\\fonts\\grid-glyphs.woff",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "css/mvc-grid/fonts/grid-glyphs.woff",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\css\\mvc-grid\\fonts\\grid-glyphs.woff"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\css\\mvc-grid\\mvc-grid.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\css\\mvc-grid\\mvc-grid.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "css/mvc-grid/mvc-grid.css",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\css\\mvc-grid\\mvc-grid.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\css\\Register.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\css\\Register.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "css/Register.css",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Register.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\css\\site.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\css\\site.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\404-Page-image.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\404-Page-image.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/404-Page-image.png",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\images\\404-Page-image.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\achieved.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\achieved.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/achieved.png",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\images\\achieved.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\add.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\add.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/add.png",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\images\\add.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\add1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\add1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/add1.png",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\images\\add1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Already-volunteered.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Already-volunteered.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Already-volunteered.png",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Already-volunteered.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Animal-welfare-_-save-birds-campaign.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Animal-welfare-_-save-birds-campaign.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Animal-welfare-_-save-birds-campaign.png",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Animal-welfare-_-save-birds-campaign.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Animal-welfare-_-save-birds-campaign-1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Animal-welfare-_-save-birds-campaign-1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Animal-welfare-_-save-birds-campaign-1.png",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Animal-welfare-_-save-birds-campaign-1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\arrow.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\arrow.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/arrow.png",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\images\\arrow.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Assets.zip",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Assets.zip",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Assets.zip",
       "AssetKind": "All",
@@ -289,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Assets.zip"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\bell.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\bell.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/bell.png",
       "AssetKind": "All",
@@ -306,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\images\\bell.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\bell-big.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\bell-big.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/bell-big.png",
       "AssetKind": "All",
@@ -323,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\images\\bell-big.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\bin.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\bin.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/bin.png",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\images\\bin.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\calender.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\calender.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/calender.png",
       "AssetKind": "All",
@@ -357,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\images\\calender.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\cancel.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\cancel.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/cancel.png",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\images\\cancel.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\cancel1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\cancel1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/cancel1.png",
       "AssetKind": "All",
@@ -391,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\images\\cancel1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\checked.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\checked.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/checked.png",
       "AssetKind": "All",
@@ -408,10 +408,10 @@
       "OriginalItemSpec": "wwwroot\\images\\checked.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\cross.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\cross.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/cross.png",
       "AssetKind": "All",
@@ -425,10 +425,10 @@
       "OriginalItemSpec": "wwwroot\\images\\cross.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
       "AssetKind": "All",
@@ -442,10 +442,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
       "AssetKind": "All",
@@ -459,10 +459,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
       "AssetKind": "All",
@@ -476,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
       "AssetKind": "All",
@@ -493,10 +493,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
       "AssetKind": "All",
@@ -510,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
       "AssetKind": "All",
@@ -527,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
       "AssetKind": "All",
@@ -544,10 +544,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\deadline.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\deadline.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/deadline.png",
       "AssetKind": "All",
@@ -561,10 +561,10 @@
       "OriginalItemSpec": "wwwroot\\images\\deadline.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\doc.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\doc.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/doc.png",
       "AssetKind": "All",
@@ -578,10 +578,10 @@
       "OriginalItemSpec": "wwwroot\\images\\doc.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\down.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\down.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/down.png",
       "AssetKind": "All",
@@ -595,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\images\\down.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\drag-and-drop.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\drag-and-drop.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/drag-and-drop.png",
       "AssetKind": "All",
@@ -612,10 +612,10 @@
       "OriginalItemSpec": "wwwroot\\images\\drag-and-drop.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\drive-download-20230201T050154Z-001.zip",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\drive-download-20230201T050154Z-001.zip",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/drive-download-20230201T050154Z-001.zip",
       "AssetKind": "All",
@@ -629,10 +629,10 @@
       "OriginalItemSpec": "wwwroot\\images\\drive-download-20230201T050154Z-001.zip"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\drive-download-20230201T050320Z-001.zip",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\drive-download-20230201T050320Z-001.zip",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/drive-download-20230201T050320Z-001.zip",
       "AssetKind": "All",
@@ -646,10 +646,10 @@
       "OriginalItemSpec": "wwwroot\\images\\drive-download-20230201T050320Z-001.zip"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\drop-down.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\drop-down.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/drop-down.png",
       "AssetKind": "All",
@@ -663,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\images\\drop-down.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
       "AssetKind": "All",
@@ -680,10 +680,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
       "AssetKind": "All",
@@ -697,10 +697,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
       "AssetKind": "All",
@@ -714,10 +714,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\eye.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\eye.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/eye.png",
       "AssetKind": "All",
@@ -731,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\images\\eye.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\facebook.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\facebook.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/facebook.png",
       "AssetKind": "All",
@@ -748,10 +748,10 @@
       "OriginalItemSpec": "wwwroot\\images\\facebook.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\filter.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\filter.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/filter.png",
       "AssetKind": "All",
@@ -765,10 +765,10 @@
       "OriginalItemSpec": "wwwroot\\images\\filter.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\gift.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\gift.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/gift.png",
       "AssetKind": "All",
@@ -782,10 +782,10 @@
       "OriginalItemSpec": "wwwroot\\images\\gift.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\graph.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\graph.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/graph.png",
       "AssetKind": "All",
@@ -799,10 +799,10 @@
       "OriginalItemSpec": "wwwroot\\images\\graph.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\grid.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\grid.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/grid.png",
       "AssetKind": "All",
@@ -816,10 +816,10 @@
       "OriginalItemSpec": "wwwroot\\images\\grid.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability.png",
       "AssetKind": "All",
@@ -833,10 +833,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-1.png",
       "AssetKind": "All",
@@ -850,10 +850,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-2.png",
       "AssetKind": "All",
@@ -867,10 +867,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-3.png",
       "AssetKind": "All",
@@ -884,10 +884,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-4.png",
       "AssetKind": "All",
@@ -901,10 +901,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-5.png",
       "AssetKind": "All",
@@ -918,10 +918,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-login.png",
       "AssetKind": "All",
@@ -935,10 +935,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\heart.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\heart.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/heart.png",
       "AssetKind": "All",
@@ -952,10 +952,10 @@
       "OriginalItemSpec": "wwwroot\\images\\heart.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\heart1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\heart1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/heart1.png",
       "AssetKind": "All",
@@ -969,10 +969,10 @@
       "OriginalItemSpec": "wwwroot\\images\\heart1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\hours.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\hours.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/hours.png",
       "AssetKind": "All",
@@ -986,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\images\\hours.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\image.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\image.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/image.png",
       "AssetKind": "All",
@@ -1003,10 +1003,10 @@
       "OriginalItemSpec": "wwwroot\\images\\image.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\image1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\image1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/image1.png",
       "AssetKind": "All",
@@ -1020,10 +1020,10 @@
       "OriginalItemSpec": "wwwroot\\images\\image1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\image2.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\image2.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/image2.png",
       "AssetKind": "All",
@@ -1037,10 +1037,10 @@
       "OriginalItemSpec": "wwwroot\\images\\image2.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\img.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\img.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/img.png",
       "AssetKind": "All",
@@ -1054,10 +1054,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\img1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\img1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/img1.png",
       "AssetKind": "All",
@@ -1071,10 +1071,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\img11.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\img11.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/img11.png",
       "AssetKind": "All",
@@ -1088,10 +1088,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img11.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\img2.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\img2.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/img2.png",
       "AssetKind": "All",
@@ -1105,10 +1105,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img2.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\img22.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\img22.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/img22.png",
       "AssetKind": "All",
@@ -1122,10 +1122,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img22.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\img3.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\img3.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/img3.png",
       "AssetKind": "All",
@@ -1139,10 +1139,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img3.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\img33.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\img33.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/img33.png",
       "AssetKind": "All",
@@ -1156,10 +1156,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img33.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\info.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\info.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/info.png",
       "AssetKind": "All",
@@ -1173,10 +1173,10 @@
       "OriginalItemSpec": "wwwroot\\images\\info.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\left.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\left.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/left.png",
       "AssetKind": "All",
@@ -1190,10 +1190,10 @@
       "OriginalItemSpec": "wwwroot\\images\\left.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\left1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\left1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/left1.png",
       "AssetKind": "All",
@@ -1207,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot\\images\\left1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\linkedin.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\linkedin.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/linkedin.png",
       "AssetKind": "All",
@@ -1224,10 +1224,10 @@
       "OriginalItemSpec": "wwwroot\\images\\linkedin.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\list.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\list.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/list.png",
       "AssetKind": "All",
@@ -1241,10 +1241,10 @@
       "OriginalItemSpec": "wwwroot\\images\\list.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\logo.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\logo.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/logo.png",
       "AssetKind": "All",
@@ -1258,10 +1258,10 @@
       "OriginalItemSpec": "wwwroot\\images\\logo.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\mission.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\mission.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/mission.png",
       "AssetKind": "All",
@@ -1275,10 +1275,10 @@
       "OriginalItemSpec": "wwwroot\\images\\mission.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\my-story.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\my-story.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/my-story.png",
       "AssetKind": "All",
@@ -1292,10 +1292,10 @@
       "OriginalItemSpec": "wwwroot\\images\\my-story.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\new-message.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\new-message.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/new-message.png",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\images\\new-message.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\next.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\next.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/next.png",
       "AssetKind": "All",
@@ -1326,10 +1326,10 @@
       "OriginalItemSpec": "wwwroot\\images\\next.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Nourish-the-Children-in--African-country.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Nourish-the-Children-in--African-country.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Nourish-the-Children-in--African-country.png",
       "AssetKind": "All",
@@ -1343,10 +1343,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Nourish-the-Children-in--African-country.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Nourish-the-Children-in--African-country-1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Nourish-the-Children-in--African-country-1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Nourish-the-Children-in--African-country-1.png",
       "AssetKind": "All",
@@ -1360,10 +1360,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Nourish-the-Children-in--African-country-1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Open-Volunteering-Requests.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Open-Volunteering-Requests.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Open-Volunteering-Requests.png",
       "AssetKind": "All",
@@ -1377,10 +1377,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Open-Volunteering-Requests.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\organization.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\organization.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/organization.png",
       "AssetKind": "All",
@@ -1394,10 +1394,10 @@
       "OriginalItemSpec": "wwwroot\\images\\organization.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\pdf.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\pdf.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/pdf.png",
       "AssetKind": "All",
@@ -1411,10 +1411,10 @@
       "OriginalItemSpec": "wwwroot\\images\\pdf.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\pin.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\pin.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/pin.png",
       "AssetKind": "All",
@@ -1428,10 +1428,10 @@
       "OriginalItemSpec": "wwwroot\\images\\pin.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\pin1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\pin1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/pin1.png",
       "AssetKind": "All",
@@ -1445,10 +1445,10 @@
       "OriginalItemSpec": "wwwroot\\images\\pin1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Plantation-and-Afforestation-programme.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Plantation-and-Afforestation-programme.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Plantation-and-Afforestation-programme.png",
       "AssetKind": "All",
@@ -1462,10 +1462,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Plantation-and-Afforestation-programme.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Plantation-and-Afforestation-programme-1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Plantation-and-Afforestation-programme-1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Plantation-and-Afforestation-programme-1.png",
       "AssetKind": "All",
@@ -1479,10 +1479,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Plantation-and-Afforestation-programme-1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\previous.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\previous.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/previous.png",
       "AssetKind": "All",
@@ -1496,10 +1496,10 @@
       "OriginalItemSpec": "wwwroot\\images\\previous.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\red-heart (1).png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\red-heart (1).png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/red-heart (1).png",
       "AssetKind": "All",
@@ -1513,10 +1513,10 @@
       "OriginalItemSpec": "wwwroot\\images\\red-heart (1).png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\red-heart.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\red-heart.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/red-heart.png",
       "AssetKind": "All",
@@ -1530,10 +1530,10 @@
       "OriginalItemSpec": "wwwroot\\images\\red-heart.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\red-heart1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\red-heart1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/red-heart1.png",
       "AssetKind": "All",
@@ -1547,10 +1547,10 @@
       "OriginalItemSpec": "wwwroot\\images\\red-heart1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\right.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\right.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/right.png",
       "AssetKind": "All",
@@ -1564,10 +1564,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\right-arrow.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\right-arrow.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/right-arrow.png",
       "AssetKind": "All",
@@ -1581,10 +1581,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right-arrow.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\right-arrow1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\right-arrow1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/right-arrow1.png",
       "AssetKind": "All",
@@ -1598,10 +1598,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right-arrow1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\right-arrow2.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\right-arrow2.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/right-arrow2.png",
       "AssetKind": "All",
@@ -1615,10 +1615,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right-arrow2.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\right-white.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\right-white.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/right-white.png",
       "AssetKind": "All",
@@ -1632,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right-white.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\search.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\search.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/search.png",
       "AssetKind": "All",
@@ -1649,10 +1649,10 @@
       "OriginalItemSpec": "wwwroot\\images\\search.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Seats-left.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Seats-left.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Seats-left.png",
       "AssetKind": "All",
@@ -1666,10 +1666,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Seats-left.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\selected-star.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\selected-star.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/selected-star.png",
       "AssetKind": "All",
@@ -1683,10 +1683,10 @@
       "OriginalItemSpec": "wwwroot\\images\\selected-star.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\settings.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\settings.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/settings.png",
       "AssetKind": "All",
@@ -1700,10 +1700,10 @@
       "OriginalItemSpec": "wwwroot\\images\\settings.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\star.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\star.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/star.png",
       "AssetKind": "All",
@@ -1717,10 +1717,10 @@
       "OriginalItemSpec": "wwwroot\\images\\star.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\star-empty.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\star-empty.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/star-empty.png",
       "AssetKind": "All",
@@ -1734,10 +1734,10 @@
       "OriginalItemSpec": "wwwroot\\images\\star-empty.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Thumbs.db",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Thumbs.db",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Thumbs.db",
       "AssetKind": "All",
@@ -1751,10 +1751,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Thumbs.db"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\twitter.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\twitter.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/twitter.png",
       "AssetKind": "All",
@@ -1768,10 +1768,10 @@
       "OriginalItemSpec": "wwwroot\\images\\twitter.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\up.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\up.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/up.png",
       "AssetKind": "All",
@@ -1785,10 +1785,10 @@
       "OriginalItemSpec": "wwwroot\\images\\up.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\user.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\user.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/user.png",
       "AssetKind": "All",
@@ -1802,10 +1802,10 @@
       "OriginalItemSpec": "wwwroot\\images\\user.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\user1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\user1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/user1.png",
       "AssetKind": "All",
@@ -1819,10 +1819,10 @@
       "OriginalItemSpec": "wwwroot\\images\\user1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\user-img.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\user-img.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/user-img.png",
       "AssetKind": "All",
@@ -1836,10 +1836,10 @@
       "OriginalItemSpec": "wwwroot\\images\\user-img.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\user-img-large.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\user-img-large.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/user-img-large.png",
       "AssetKind": "All",
@@ -1853,10 +1853,10 @@
       "OriginalItemSpec": "wwwroot\\images\\user-img-large.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer1.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer1.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/volunteer1.png",
       "AssetKind": "All",
@@ -1870,10 +1870,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer1.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer2.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer2.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/volunteer2.png",
       "AssetKind": "All",
@@ -1887,10 +1887,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer2.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer3.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer3.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/volunteer3.png",
       "AssetKind": "All",
@@ -1904,10 +1904,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer3.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer4.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer4.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/volunteer4.png",
       "AssetKind": "All",
@@ -1921,10 +1921,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer4.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer5.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer5.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/volunteer5.png",
       "AssetKind": "All",
@@ -1938,10 +1938,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer5.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer6.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer6.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/volunteer6.png",
       "AssetKind": "All",
@@ -1955,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer6.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer7.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer7.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/volunteer7.png",
       "AssetKind": "All",
@@ -1972,10 +1972,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer7.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer8.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer8.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/volunteer8.png",
       "AssetKind": "All",
@@ -1989,10 +1989,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer8.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer9.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\volunteer9.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/volunteer9.png",
       "AssetKind": "All",
@@ -2006,10 +2006,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer9.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Volunteering-Rank.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Volunteering-Rank.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Volunteering-Rank.png",
       "AssetKind": "All",
@@ -2023,10 +2023,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Volunteering-Rank.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Voted-Missions.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\Voted-Missions.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/Voted-Missions.png",
       "AssetKind": "All",
@@ -2040,10 +2040,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Voted-Missions.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\web.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\web.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/web.png",
       "AssetKind": "All",
@@ -2057,10 +2057,10 @@
       "OriginalItemSpec": "wwwroot\\images\\web.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\xlsx.png",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\images\\xlsx.png",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "images/xlsx.png",
       "AssetKind": "All",
@@ -2074,10 +2074,10 @@
       "OriginalItemSpec": "wwwroot\\images\\xlsx.png"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\js\\Appointment.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\js\\Appointment.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "js/Appointment.js",
       "AssetKind": "All",
@@ -2091,10 +2091,10 @@
       "OriginalItemSpec": "wwwroot\\js\\Appointment.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\js\\DataTable.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\js\\DataTable.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "js/DataTable.js",
       "AssetKind": "All",
@@ -2108,10 +2108,10 @@
       "OriginalItemSpec": "wwwroot\\js\\DataTable.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\js\\filter.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\js\\filter.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "js/filter.js",
       "AssetKind": "All",
@@ -2125,10 +2125,10 @@
       "OriginalItemSpec": "wwwroot\\js\\filter.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\js\\mvc-grid\\mvc-grid.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\js\\mvc-grid\\mvc-grid.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "js/mvc-grid/mvc-grid.js",
       "AssetKind": "All",
@@ -2142,10 +2142,10 @@
       "OriginalItemSpec": "wwwroot\\js\\mvc-grid\\mvc-grid.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\js\\site.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\js\\site.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -2159,10 +2159,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\js\\user.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\js\\user.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "js/user.js",
       "AssetKind": "All",
@@ -2176,10 +2176,10 @@
       "OriginalItemSpec": "wwwroot\\js\\user.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -2193,10 +2193,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -2210,10 +2210,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -2227,10 +2227,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -2244,10 +2244,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -2261,10 +2261,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -2278,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -2295,10 +2295,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -2312,10 +2312,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -2329,10 +2329,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -2346,10 +2346,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -2363,10 +2363,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -2380,10 +2380,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -2397,10 +2397,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -2414,10 +2414,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -2431,10 +2431,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -2448,10 +2448,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -2465,10 +2465,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -2482,10 +2482,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -2499,10 +2499,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -2516,10 +2516,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -2533,10 +2533,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -2550,10 +2550,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -2567,10 +2567,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -2584,10 +2584,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -2601,10 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -2618,10 +2618,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -2635,10 +2635,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -2652,10 +2652,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -2669,10 +2669,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -2686,10 +2686,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -2703,10 +2703,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -2720,10 +2720,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -2737,10 +2737,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -2754,10 +2754,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -2771,10 +2771,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -2788,10 +2788,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -2805,10 +2805,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -2822,10 +2822,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -2839,10 +2839,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -2856,10 +2856,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -2873,10 +2873,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -2890,10 +2890,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -2907,10 +2907,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -2924,10 +2924,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -2941,10 +2941,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -2958,10 +2958,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -2975,10 +2975,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -2992,10 +2992,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -3009,10 +3009,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -3026,10 +3026,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -3043,10 +3043,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -3060,10 +3060,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -3077,10 +3077,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -3094,10 +3094,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -3111,10 +3111,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -3128,10 +3128,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "Demo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pce65\\Desktop\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\DoctorAppointments\\repos\\Demo\\Demo\\wwwroot\\",
       "BasePath": "_content/Demo",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",

@@ -24,3 +24,16 @@ C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\D
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\ref\Demo.Models.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\Demo.Models.pdb
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\Demo.Models.genruntimeconfig.cache
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\bin\Debug\net6.0\Demo.Models.deps.json
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\bin\Debug\net6.0\Demo.Models.runtimeconfig.json
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\bin\Debug\net6.0\Demo.Models.dll
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\bin\Debug\net6.0\ref\Demo.Models.dll
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\bin\Debug\net6.0\Demo.Models.pdb
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\Demo.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\Demo.Models.AssemblyInfoInputs.cache
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\Demo.Models.AssemblyInfo.cs
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\Demo.Models.csproj.CoreCompileInputs.cache
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\Demo.Models.dll
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\ref\Demo.Models.dll
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\Demo.Models.pdb
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\Demo.Models.genruntimeconfig.cache

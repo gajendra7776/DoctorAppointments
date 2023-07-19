@@ -41,6 +41,7 @@ namespace Demo.Controllers
         [HttpPost, ActionName("Register")]
         public IActionResult Register(UserModel model)
         {
+           
             var data = _db.User.Where(x => x.Email == model.Email).FirstOrDefault();
             if (data != null)
             {
@@ -71,8 +72,9 @@ namespace Demo.Controllers
             var user = _db.User.FirstOrDefault(x => x.Email == model.Email && x.Password == model.Password);
             var chkManage = _db.Management_Admin.FirstOrDefault(m => m.UserId == user.UserId);
             var chkDoc = _db.DoctorDetails.Where(m => m.UserId == user.UserId).FirstOrDefault();
-            
-            if (user.RoleID == 3 && (_db.Management_Admin.Any(m => m.UserId == user.UserId))){
+
+            if (user.RoleID == 3 && (_db.Management_Admin.Any(m => m.UserId == user.UserId)))
+            {
 
                 List<Claim> claims = new List<Claim>()
                 {
@@ -96,7 +98,7 @@ namespace Demo.Controllers
             {
                 if (user.RoleID == 1)
                 {
-                    
+
                     List<Claim> claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.Email, user.Email),
@@ -112,9 +114,9 @@ namespace Demo.Controllers
                     new ClaimsPrincipal(claimsIdentity), authenticationProperties);
                     HttpContext.Session.SetInt32("UserId", user.UserId);
                     TempData["LoginSuccess"] = "Login Successful";
-                    return RedirectToAction("BookAppoint", "User", new { area = "User", userId = user.UserId});
+                    return RedirectToAction("BookAppoint", "User", new { area = "User", userId = user.UserId });
                 }
-                else if (user.RoleID == 2) 
+                else if (user.RoleID == 2)
                 {
                     List<Claim> claims = new List<Claim>()
                 {
@@ -130,7 +132,7 @@ namespace Demo.Controllers
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity), authenticationProperties);
                     HttpContext.Session.SetInt32("DoctorId", chkDoc.DoctorID);
-
+                    
                     TempData["LoginSuccess"] = "Login Successful";
                     return RedirectToAction("AppoinmentsByDoctor", "Management", new { area = "Management", doctorId = chkDoc.DoctorID });
                 }
@@ -149,6 +151,10 @@ namespace Demo.Controllers
                         };
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity), authenticationProperties);
+
+                        DateTime today = DateTime.Today;
+                        int data = _db.Patient_Appoinments.Where(x => x.AppointmentDate == today).Count();
+                        HttpContext.Session.SetInt32("total", data);
 
                         TempData["LoginSuccess"] = "Login Successful";
                         return RedirectToAction("DisplayDoctor", "Management", new { area = "Management" });
@@ -181,6 +187,7 @@ namespace Demo.Controllers
             };
             var smtpClient = new SmtpClient("smtp.gmail.com", 587);
         }
+       
 
     }
 }
