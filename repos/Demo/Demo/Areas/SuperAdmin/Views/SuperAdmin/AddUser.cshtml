@@ -36,18 +36,6 @@
                 <input asp-for="ConfirmPassWord" type="password" class="form-control" id="password" placeholder="Enter Confirm password" autocomplete="off">
                 <span asp-validation-for="ConfirmPassWord" class="text-danger"></span>
             </div>
-            <div class="form-group mt-2">
-                <label asp-for="RoleID" for="appointmentTime">Select Role:</label>
-                <select asp-for="RoleID" name="RoleID" class="form-control">
-                    <option value="">Select Role</option>
-                    <option value="1">User</option>
-                    <option value="2">Doctor</option>
-                    <option value="3">Management</option>
-
-                </select>
-                <span asp-validation-for="RoleID" class="text-danger"></span>
-            </div>
-
             <button type="submit" id="submitBtn" class="btn btn-primary mt-2">Create</button>
             <a asp-action="Managements" class="btn btn-primary ms-3 mt-2">Back To List</a>
 

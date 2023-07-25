@@ -22,13 +22,7 @@ namespace Demo.Controllers
             _db = db;
             _common = common;
         }
-        public IActionResult Login()
-        {
-            ClaimsPrincipal claimUser = HttpContext.User;
-            if (claimUser.Identity.IsAuthenticated)
-                return RedirectToAction("DoctorPanel", "Doctor", new { area = "Doctor" });
-            return View();
-        }
+        
         public IActionResult PageNotFound()
         {
             return View();
@@ -90,6 +84,7 @@ namespace Demo.Controllers
                 new ClaimsPrincipal(claimsIdentity), authenticationProperties);
                 int id = chkManage.HospitalId;
                 HttpContext.Session.SetInt32("ManagementAdminId", chkManage.HospitalId);
+                HttpContext.Session.SetInt32("ManagementForStatus", user.UserId);
                 TempData["LoginSuccess"] = "Login Successful";
                 return RedirectToAction("DisplayDoctor", "Management", new { area = "Management", hospitalId = chkManage.HospitalId });
             }
@@ -132,7 +127,8 @@ namespace Demo.Controllers
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity), authenticationProperties);
                     HttpContext.Session.SetInt32("DoctorId", chkDoc.DoctorID);
-                    
+                    HttpContext.Session.SetInt32("DoctorForStatus", user.UserId);
+
                     TempData["LoginSuccess"] = "Login Successful";
                     return RedirectToAction("AppoinmentsByDoctor", "Management", new { area = "Management", doctorId = chkDoc.DoctorID });
                 }
@@ -151,7 +147,7 @@ namespace Demo.Controllers
                         };
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity), authenticationProperties);
-
+                        HttpContext.Session.SetInt32("SuperAdminId", user.UserId);
                         DateTime today = DateTime.Today;
                         int data = _db.Patient_Appoinments.Where(x => x.AppointmentDate == today).Count();
                         HttpContext.Session.SetInt32("total", data);
@@ -165,8 +161,20 @@ namespace Demo.Controllers
             TempData["Invalid"] = "Invalid Credentials";
             return View(model);
         }
+        public IActionResult Login()
+        {
+            //ClaimsPrincipal claimUser = HttpContext.User;
+            //if (claimUser.Identity.IsAuthenticated)
+            //    return RedirectToAction("DoctorPanel", "Doctor", new { area = "Doctor" });
+            return View();
+        }
         public async Task<IActionResult> Logout()
         {
+            HttpContext.Session.Remove("ManagementAdminId");
+            HttpContext.Session.Remove("DoctorForStatus");
+            HttpContext.Session.Remove("ManagementForStatus");
+            HttpContext.Session.Remove("DoctorIdForSAandAdmin");
+            HttpContext.Session.Remove("DoctorId");
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Login", new { area = "Login" });
         }

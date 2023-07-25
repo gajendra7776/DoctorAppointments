@@ -14,11 +14,11 @@
     var doctorId = @Accessor.HttpContext.Session.GetInt32("DoctorId");
     var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
     var count = @Accessor.HttpContext.Session.GetInt32("total");
-   
+
 }
 <style>
     .tick-mark {
-    cursor: pointer;
+        cursor: pointer;
     }
 </style>
 @*   20 June - Added Filter Functionality By Mvc Grid Package
@@ -28,9 +28,9 @@
 <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
 
 <div class="container mt-3">
-    @if (!(User.IsInRole("Doctor")))
+    @if (User.IsInRole("SuperAdmin") || User.IsInRole("ManagementAdmin"))
     {
-        <partial name="_HeaderForDocApp" />
+        <partial name="PartialsViews/_HeaderForManagAdmin" />
     }
     else
     {
@@ -55,38 +55,27 @@
             toastr.warning('@TempData["error"]');
         </script>
     }
-    <div class="row mt-2 ms-4">
-        <div class="col-md-6" style="display: flex; align-content: stretch; justify-content: flex-start;">
-            <h4 class="row col-md-5">Today's Total Appointments: @count</h4>
-            <div class="row col-md-5 ms-3">
-                @if (count != 0 && (@ViewBag.name != null || @ViewBag.time != null || @ViewBag.id!=null ))
-                 {
-                    <span>Patient Name: @ViewBag.name</span>
-                    <span>Timezone: @ViewBag.time</span>
-                    <span>AppointmentId: @ViewBag.id</span>
-                    <button class="btn btn-primary btn-sm col-md-4" onclick="Complete()">
-                    Complete
-                    </button>
-                }
-            </div>
-        </div>
-        <div class="col-md-6" style="display: flex; align-content: stretch; justify-content: flex-end;">
-            <div class="form-group col-md-3">
-                <label for="fromDate">Date From:</label>
-                <input type="date" name="fromDate" class="form-control" id="fromDate" autocomplete="off">
-            </div>
-            <div class="form-group col-md-3">
-                <label for="toDate">Date To:</label>
-                <input type="date" name="toDate" class="form-control" id="toDate" autocomplete="off">
-            </div>
-            <div class="col-md-3">
-                <button class="btn btn-primary btn-sm " style="margin-top: 33px;" onclick="ApproveAll()">
-                    Approve All
-                </button>
-            </div>
+    <div class="row mt-2 ms-1">
+        <div class="col-md-12" style="display: flex; align-content: stretch; justify-content: flex-start;">
+            <h4 class="row col-md-6">Today's Total Appointments: @count</h4>
+            @if (User.IsInRole("Doctor"))
+            {
+                <div class="row col-md-6">
+                    @if (count != 0 && (@ViewBag.name != null || @ViewBag.time != null || @ViewBag.id != null))
+                    {
+                        <span>
+                            <strong> Patient Name:</strong> @ViewBag.name <strong> Timezone:</strong> @ViewBag.time  <strong> AppointmentId:</strong> @ViewBag.id <button class="btn btn-primary btn-sm ms-4" onclick="Complete()">
+                                Treated
+                            </button>
+                        </span>
+
+                    }
+                </div>
+            }
+
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 mt-3">
         <div class="row">
             <div class="col-md-6 ">
                 @if (User.IsInRole("Doctor"))
@@ -98,20 +87,34 @@
                     <a asp-area="Management" asp-action="AddEditAppointment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
                 }
             </div>
-            <div class="col-md-6">
-                <label for="appointmentStatus">Status:</label>
-                <select id="appointmentStatus" class="form-control">
-                    <option value="All">All</option>
-                    <option value="Approve">Approved</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Missed">Missed</option>
-                    <option value="Reject">Rejected</option>
-                    <option value="Completed">Treated/Completed</option>
-                </select>
+            <div class="col-md-6" style="display: flex; align-content: stretch; justify-content:space-around; padding:0px !important">
+                <div class="form-group col-md-3" style="margin:0px !important; padding:0px !important">
+                    <label for="fromDate">Date From:</label>
+                    <input type="date" name="fromDate" class="form-control" id="fromDate" autocomplete="off">
+                </div>
+                <div class="form-group col-md-3" style="margin:0px !important; padding:0px !important">
+                    <label for="toDate">Date To:</label>
+                    <input type="date" name="toDate" class="form-control" id="toDate" autocomplete="off">
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary btn-sm " style="margin-top: 33px;" onclick="ApproveAll()">
+                        Approve All
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-
+    <div class="col-md-4">
+        <label for="appointmentStatus">Status:</label>
+        <select id="appointmentStatus" class="form-control">
+            <option value="All">All</option>
+            <option value="Approve">Approved</option>
+            <option value="Pending">Pending</option>
+            <option value="Missed">Missed</option>
+            <option value="Reject">Rejected</option>
+            <option value="Completed">Treated/Completed</option>
+        </select>
+    </div>
 
 
     <div id="appointmentsContainer">
@@ -143,11 +146,15 @@
     })
     $(this).addClass('active');
     console.log($(this).children().attr("id"))
-    pager();
+    var pageIndex = $('.pagination .active a').attr("id"); 
+    pager(pageIndex);
     });
-        $("#appointmentStatus").on("change", function() {  pager();  });
-        function pager(){
-             var pageIndex = $('.pagination .active a').attr("id");
+        $("#appointmentStatus").on("change", function() {
+            var pa =1
+            pager(pa);  });
+        function pager(pageIndex){
+           
+             @*var pageIndex = $('.pagination .active a').attr("id");*@
             var selectedStatus = $('#appointmentStatus').val();
             var doctorId = '@ViewBag.Did';
 
@@ -191,7 +198,7 @@
         var date2 = document.getElementById('toDate').value
        $.ajax({
                 url: '/Management/Management/ApproveSelectedAppointments',
-                data: { date1: date1, date2: date2,DoctorId: @doctorId},
+                data: { date1: date1, date2: date2,DoctorId: '@doctorId'},
                 success: function (response) {
                     location.reload();
                 }

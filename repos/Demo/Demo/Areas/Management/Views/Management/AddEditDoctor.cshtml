@@ -5,6 +5,10 @@
     var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
 }
 <body>
+    @if (User.IsInRole("ManagementAdmin") || User.IsInRole("SuperAdmin"))
+    {
+        <partial name="PartialsViews/_HeaderForManagAdmin" />
+    }
     <div class="container mt-5">
 
         @if (Model == null)

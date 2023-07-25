@@ -89,6 +89,8 @@ namespace Demo.Controllers
         {
             List<Hospital> hospitals = new List<Hospital>();
             hospitals = _common.GetHospitalList();
+            var data = _db.DoctorType.ToList();
+            var hdata = _db.Hospital.ToList();
             return Json(hospitals);
         }
 
@@ -106,7 +108,9 @@ namespace Demo.Controllers
 
         public JsonResult GetAdmins()
         {
-            var users = _db.User.Where(m=> m.RoleID != 4).ToList();
+            var users = _db.User
+            .Where(u => u.RoleID == 3 && !_db.Management_Admin.Any(m => m.UserId == u.UserId))
+            .ToList();
             return Json(users);
         }
 
@@ -134,6 +138,7 @@ namespace Demo.Controllers
         {
             List<DoctorType> dt = new List<DoctorType>();
             dt = _common.GetDoctorTypeListAll();
+           
             return Json(dt);
         }
 

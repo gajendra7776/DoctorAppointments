@@ -1,0 +1,234 @@
+﻿@using Demo.Models.DummyModels
+@using NonFactors.Mvc.Grid
+@using System.Web.Mvc
+@inject IHttpContextAccessor Accessor
+@model Demo.Models.DummyModels.PatientDetails
+
+@{
+    ViewData["Title"] = "Doctor Details";
+    var count = @Accessor.HttpContext.Session.GetInt32("total");
+    var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
+    var hospitalID = @Accessor.HttpContext.Session.GetInt32("ManagementForStatus");
+    var superadminId = @Accessor.HttpContext.Session.GetInt32("SuperAdminId");
+    var doctorId = @Accessor.HttpContext.Session.GetInt32("DoctorId");
+    var doctorIdForSAandA = @Accessor.HttpContext.Session.GetInt32("DoctorIdForSAandAdmin");
+}
+
+
+<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
+
+
+<style>
+    .nobox{
+        border: none; outline: none;
+    }
+    .border {
+        background-color: #b5b8bb;
+        font-weight: bold;
+        color: darkblue;
+        border: 1px solid black;
+    }
+
+    .tr-width {
+        width: 20%;
+    }
+
+    .tr-width-row {
+        width: 80%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+
+<div class="container">
+    @if (User.IsInRole("SuperAdmin") || User.IsInRole("ManagementAdmin"))
+    {
+            <partial name="PartialsViews/_HeaderForManagAdmin" />
+    }
+    else
+    {
+            <partial name="_Header" />
+    }
+    @if (TempData["error"] != null)
+    {
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+            <script type="text/javascript">
+                toastr.warning('@TempData["error"]');
+            </script>
+    }
+
+    <div class="container mt-5">
+
+           <form asp-action="PatientDetails" asp-area="Doctor" asp-controller="Doctor" method="post">
+               <input type="hidden" asp-for="PatientId" readonly class="nobox">
+               <input type="hidden" asp-for="HospitalId" readonly class="nobox">
+               <input type="hidden" asp-for="DoctorTypeId" readonly class="nobox">
+        <table style="width:100%">
+            <tr>
+                <th class="border" colspan="4">&nbsp; Appointment Details</th>
+            </tr>
+            <tr rowspan="0">
+                <td class="tr-width">&nbsp;Appointment No:</td>
+                <td class="tr-width">&nbsp; <input asp-for="AppointmentId"  name="AppointmentId" readonly class="nobox">
+                </td>
+                <td class="tr-width">&nbsp;Appointment Date:</td>
+                <td class="tr-width">
+                    &nbsp<input asp-for="AppointmentDate" type="date" name="AppointmentDate" autocomplete="off">
+                    <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="tr-width">&nbsp;Appointment Time:</td>
+                <td colspan="3">
+                    &nbsp;
+                    <select asp-for="AppointmentTime" id="appointmentTime" name="AppointmentTime">
+                        <option value="">Select Timezone</option>
+                        <option value="9 AM">9 AM</option>
+                        <option value="11 AM">11 AM</option>
+                        <option value="2 PM">2 PM</option>
+                        <option value="5 PM">5 PM</option>
+                    </select>
+                    <span asp-validation-for="AppointmentTime" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="tr-width">&nbsp;Status:</td>
+                <td colspan="3">
+                    &nbsp;
+                    <select id="appointmentStatus" asp-for="Status" name="Status">
+                        <option value="Approve">Approved</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Missed">Missed</option>
+                        <option value="Reject">Rejected</option>
+                        <option value="Completed">Treated/Completed</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="tr-width">&nbsp;Appointment Approve Date:</td>
+                <td class="tr-width">&nbsp;<input asp-for="ApproveDate"  name="ApproveDate" readonly class="nobox"></td>
+                <td class="tr-width">&nbsp;Appointment Approve By:</td>
+                <td class="tr-width">&nbsp;<input asp-for="Approve_by"  name="Approve_by" readonly class="nobox"></td>
+            </tr>
+            <tr>
+                <th class="border" colspan="4">&nbsp; Disease Details </th>
+            </tr>
+            <tr style="height:80px; vertical-align: top;">
+                <td class="tr-width">&nbsp;Description:</td>
+                <td colspan="3">&nbsp;<input asp-for="Description" name="Description" readonly class="nobox"></td>
+            </tr>
+            <tr>
+                <th class="border" colspan="4">&nbsp; Patient Details </th>
+            </tr>
+            <tr>
+                <td class="tr-width">&nbsp;Patient Name::</td>
+                <td class="tr-width">&nbsp;<input asp-for="PatientName" name="PatientName" readonly class="nobox"></td>
+                <td class="tr-width">&nbsp;Date Of Birth:</td>
+                <td class="tr-width">&nbsp;<input asp-for="DateOfBirth" name="DateOfBirth" readonly class="nobox"></td>
+            </tr>
+            <tr>
+                <td class="tr-width">&nbsp;Age:</td>
+                <td class="tr-width">&nbsp;<input asp-for="Age" name="Age" readonly class="nobox"></td>
+                <td class="tr-width">&nbsp;Email:</td>
+                <td class="tr-width">&nbsp;<input asp-for="PatientEmail" name="PatientEmail" readonly class="nobox"></td>
+            </tr>
+            <tr>
+                <th class="border" colspan="4">&nbsp; Doctor Details </th>
+            </tr>
+            <tr>
+                <td class="tr-width">&nbsp;Doctor Id:</td>
+                <td class="tr-width">&nbsp;<input asp-for="DoctorId" name="DoctorId" readonly class="nobox"></td>
+                <td class="tr-width">&nbsp;Doctor Type:</td>
+                <td class="tr-width">&nbsp;<input asp-for="DoctorType" name="DoctorType" readonly class="nobox"></td>
+            </tr>
+            <tr>
+                <td class="tr-width">&nbsp;Doctor Name:</td>
+                <td class="tr-width">&nbsp;<input asp-for="DoctorName" name="DoctorName" readonly class="nobox"></td>
+                <td class="tr-width">&nbsp;Email:</td>
+                <td class="tr-width">&nbsp;<input asp-for="DoctorEmail" name="DoctorEmail" readonly class="nobox"></td>
+            </tr>
+            <tr>
+                <th class="border" colspan="4">&nbsp;Hospital Details </th>
+            </tr>
+            <tr>
+                <td class="tr-width">&nbsp;Hospital Name:</td>
+                <td colspan="3">&nbsp;<input asp-for="HospitalName" name="HospitalName" readonly class="nobox"></td>
+            </tr>
+            <tr>
+                <td class="tr-width">&nbsp;Management Email:</td>
+                <td colspan="3">&nbsp;<input asp-for="ManagementEmail" name="ManagementEmail" readonly class="nobox"></td>
+            </tr>
+        </table>
+
+        <div class="mt-3 container d-flex justify-content-center align-items-center">
+            <button type="submit" class="btn btn-secondary btn-sm">Save</button>
+
+                @if (User.IsInRole("ManagementAdmin"))
+                {
+                    <a asp-route-doctorId="@Model.DoctorId" asp-route-hospitalId="@hospitalId" asp-area="Management" asp-action="AppoinmentsByDoctor" asp-controller="Management" class="btn btn-secondary btn-sm ms-3">Cancel</a>
+                }
+                else if (User.IsInRole("Doctor"))
+                {
+                    <a asp-route-doctorId="@doctorId" asp-area="Management" asp-action="AppoinmentsByDoctor" asp-controller="Management" class="btn btn-secondary btn-sm ms-3">Cancel</a>
+                }
+                else
+                {
+                    <a asp-route-doctorId="@doctorIdForSAandA" asp-area="Management" asp-action="AppoinmentsByDoctor" asp-controller="Management" class="btn btn-secondary btn-sm ms-3">Cancel</a>
+                }
+
+        </div>
+
+        </form>
+    </div>
+
+    <h3 class="mt-3"> Patient History</h3>
+
+
+    <div class="mt-5">
+
+        @(Html
+        .Grid(Model.aps)
+        .Build(columns =>
+        {
+        columns.Add(model => model.AppointmentDate).Titled("Appointment Date");
+        columns.Add(model => model.DiseaseDescriptions).Titled("Disease Details");
+        columns.Add(model => model.DoctorName).Titled("Treated By");
+        columns.Add(model => model.HospitalName).Titled("Hospital Name");
+
+
+        }).Using(GridFilterMode.Header)
+        .Empty("No data found")
+        .Pageable(pager =>
+        {
+        pager.PageSizes = new Dictionary<Int32, String> { { 0, "All" }, { 2, "2" }, { 4, "4" },{ 5, "5" },{ 10, "10" } };
+        pager.ShowPageSizes = true;
+        pager.PagesToDisplay = 3;
+        pager.CurrentPage = 1;
+        pager.RowsPerPage = 5;
+        })
+        .Filterable()
+        .Sortable()
+        )
+    </div>
+</div>
+<script src="~/js/mvc-grid/mvc-grid.js"></script>
+
+<script>
+    document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}

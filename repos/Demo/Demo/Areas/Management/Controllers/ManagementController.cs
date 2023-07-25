@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using NonFactors.Mvc.Grid;
 using PagedList;
 using System.Data;
 
@@ -72,7 +71,7 @@ namespace Demo.Controllers
         [HttpPost, ActionName("EditDoctor")]
         public IActionResult EditDoctor(DoctorDetails doctorDetailModel, int id)
         {
-            if (id == 0)
+            if (id <= 0)
             {
                 return View();
             }
@@ -140,6 +139,10 @@ namespace Demo.Controllers
             {
                 return View();
             }
+            if(User.IsInRole("SuperAdmin") || User.IsInRole("ManagementAdmin"))
+            {
+                HttpContext.Session.SetInt32("DoctorIdForSAandAdmin", doctorId);
+            }
             ViewBag.Did = doctorId;
             ViewBag.HospitalId = hospitalId;
             List<PatientAppoinmentModel> appointments = _commonmethods.GetAppointmentsByDoctor(doctorId);
@@ -163,12 +166,10 @@ namespace Demo.Controllers
 
             DateTime today = DateTime.Today;
             int hour = DateTime.Now.Hour;
-            
-            int data = _db.Patient_Appoinments.Where(x => x.AppointmentDate == today && x.DoctorID == doctorId && x.AppointmentStatus != "Completed").Count();
-            var d = _db.Patient_Appoinments.ToList();
-            var appData = _db.Patient_Appoinments.Where(x => x.AppointmentDate == today && x.DoctorID == doctorId && x.AppointmentStatus != "Completed").FirstOrDefault();
 
-            List<PatientAppoinmentModel> apps = GetData(doctorId, today);
+            int data = _db.Patient_Appoinments.Where(x => x.AppointmentDate == today && x.DoctorID == doctorId && x.AppointmentStatus == "Approve").Count();
+
+            List<PatientAppoinmentModel> apps = _commonmethods.GetData(doctorId, today);
             if (apps != null)
             {
                 var matchingAppointments = apps.Where(app =>
@@ -303,7 +304,7 @@ namespace Demo.Controllers
         [HttpGet, ActionName("EditAppoinment")]
         public IActionResult EditAppoinment(int id)
         {
-            if (id == 0)
+            if (id <= 0)
             {
                 return View();
             }
@@ -314,9 +315,13 @@ namespace Demo.Controllers
 
         // 26 June - UpdateAppointmentStatus Method
 
-        public JsonResult UpdateAppointmentStatus(int id, string status)
+        public JsonResult UpdateAppointmentStatus(int id, string status,int approveId=0,int rejectId=0)
         {
-            var st = _commonmethods.UpdateAppointmentStatus(id, status);
+            if (id <= 0)
+            {
+                return null;
+            }
+            var st = _commonmethods.UpdateAppointmentStatus(id, status, approveId, rejectId);
             return Json(new { success = true, st, id });
         }
 
@@ -361,6 +366,15 @@ namespace Demo.Controllers
             TempData["success"] = (result == 1) ? successMessage : errorMessage;
             if (result == 1)
             {
+                TempData["success"] = successMessage;
+            }
+            else
+            {
+                TempData["error"] = errorMessage;
+            }
+
+            if (result == 1)
+            {
                 if (User.IsInRole("User"))
                 {
                     return RedirectToAction("BookAppoint", "User", new { area = "User", userId = userId });
@@ -387,6 +401,7 @@ namespace Demo.Controllers
 
         public IActionResult DeleteAppoinment(int id, int hospitalId = 0)
         {
+
             if (id <= 0)
             {
                 return View();
@@ -450,7 +465,11 @@ namespace Demo.Controllers
 
             List<PatientAppoinmentModel> appoints = GetAppointmentsByStatus(status, doctorId);
             int pageSize = 5;
-            var Doctor = HttpContext.Session.GetInt32("DoctorId");
+            var Doctor= HttpContext.Session.GetInt32("DoctorId"); ;
+            if (User.IsInRole("SuperAdmin") || User.IsInRole("ManagementAdmin"))
+            {
+              Doctor = HttpContext.Session.GetInt32("DoctorIdForSAandAdmin");
+            }
             ViewBag.Did = (int)Doctor;
             IPagedList<PatientAppoinmentModel> pagedAppointments = appoints.ToPagedList(pageindex, pageSize);
 
@@ -498,8 +517,37 @@ namespace Demo.Controllers
         }
 
 
-        public void ApproveSelectedAppointments(DateTime date1, DateTime date2, int DoctorId = 0)
+        public void ApproveSelectedAppointments(DateTime date1, DateTime date2, int DoctorId = 0, int approveId = 0)
         {
+
+
+            if (User.IsInRole("SuperAdmin"))
+            {
+                approveId = (int)HttpContext.Session.GetInt32("SuperAdminId");
+
+            }
+            else if (User.IsInRole("ManagementAdmin"))
+            {
+                approveId = (int)HttpContext.Session.GetInt32("ManagementForStatus");
+            }
+            else if (User.IsInRole("Doctor"))
+            {
+                approveId = (int)HttpContext.Session.GetInt32("DoctorForStatus");
+            }
+
+
+            if (User.IsInRole("SuperAdmin") || User.IsInRole("ManagementAdmin"))
+            {
+                if((HttpContext.Session.GetInt32("DoctorIdForSAandAdmin") != null))
+                {
+                    DoctorId = (int)HttpContext.Session.GetInt32("DoctorIdForSAandAdmin");
+                }
+                
+            }
+
+
+
+
             DateTime lowerBound = new DateTime(1753, 1, 1, 0, 0, 0);
             DateTime upperBound = new DateTime(9999, 12, 31, 23, 59, 59);
             if (!(date1 >= lowerBound && date1 <= upperBound && date2 >= lowerBound && date2 <= upperBound))
@@ -519,6 +567,7 @@ namespace Demo.Controllers
                     command.Parameters.AddWithValue("@Date1", date1);
                     command.Parameters.AddWithValue("@Date2", date2);
                     command.Parameters.AddWithValue("@DoctorId", DoctorId);
+                    command.Parameters.AddWithValue("@approveId", approveId);
                     command.Parameters.Add(result);
                     command.ExecuteNonQuery();
                     if (result.Value.ToString() == "success")
@@ -551,40 +600,18 @@ namespace Demo.Controllers
                 }
             }
         }
-
-
-        public List<PatientAppoinmentModel> GetData(int doctorId, DateTime date)
+        public void UpdateStatusMissed(int hospitalId = 0)
         {
-            if(doctorId <= 0)
-            {
-                return null;
-            }
-            List<PatientAppoinmentModel> managementList = new List<PatientAppoinmentModel>();
-
             using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
             {
-                SqlCommand command = new SqlCommand("Appointments_ByDoctorANDdate", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                command.Parameters.AddWithValue("@DoctorId", doctorId);
-                command.Parameters.AddWithValue("@date", date);
-
                 connection.Open();
-
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SqlCommand command = new SqlCommand("UpdateStatus_Missed", connection))
                 {
-                    while (reader.Read())
-                    {
-                        PatientAppoinmentModel management = new PatientAppoinmentModel();
-                        management.AppointmentID = (int)reader["AppointmentID"];
-                        management.UserName = reader["UserName"].ToString();
-                        management.AppointmentTime = reader["AppoinmentTime"].ToString();
-                        management.AppointmentStatus = reader["AppointmentStatus"].ToString();
-                        managementList.Add(management);
-                    }
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@HospitalId", hospitalId);
+                    command.ExecuteNonQuery();
                 }
             }
-            return managementList;
         }
     }
 }

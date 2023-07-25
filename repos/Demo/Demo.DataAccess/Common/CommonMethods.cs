@@ -119,7 +119,7 @@ namespace Demo.DataAccess.Common
 
             return appointmentList;
         }
-        public string UpdateAppointmentStatus(int id, string status)
+        public string UpdateAppointmentStatus(int id, string status,int approveId,int rejectId)
         {
 
             using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
@@ -127,10 +127,12 @@ namespace Demo.DataAccess.Common
                 connection.Open();
                 using (SqlCommand command = new SqlCommand("Appointment_UpdateStatus", connection))
                 {
+
                     command.CommandType = CommandType.StoredProcedure;
-                    
                     command.Parameters.AddWithValue("@id", id);
                     command.Parameters.AddWithValue("@status", status);
+                    command.Parameters.AddWithValue("@approveId", approveId);
+                    command.Parameters.AddWithValue("@rejectId", rejectId);
                     command.ExecuteNonQuery();
                 }
             }
@@ -138,5 +140,39 @@ namespace Demo.DataAccess.Common
             return status;
             
         }
+        public List<PatientAppoinmentModel> GetData(int doctorId, DateTime date)
+        {
+            if (doctorId <= 0)
+            {
+                return null;
+            }
+            List<PatientAppoinmentModel> managementList = new List<PatientAppoinmentModel>();
+
+            using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
+            {
+                SqlCommand command = new SqlCommand("Appointments_ByDoctorANDdate", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@DoctorId", doctorId);
+                command.Parameters.AddWithValue("@date", date);
+
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        PatientAppoinmentModel management = new PatientAppoinmentModel();
+                        management.AppointmentID = (int)reader["AppointmentID"];
+                        management.UserName = reader["UserName"].ToString();
+                        management.AppointmentTime = reader["AppoinmentTime"].ToString();
+                        management.AppointmentStatus = reader["AppointmentStatus"].ToString();
+                        managementList.Add(management);
+                    }
+                }
+            }
+            return managementList;
+        }
+
     }
 }

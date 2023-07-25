@@ -44,9 +44,19 @@
             <div class="row mt-2">
                 <div class=" col-md-6 col-6">
                     <label asp-for="HospitalName" for="hospitalSelect">Hospital:</label>
-                    <select asp-for="HospitalName" id="hospitalSelect" name="HospitalName" class="form-control">
-                        <option value="">Select Hospital</option>
-                    </select>
+                    @if (Model != null)
+                    {
+                        <select asp-for="HospitalName" id="hospitalSelect" name="HospitalName" class="form-control">
+                            <option value="@Model.HospitalName"></option>
+                        </select>
+                    }
+                    else
+                    {
+                        <select asp-for="HospitalName" id="hospitalSelect" name="HospitalName" class="form-control">
+                            <option value="">Select Hospital</option>
+                        </select>
+                    }
+
                     <span asp-validation-for="HospitalName" class="text-danger"></span>
                 </div>
 
@@ -58,9 +68,19 @@
             <div class="row mt-2">
                 <div class="col-md-6 col-6">
                     <label asp-for="UserName" for="userSelect">User:</label>
-                    <select asp-for="UserName" id="userSelect" name="UserName" class="form-control">
-                        <option value="">Select User</option>
-                    </select>
+                    @if (Model != null)
+                    {
+                        <select asp-for="UserName" id="userSelect" name="UserName" class="form-control">
+                            <option value="@Model.UserName">Select User</option>
+                        </select>
+                    }
+                    else
+                    {
+                        <select asp-for="UserName" id="userSelect" name="UserName" class="form-control">
+                            <option value="">Select User</option>
+                        </select>
+                    }
+
                     <span asp-validation-for="UserName" class="text-danger"></span>
                 </div>
                 <div class=" col-md-5 col-5" style="margin-top: 34px;">
@@ -70,13 +90,13 @@
             <div class="row mt-4">
                 <div class=" col-md-6 col-6">
                     <label for="email">Email:</label>
-                    <input class="form-control" id="email"  readonly>
+                    <input class="form-control" id="email" readonly>
                 </div>
             </div>
 
 
             <button type="submit" id="submitBtn" class="btn btn-primary mt-4 ">Create Management</button>
-            <a asp-route-hospitalId="" asp-area="Management" asp-action="DisplayDoctor" asp-controller="Management" class="btn btn-primary mt-4"> Back To List</a>
+            <a asp-route-hospitalId="" asp-action="ManagementDetails" class="btn btn-primary mt-4"> Back To List</a>
         </form>
     </div>
 </div>
@@ -86,21 +106,27 @@
 @*27 JUNE -In Management Admin By Deault Hospital Selected As Per User
 *@
 <script>
+
         $(document).ready(function () {
+                var hospital = $('#hospitalSelect').val();
+
             $.ajax({
                 url: '/User/User/GetFilterHospitals',
                 success: function (response) {
                     var hospitalSelect = $('#hospitalSelect');
                     hospitalSelect.empty();
                     hospitalSelect.append('<option value="">Select Hospital</option>');
-                    $.each(response, function (index, hospital) {
-                        hospitalSelect.append('<option value="' + hospital.hospitalName + '">' + hospital.hospitalName + '</option>');
-                    });
-                    console.log(selectedHospitalId); // Check if the selectedHospitalId has the correct value
+                    $.each(response, function (i, data) {
+                    $('#hospitalSelect').append('<option value="' + data.hospitalName + '" id="' + data.hospitalName + '">' + data.hospitalName + '</option>');
+                })
+
+                     if (hospital != "") {
+                hospitalSelect.val(hospital);
+                  }
 
                 }
             });
-
+        var userID = $('#userSelect').val();
         $.ajax({
             url: '/User/User/GetAdmins',
             success: function (response) {
@@ -110,10 +136,24 @@
                 $.each(response, function (index, user) {
                     userSelect.append('<option value="' + user.userName + '">' + user.userName + '</option>');
                 });
+                 if (userID != "") {
+                 userSelect.val(userID);
+                 }
             }
         });
 
-    });
+        if (userID != "")  {
+             $.ajax({
+                url: '/User/User/GetEmail',
+                data: { userId: userID },
+                success: function (response) {
+                var email = $('#email');
+                email.empty();
+                email.val(response); // Set the returned email value
+                
+                }
+            });
+        }  
 
         $('#userSelect').on('change', function () {
             var selectedUserId = $(this).val();
@@ -121,12 +161,18 @@
                 url: '/User/User/GetEmail',
                 data: { userId: selectedUserId },
                 success: function (response) {
-            var email = $('#email');
-            email.empty();
-            email.val(response); // Set the returned email value
-        }
+                var email = $('#email');
+                email.empty();
+                email.val(response); // Set the returned email value
+                }
             });
         });
+
+
+    });
+
+
+        
 
 
 </script>

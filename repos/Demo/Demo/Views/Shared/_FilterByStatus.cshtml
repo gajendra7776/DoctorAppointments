@@ -1,11 +1,18 @@
 ﻿@using PagedList
- @model IPagedList<Demo.Models.PatientAppoinmentModel>
- 
- 
+@inject IHttpContextAccessor Accessor
+@model IPagedList<Demo.Models.PatientAppoinmentModel>
+
+     @{
+    var doctorIdforStatus = @Accessor.HttpContext.Session.GetInt32("DoctorForStatus");
+    var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementForStatus");
+    var superadminId = @Accessor.HttpContext.Session.GetInt32("SuperAdminId");
+
+}
+
 
             @(Html
             .Grid(Model)
-            .Build(columns =>   
+            .Build(columns =>
             {
             columns.Add(model => model.UserName).Titled("UserName");
             columns.Add(model => model.DoctorName).Titled("Doctornames").Filterable(true);
@@ -16,8 +23,23 @@
             var approveId = "approve_" + model.AppointmentID;
             var rejectId = "reject_" + model.AppointmentID;
 
-            var approveUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Approve" });
-            var rejectUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Reject" });
+             var approveUrl = "";
+             var rejectUrl = "";
+             if(User.IsInRole("SuperAdmin"))
+             {
+                 approveUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Approve",approveId = @superadminId });
+                 rejectUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Reject",rejectId =@superadminId });
+             }
+            else if(User.IsInRole("ManagementAdmin")){
+                 approveUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Approve",approveId = @hospitalId });
+                 rejectUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Reject",rejectId = @hospitalId });
+            }
+            else if(User.IsInRole("Doctor"))
+            {
+                 approveUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Approve",approveId = @doctorIdforStatus });
+                 rejectUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Reject",rejectId = @doctorIdforStatus });
+            }
+             
             var statusText = model.AppointmentStatus == "Approve" ? "Approved" : "Rejected";
             var statusClass = model.AppointmentStatus == "Approve" ? "text-success" : "text-danger";
             if(model.AppointmentStatus == "Pending"){
@@ -52,86 +74,89 @@
             {
             return Html.ActionLink("Delete", "DeleteAppoinment", new { area = "Management", id = model.AppointmentID, hospitalId = @ViewBag.Did }, new { @class = "btn btn-danger" });
             });
-
+             columns.Add().Titled("Show Patient Details").RenderedAs((model, row) =>
+            {
+            return Html.ActionLink("Show Patient Details", "PatientDetails", new {controller = "Doctor", area = "Doctor", id = model.AppointmentID}, new { @class = "btn btn-primary" });
+            });
+                
             }).Using(GridFilterMode.Header)
             .Empty("No data found")
             .Filterable()
             .Sortable()
-           
+
             )
-        
-     <div class="mt-4 pagination">
-        <div class="footer mb-auto">
-            @{
-                if (@Model.Count == 0)
-                {
-                    <div class="text-center mt-3 mb-4">
-                        
-                    </div>
-                }
-                else
-                {
 
-                    <div class="d-flex justify-content-center page">
-                        @if (Model.PageCount> 1)
-                        {
-                            <ul class="pagination">
-
-                                @if (Model.HasPreviousPage)
-                                {
-                                    <li class="page-item" style="cursor: pointer;">
-                                        <a class="page-link" aria-label="Previous" id="@Convert.ToInt32(@Model.PageNumber -1)">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li class="page-item" style="cursor: not-allowed; pointer-events: none; ">
-                                        <a class="page-link disabled" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                }
-                                @for (int i = 1; i <= Model.PageCount; i++)
-                                {
-                                    if (i == Model.PageNumber)
-                                    {
-                                        <li class="page-item active" style="cursor: pointer;"><a style=" background-color: #F88634;border-color: #F88634;" class="page-link" id="@i">@i</a></li>
-                                    }
-                                    else
-                                    {
-                                        <li class="page-item" id="page-link-hover" style="cursor: pointer; "><a class="page-link" id="@i">@i</a></li>
-                                    }
-                                }
-                                @if (Model.HasNextPage)
-                                {
-                                    <li class="page-item" style="cursor: pointer;"> <a class="page-link" aria-label="Next" id="@Convert.ToInt32(@Model.PageNumber +1)"><span aria-hidden="true">&raquo;</span></a></li>
-                                }
-                                else
-                                {
-                                    <li class="page-item" style="cursor: not-allowed; pointer-events: none;"> <a class="page-link disabled" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-                                }
-
-
-                            </ul>
-
-                        }
-                    </div>
-
-
-                }
+<div class="mt-4 pagination">
+    <div class="footer mb-auto">
+        @{
+            if (@Model.Count == 0)
+            {
+                <div class="text-center mt-3 mb-4">
+                </div>
             }
+            else
+            {
 
-        </div>
+                <div class="d-flex justify-content-center page">
+                    @if (Model.PageCount > 1)
+                    {
+                        <ul class="pagination">
+
+                            @if (Model.HasPreviousPage)
+                            {
+                                <li class="page-item" style="cursor: pointer;">
+                                    <a class="page-link" aria-label="Previous" id="@Convert.ToInt32(@Model.PageNumber -1)">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item" style="cursor: not-allowed; pointer-events: none; ">
+                                    <a class="page-link disabled" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                            }
+                            @for (int i = 1; i <= Model.PageCount; i++)
+                            {
+                                if (i == Model.PageNumber)
+                                {
+                                    <li class="page-item active" style="cursor: pointer;"><a style=" background-color: #F88634;border-color: #F88634;" class="page-link" id="@i">@i</a></li>
+                                }
+                                else
+                                {
+                                    <li class="page-item" id="page-link-hover" style="cursor: pointer; "><a class="page-link" id="@i">@i</a></li>
+                                }
+                            }
+                            @if (Model.HasNextPage)
+                            {
+                                <li class="page-item" style="cursor: pointer;"> <a class="page-link" aria-label="Next" id="@Convert.ToInt32(@Model.PageNumber +1)"><span aria-hidden="true">&raquo;</span></a></li>
+                            }
+                            else
+                            {
+                                <li class="page-item" style="cursor: not-allowed; pointer-events: none;"> <a class="page-link disabled" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                            }
+
+
+                        </ul>
+
+                    }
+                </div>
+
+
+            }
+        }
 
     </div>
 
+</div>
 
 
 
-        <script src="~/js/mvc-grid/mvc-grid.js"></script>
+
+<script src="~/js/mvc-grid/mvc-grid.js"></script>
 
 <script>
-        document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+    document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
 </script>

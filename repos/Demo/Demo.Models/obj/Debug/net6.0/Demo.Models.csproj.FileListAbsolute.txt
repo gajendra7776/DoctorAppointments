@@ -29,6 +29,7 @@ D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\bin\Debug\net6.0\Demo.Mod
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\bin\Debug\net6.0\Demo.Models.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\bin\Debug\net6.0\ref\Demo.Models.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\bin\Debug\net6.0\Demo.Models.pdb
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\Demo.Models.csproj.AssemblyReference.cache
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\Demo.Models.GeneratedMSBuildEditorConfig.editorconfig
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\Demo.Models.AssemblyInfoInputs.cache
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo.Models\obj\Debug\net6.0\Demo.Models.AssemblyInfo.cs

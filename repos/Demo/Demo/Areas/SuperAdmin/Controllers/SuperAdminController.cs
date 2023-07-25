@@ -36,21 +36,24 @@ namespace Demo.Areas.SuperAdmin.Controllers
                 if (result == 1)
                 {
                     TempData["warning"] = "Selected Hospital Already Have Management";
+                    return View(model);
                 }
                 else if (result == 2)
                 {
                     TempData["warning"] = "Selected User is Management Of Other Hospital";
+                    return View(model);
                 }
                 else if (result == 3)
                 {
                     TempData["success"] = "Management Created Successfully for Selected Hospital";
+                    return RedirectToAction("ManagementDetails");
                 }
                 else
                 {
                     TempData["warning"] = "Selected User is Not Management User";
                 }
             }
-            return View();
+            return View(model);
         }
 
         public int CreateNewAdmin(ManagementDummy model)
@@ -111,7 +114,7 @@ namespace Demo.Areas.SuperAdmin.Controllers
         {
             if (model != null)
             {
-
+                model.RoleID = 3;
                 _db.User.Add(model);
                 _db.SaveChanges();
                 TempData["success"] = "User Added Successfully";

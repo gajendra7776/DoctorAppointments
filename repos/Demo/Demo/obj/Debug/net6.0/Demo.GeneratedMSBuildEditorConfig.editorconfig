@@ -19,6 +19,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXERvY3RvclxEb2N0b3JQYW5lbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Doctor/Views/Doctor/PatientDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXERvY3RvclxQYXRpZW50RGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Doctor/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRG9jdG9yXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

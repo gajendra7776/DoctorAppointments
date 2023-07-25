@@ -6,7 +6,10 @@
 
 @{
     ViewData["Title"] = "Doctor Details";
-        var count = @Accessor.HttpContext.Session.GetInt32("total");
+    var count = @Accessor.HttpContext.Session.GetInt32("total");
+    var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
+    var hospitalID = @Accessor.HttpContext.Session.GetInt32("ManagementForStatus");
+    var superadminId = @Accessor.HttpContext.Session.GetInt32("SuperAdminId");
 }
 <style>
     .tick-mark {
@@ -49,29 +52,32 @@
     }
     else
     {
-            <div class="row mt-2 ms-4">
-        <h4 class="row col-md-3">Today's Total Appointments: @count</h4>
-        <div class="col-md-9 ms-4" style="display: flex; align-content: stretch; justify-content: flex-end;">
-            <div class="form-group col-md-3">
-                <label for="fromDate">Date From:</label>
-                <input type="date" name="fromDate" class="form-control" id="fromDate" autocomplete="off">
-            </div>
-            <div class="form-group col-md-3">
-                <label for="toDate">Date To:</label>
-                <input type="date" name="toDate" class="form-control" id="toDate" autocomplete="off">
-            </div>
-            <div class="col-md-2">
-               <button class="btn btn-primary btn-sm " style="margin-top: 33px;" onclick="ApproveAll()">
-                    Approve All
-                </button>
+        <div class="row mt-2 ms-4">
+            <h4 class="row col-md-3">Today's Total Appointments: @count</h4>
+            <div class="col-md-9 ms-4" style="display: flex; align-content: stretch; justify-content: flex-end;">
+                <div class="form-group col-md-3">
+                    <label for="fromDate">Date From:</label>
+                    <input type="date" name="fromDate" class="form-control" id="fromDate" autocomplete="off">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="toDate">Date To:</label>
+                    <input type="date" name="toDate" class="form-control" id="toDate" autocomplete="off">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary btn-sm " style="margin-top: 33px;" onclick="ApproveAll()">
+                        Approve All
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
     }
-    <div class="mt-2">
+    <div class="mt-4">
         <div class="row">
             <div class="col-md">
                 <a asp-area="Management" asp-action="AddEditAppointment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
+                <button class="btn btn-danger" onclick="MissedAll()">
+                    Check for missed appointments
+                </button>
             </div>
 
         </div>
@@ -93,9 +99,17 @@
         {
         var approveId = "approve_" + model.AppointmentID;
         var rejectId = "reject_" + model.AppointmentID;
-
-        var approveUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Approve" });
-        var rejectUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Reject" });
+         
+        var approveUrl = "";
+        var rejectUrl = "";
+        if(User.IsInRole("SuperAdmin")){
+         approveUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Approve",approveId = @superadminId });
+         rejectUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Reject",rejectId =@superadminId });
+        }
+        else if(User.IsInRole("ManagementAdmin")){
+         approveUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Approve",approveId = @hospitalID });
+         rejectUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Reject",rejectId = @hospitalID });
+        }
         var statusText = model.AppointmentStatus == "Approve" ? "Approved" : "Rejected";
         var statusClass = model.AppointmentStatus == "Approve" ? "text-success" : "text-danger";
         if(model.AppointmentStatus == "Pending"){
@@ -111,9 +125,7 @@
         statusClass = "text-success";
         }
 
-        if(!(model.AppointmentStatus == "Completed" || model.AppointmentStatus == "Missed")){
-
-        }
+        
         return Html.Raw($"<span  id='{approveId}' class='tick-mark {(model.AppointmentStatus == "Approve" ? "selected" : "")}' onclick='updateAppointmentStatus(\"{approveId}\", \"{approveUrl}\")'>&#10004;</span>" +
         $"<span id='{rejectId}' class='tick-mark {(model.AppointmentStatus == "Reject" ? "selected" : "")}' onclick='updateAppointmentStatus(\"{rejectId}\", \"{rejectUrl}\")'>&#10008;</span>" +
         $"<span id='status_{model.AppointmentID}' class='{statusClass}'>{statusText}</span>");
@@ -175,8 +187,8 @@
     }
 
     function ApproveAll() {
-        var date1 = document.getElementById('fromDate').value 
-        var date2 = document.getElementById('toDate').value 
+        var date1 = document.getElementById('fromDate').value
+        var date2 = document.getElementById('toDate').value
        $.ajax({
                 url: '/Management/Management/ApproveSelectedAppointments',
                 data: { date1: date1, date2: date2},
@@ -184,7 +196,20 @@
                     location.reload();
                 }
             });
+
     }
+
+    function MissedAll() {
+
+       $.ajax({
+                url: '/Management/Management/UpdateStatusMissed',
+                data: {hospitalId: '@hospitalId' },
+                success: function (response) {
+                    location.reload();
+                }
+            });
+    }
+
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
