@@ -32,11 +32,10 @@
     {
         <partial name="PartialsViews/_HeaderForManagAdmin" />
     }
-    else
-    {
-        <partial name="_Header" />
-    }
-
+    else if (User.IsInRole("Doctor"))
+        {
+            <partial name="_Header" />
+        }
     @if (TempData["success"] != null)
     {
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />

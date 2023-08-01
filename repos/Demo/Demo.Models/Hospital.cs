@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 
 namespace Demo.Models
 {
-    public class Hospital  
+    public class Hospital
     {
         [Key]
         public int HospitalId { get; set; }
         [Required(ErrorMessage = "Hospital Name is required")]
-        public string HospitalName { get; set;}
+        public string? HospitalName { get; set; }
         [Required(ErrorMessage = "Description is required")]
-        public string Description { get; set; }
-        public bool blnActive { get; set;}
-        
-         ICollection<DoctorDetails> DoctorDetails { get; set; }
+        public string? Description { get; set; }
+        public bool blnActive { get; set; } 
+        public int? HospitalHostDetails { get; set; }
+        public string? Address {get; set;}
+
         
     }
 }

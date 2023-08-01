@@ -28,6 +28,8 @@ namespace Demo.DataAccess.Common
                     Hospital hospital = new Hospital()
                     {
                         HospitalId = (int)(reader["HospitalId"]),
+                        blnActive = (bool)(reader["blnActive"]),
+                        Description = reader["Description"].ToString(),
                         HospitalName = reader["HospitalName"].ToString()
                     };
 
@@ -59,7 +61,33 @@ namespace Demo.DataAccess.Common
             }
             return hospitals;
         }
+        public List<Management_Admin> GetManagementsAll()
+        {
+            List<Management_Admin> managements = new List<Management_Admin>();
+            using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("Managements_SelectAll", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlDataReader reader = command.ExecuteReader();
 
+                while (reader.Read())
+                {
+                    Management_Admin hospital = new Management_Admin()
+                    {
+
+                        ManagementName = reader["HospitalName"].ToString(),
+                        HospitalName = reader["HospitalName"].ToString(),
+                        HospitalId= (int)(reader["HospitalId"]),
+                        ManagementId = (int)(reader["ManagementId"]),
+                        blnActive = (bool)reader["blnActive"]
+                    };
+
+                    managements.Add(hospital);
+                }
+            }
+            return managements;
+        }
         public List<DoctorType> GetDoctorTypeList(int hospitalId)
         {
             List<DoctorType> doctorTypes = new List<DoctorType>();
@@ -118,7 +146,7 @@ namespace Demo.DataAccess.Common
             return doctors;
         }
 
-        public void CreateNewDoctor(DoctorDetails doctorDetailModel)
+        public int CreateNewDoctor(DoctorDetails doctorDetailModel)
         {
 
             using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
@@ -126,34 +154,66 @@ namespace Demo.DataAccess.Common
                 connection.Open();
                 using (SqlCommand command = new SqlCommand("Doctor_CreateNewDoctor", connection))
                 {
+                    var result = new SqlParameter("@result", SqlDbType.VarChar, 50);
+                    result.Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.Parameters.AddWithValue("@DoctorName", doctorDetailModel.DoctorName);
                     command.Parameters.AddWithValue("@HospitalId", doctorDetailModel.HospitalId);
                     command.Parameters.AddWithValue("@Status", doctorDetailModel.Status);
                     command.Parameters.AddWithValue("@DoctorTypeId", doctorDetailModel.DoctorTypeID);
-
-
+                    command.Parameters.AddWithValue("@Email", doctorDetailModel.Email);
+                    command.Parameters.AddWithValue("@Password", doctorDetailModel.Password);
+                    command.Parameters.AddWithValue("@Age", doctorDetailModel.Age);
+                    command.Parameters.AddWithValue("@DateOfBirth", doctorDetailModel.DateOfBirth);
+                    command.Parameters.AddWithValue("@PhoneNo", doctorDetailModel.PhoneNo);
+                    command.Parameters.Add(result);
                     command.ExecuteNonQuery();
+                    if (result.Value.ToString() == "success")
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+
+                    
                 }
             }
         }
 
-        public void EditDoctorById(DoctorDetails doctorDetailModel, int id)
+        public int EditDoctorById(DoctorDetails doctorDetailModel, int id)
         {
             using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand("Doctor_UpdateDoctor", connection))
                 {
+                    var result = new SqlParameter("@result", SqlDbType.VarChar, 50);
+                    result.Direction = ParameterDirection.Output;
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.Parameters.AddWithValue("@DoctorName", doctorDetailModel.DoctorName);
                     command.Parameters.AddWithValue("@HospitalId", doctorDetailModel.HospitalId);
                     command.Parameters.AddWithValue("@Status", doctorDetailModel.Status);
                     command.Parameters.AddWithValue("@DoctorTypeId", doctorDetailModel.DoctorTypeID);
+                    command.Parameters.AddWithValue("@Email", doctorDetailModel.Email);
+                    command.Parameters.AddWithValue("@Age", doctorDetailModel.Age);
+                    command.Parameters.AddWithValue("@DateOfBirth", doctorDetailModel.DateOfBirth);
+                    command.Parameters.AddWithValue("@PhoneNo", doctorDetailModel.PhoneNo);
+                    command.Parameters.AddWithValue("@UserId", doctorDetailModel.UserId);
                     command.Parameters.AddWithValue("@Id", id);
+                    command.Parameters.Add(result);
                     command.ExecuteNonQuery();
+                    if (result.Value.ToString() == "success")
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
@@ -226,6 +286,11 @@ namespace Demo.DataAccess.Common
                             doctors.HospitalName = reader["HospitalName"].ToString();
                             doctors.DoctorType = reader["DoctorType"].ToString();
                             doctors.DoctorTypeID = (int)reader["DoctorTypeId"];
+                            doctors.Email = reader["Email"].ToString();
+                            doctors.PhoneNo = reader["PhoneNo"].ToString();
+                            doctors.DateOfBirth = (DateTime)reader["DateOfBirth"];
+                            doctors.Age = (int)reader["Age"];
+                            doctors.UserId = (int)reader["UserId"];
                         }
                     }
                 }

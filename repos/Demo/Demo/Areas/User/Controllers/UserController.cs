@@ -4,7 +4,9 @@ using Demo.Models;
 using Demo.Models.DummyModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using static Demo.Controllers.ErrorController;
 
 namespace Demo.Controllers
@@ -15,12 +17,15 @@ namespace Demo.Controllers
     public class UserController : Controller
     {
         private readonly ManagementMethods _common;
+        private readonly CommonMethods _commonmethods;
         private readonly AppDbContext _db;
-        public UserController(AppDbContext db, ManagementMethods common)
+        public UserController(AppDbContext db, ManagementMethods common, CommonMethods commonmethods)
         {
             _db = db;
             _common = common;
+            _commonmethods = commonmethods;
         }
+
 
         public IActionResult CreateAppointments(int id)
         {
@@ -89,8 +94,7 @@ namespace Demo.Controllers
         {
             List<Hospital> hospitals = new List<Hospital>();
             hospitals = _common.GetHospitalList();
-            var data = _db.DoctorType.ToList();
-            var hdata = _db.Hospital.ToList();
+
             return Json(hospitals);
         }
 
@@ -108,8 +112,11 @@ namespace Demo.Controllers
 
         public JsonResult GetAdmins()
         {
+            //var users = _db.User
+            //.Where(u => u.RoleID == 3 && !_db.Management_Admin.Any(m => m.UserId == u.UserId && m.blnActive == true))
+            //.ToList();
             var users = _db.User
-            .Where(u => u.RoleID == 3 && !_db.Management_Admin.Any(m => m.UserId == u.UserId))
+            .Where(u => u.RoleID == 3)
             .ToList();
             return Json(users);
         }
@@ -138,8 +145,179 @@ namespace Demo.Controllers
         {
             List<DoctorType> dt = new List<DoctorType>();
             dt = _common.GetDoctorTypeListAll();
-           
+
             return Json(dt);
+        }
+
+        public IActionResult UserProfile(int userId)
+        {
+            var userData = _db.User.Where(x => x.UserId == userId).Select(u => new UserDetails
+            {
+                UserId = u.UserId,
+                UserName = u.UserName,
+                RoleID = u.RoleID,
+                Age = u.Age,
+                DateOfBirth = u.DateOfBirth,
+                Email = u.Email,
+                PhoneNo = u.PhoneNo
+            }).FirstOrDefault();
+
+            if (userData.RoleID == 1)
+            {
+                userData.RoleType = "Normal user";
+            }
+
+            else if (userData.RoleID == 2)
+            {
+                userData.RoleType = "Doctor";
+                var doctorData = _db.DoctorDetails.Where(x => x.UserId == userId).FirstOrDefault();
+                var hospitalData = _db.Hospital.Where(x => x.HospitalId == doctorData.HospitalId).FirstOrDefault();
+
+                var managementData = _db.Management_Admin.Where(x => x.HospitalId == doctorData.HospitalId).FirstOrDefault();
+                if (managementData != null)
+                {
+                    userData.ManagementId = managementData.ManagementId;
+                }
+                userData.HospitalId = hospitalData.HospitalId;
+                userData.HospitalName = hospitalData.HospitalName;
+                userData.HospitalAddress = hospitalData.Address;
+            }
+            else if (userData.RoleID == 3)
+            {
+
+                var managementData = _db.Management_Admin.Where(x => x.UserId == userId).FirstOrDefault();
+
+                if (managementData != null)
+                {
+                    var hospitalData = _db.Hospital.Where(x => x.HospitalId == managementData.HospitalId).FirstOrDefault();
+                    userData.HospitalId = managementData.HospitalId;
+                    userData.ManagementId = managementData.ManagementId;
+                    userData.HospitalName = hospitalData.HospitalName;
+                    userData.HospitalAddress = hospitalData.Address;
+                    userData.RoleType = "Management" + "(" + hospitalData.HospitalName + ")";
+                }
+                List<DoctorDetails> doctorDetails = _commonmethods.GetDoctorsByManagement(managementData.HospitalId);
+                
+                userData.DoctorDetails = doctorDetails;
+
+            }
+            else if (userData.RoleID == 4)
+            {
+                userData.RoleType = "Super Admin";
+                List<DoctorDetails> doctorDetails = _commonmethods.GetDoctorsByManagement(0);
+                userData.DoctorDetails = doctorDetails;
+                List<Management_Admin> managements = _common.GetManagementsAll();
+                userData.Managements = managements;
+                List<Hospital> hospitals = _common.GetHospitalList();
+                userData.Hospital = hospitals;
+            }
+            HttpContext.Session.SetInt32("UserProfile", userId);
+            return View(userData);
+        }
+        [HttpPost]
+        public IActionResult UserProfile(UserDetails model)
+        {
+            var hospitalId = HttpContext.Session.GetInt32("ManagementAdminId");
+            int hospitalID = 0;
+            if (hospitalId != null)
+            {
+                 hospitalID = (int)hospitalId;
+            }
+            if (model != null)
+            {
+                int result = UpdateUserDetails(model,hospitalID);
+
+                if(result == 0)
+                {
+                    TempData["error"] = "Email Already Exists!";
+                    if (User.IsInRole("ManagementAdmin"))
+                    {
+                        List<DoctorDetails> doctorDetails = _commonmethods.GetDoctorsByManagement((int)hospitalId);
+                        model.DoctorDetails = doctorDetails;
+                        return View(model);
+                    }
+                    else if (User.IsInRole("SuperAdmin"))
+                    {
+                        List<DoctorDetails> doctorDetails = _commonmethods.GetDoctorsByManagement(0);
+                        model.DoctorDetails = doctorDetails;
+                        List<Management_Admin> managements = _common.GetManagementsAll();
+                        model.Managements = managements;
+                        List<Hospital> hospitals = _db.Hospital.OrderByDescending(h => h.HospitalId).ToList();
+                        model.Hospital = hospitals;
+                        return View(model);
+                    }
+                    return View(model);
+                }
+                else
+                {
+                    TempData["success"] = "User Profile Updated Successfully";
+                    if (User.IsInRole("Doctor"))
+                    {
+                        HttpContext.Session.SetString("DoctorName", model.UserName);
+                        
+                    }
+                    else if (User.IsInRole("ManagementAdmin"))
+                    {
+                        HttpContext.Session.SetString("ManagementAdminName", model.UserName);
+                        List<DoctorDetails> doctorDetails = _commonmethods.GetDoctorsByManagement((int)hospitalId);
+                        model.DoctorDetails = doctorDetails;
+                        return View(model);
+
+                    }
+                    else if (User.IsInRole("SuperAdmin"))
+                    {
+                        HttpContext.Session.SetString("SuperAdminName", model.UserName);
+                        List<DoctorDetails> doctorDetails = _commonmethods.GetDoctorsByManagement(0);
+                        model.DoctorDetails = doctorDetails;
+                        List<Management_Admin> managements = _common.GetManagementsAll();
+                        model.Managements = managements;
+                        List<Hospital> hospitals = _db.Hospital.OrderByDescending(h => h.HospitalId).ToList();
+                        model.Hospital = hospitals;
+                        return View(model);
+                    }
+                    else
+                    {
+                        HttpContext.Session.SetString("UserName", model.UserName);
+                    }
+                }
+            }
+            return View(model);
+        }
+
+        public int UpdateUserDetails(UserDetails model, int hospitalId =0)
+        {
+            using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand("UserDetails_UpdateByUserId", connection))
+                {
+                    var result = new SqlParameter("@result", SqlDbType.VarChar, 50);
+                    result.Direction = ParameterDirection.Output;
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@UserId", model.UserId);
+                    command.Parameters.AddWithValue("@UserName", model.UserName);
+                    command.Parameters.AddWithValue("@Age", model.Age);
+                    command.Parameters.AddWithValue("@PhoneNo", model.PhoneNo);
+                    command.Parameters.AddWithValue("@DateOfBirth", model.DateOfBirth);
+                    command.Parameters.AddWithValue("@Email", model.Email);
+                    command.Parameters.AddWithValue("@HospitalId", hospitalId);
+                    command.Parameters.AddWithValue("@HospitalName", model.HospitalName);
+                    command.Parameters.AddWithValue("@HosapitalAddress", model.HospitalAddress);
+                    command.Parameters.Add(result);
+                    command.ExecuteNonQuery();
+                    if (result.Value.ToString() == "success")
+                    {
+                        TempData["success"] = "Appointments Approved Successfully";
+                        return 1;
+
+                    }
+                    else
+                    {
+                        TempData["error"] = "No Appointments Found to be Approve";
+                        return 0;
+                    }
+                }
+            }
         }
 
     }

@@ -1,6 +1,11 @@
 ﻿@model Demo.Models.DummyModels.ManagementDummy
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @*26 June -Create Appoinment UI*@
+@inject IHttpContextAccessor Accessor
+@{
+
+    var chkPageAccess = @Accessor.HttpContext.Session.GetInt32("UserProfile");
+}
 
 <title>Create New Admin</title>
 <!-- MDB -->
@@ -93,10 +98,24 @@
                     <input class="form-control" id="email" readonly>
                 </div>
             </div>
+            @if(Model != null)
+            {
+                <button type="submit" id="submitBtn" class="btn btn-primary mt-4 ">Edit Management</button>
+            }
+            else
+            {
+                <button type="submit" id="submitBtn" class="btn btn-primary mt-4 ">Create Management</button>
+            }
+            
+            @if (chkPageAccess != null)
+            {
+                <a asp-route-userId="@chkPageAccess" asp-area="User" asp-action="UserProfile" asp-controller="User" class="btn btn-primary">Back To List</a>
+            }
+            else
+            {
+                <a asp-route-hospitalId="" asp-action="ManagementDetails" class="btn btn-primary mt-4"> Back To List</a>
+            }
 
-
-            <button type="submit" id="submitBtn" class="btn btn-primary mt-4 ">Create Management</button>
-            <a asp-route-hospitalId="" asp-action="ManagementDetails" class="btn btn-primary mt-4"> Back To List</a>
         </form>
     </div>
 </div>
@@ -150,10 +169,10 @@
                 var email = $('#email');
                 email.empty();
                 email.val(response); // Set the returned email value
-                
+
                 }
             });
-        }  
+        }
 
         $('#userSelect').on('change', function () {
             var selectedUserId = $(this).val();
@@ -172,7 +191,7 @@
     });
 
 
-        
+
 
 
 </script>

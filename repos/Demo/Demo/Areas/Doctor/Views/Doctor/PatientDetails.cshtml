@@ -65,26 +65,18 @@
     <div class="container mt-5">
 
            <form asp-action="PatientDetails" asp-area="Doctor" asp-controller="Doctor" method="post">
-               <input type="hidden" asp-for="PatientId" readonly class="nobox">
-               <input type="hidden" asp-for="HospitalId" readonly class="nobox">
-               <input type="hidden" asp-for="DoctorTypeId" readonly class="nobox">
+               <input type="hidden" asp-for="PatientId" >
+               <input type="hidden" asp-for="HospitalId" >
+               <input type="hidden" asp-for="DoctorTypeId" >
+               <input type="hidden" asp-for="AppointmentId">
+               <input type="hidden" asp-for="DoctorId" >
         <table style="width:100%">
             <tr>
                 <th class="border" colspan="4">&nbsp; Appointment Details</th>
             </tr>
             <tr rowspan="0">
-                <td class="tr-width">&nbsp;Appointment No:</td>
-                <td class="tr-width">&nbsp; <input asp-for="AppointmentId"  name="AppointmentId" readonly class="nobox">
-                </td>
-                <td class="tr-width">&nbsp;Appointment Date:</td>
-                <td class="tr-width">
-                    &nbsp<input asp-for="AppointmentDate" type="date" name="AppointmentDate" autocomplete="off">
-                    <span asp-validation-for="AppointmentDate" class="text-danger"></span>
-                </td>
-            </tr>
-            <tr>
                 <td class="tr-width">&nbsp;Appointment Time:</td>
-                <td colspan="3">
+                <td class="tr-width">
                     &nbsp;
                     <select asp-for="AppointmentTime" id="appointmentTime" name="AppointmentTime">
                         <option value="">Select Timezone</option>
@@ -95,7 +87,13 @@
                     </select>
                     <span asp-validation-for="AppointmentTime" class="text-danger"></span>
                 </td>
+                <td class="tr-width">&nbsp;Appointment Date:</td>
+                <td class="tr-width">
+                    &nbsp<input asp-for="AppointmentDate" type="date" name="AppointmentDate" autocomplete="off">
+                    <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+                </td>
             </tr>
+           
             <tr>
                 <td class="tr-width">&nbsp;Status:</td>
                 <td colspan="3">
@@ -142,8 +140,7 @@
                 <th class="border" colspan="4">&nbsp; Doctor Details </th>
             </tr>
             <tr>
-                <td class="tr-width">&nbsp;Doctor Id:</td>
-                <td class="tr-width">&nbsp;<input asp-for="DoctorId" name="DoctorId" readonly class="nobox"></td>
+                
                 <td class="tr-width">&nbsp;Doctor Type:</td>
                 <td class="tr-width">&nbsp;<input asp-for="DoctorType" name="DoctorType" readonly class="nobox"></td>
             </tr>

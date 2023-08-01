@@ -106,7 +106,7 @@ namespace Demo.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("AppoinmentsByDoctor", "Management", new { area = "Management" });
+                    return RedirectToAction("AppoinmentsByDoctor", "Management", new { area = "Management", doctorId = (int)doctorIdforAdmin });
                 }
             }
             else
@@ -231,5 +231,24 @@ namespace Demo.Controllers
 
             return appointments;
         }
+
+        public JsonResult RemoveDoctor(int doctorId)
+        {
+            if(doctorId <= 0)
+            {
+                return null;
+            }
+            var doctor = _db.DoctorDetails.Find(doctorId);
+            if (doctor == null)
+            {
+                return null; 
+            }
+
+            doctor.blnActive = false;
+            _db.SaveChanges();
+            return Json(new { redirectUrl = Url.Action("Login", "Login", new { area = "Login" }) });
+
+        }
+
     }
 }

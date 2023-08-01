@@ -12,6 +12,6 @@ namespace Demo.Models
         [Key]
         public int DoctorTypeId { get; set; }
         [Required(ErrorMessage = "Doctor Type is required")]
-        public string DoctorTypeName { get; set; }
+        public string? DoctorTypeName { get; set; }
     }
 }

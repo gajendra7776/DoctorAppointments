@@ -1,0 +1,620 @@
+﻿@using Demo.Models.DummyModels
+@using NonFactors.Mvc.Grid
+@using System.Web.Mvc
+@inject IHttpContextAccessor Accessor
+@model Demo.Models.DummyModels.UserDetails
+
+@{
+    ViewData["Title"] = "Doctor Details";
+    var count = @Accessor.HttpContext.Session.GetInt32("total");
+    var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
+    var hospitalID = @Accessor.HttpContext.Session.GetInt32("ManagementForStatus");
+    var superadminId = @Accessor.HttpContext.Session.GetInt32("SuperAdminId");
+    var doctorId = @Accessor.HttpContext.Session.GetInt32("DoctorId");
+    var doctorIdForSAandA = @Accessor.HttpContext.Session.GetInt32("DoctorIdForSAandAdmin");
+    
+}
+
+<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
+<!-- MDB -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"></script>
+<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
+
+
+<style>
+    .tick-mark {
+        cursor: pointer;
+    }
+
+    .boxpadding {
+        padding: 10px;
+    }
+
+    .border {
+        background-color: #b5b8bb;
+        font-weight: bold;
+        color: darkblue;
+        border: 1px solid black !important;
+    }
+
+    .tr-width {
+        width: 20%;
+    }
+
+    .tr-width-row {
+        width: 80%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+    .status-cell {
+  font-weight: bold;
+}
+
+.active-status {
+  color: green;
+}
+
+.inactive-status {
+  color: red;
+}
+</style>
+
+
+<div class="container">
+    @if (User.IsInRole("SuperAdmin") || User.IsInRole("ManagementAdmin"))
+    {
+        <partial name="PartialsViews/_HeaderForManagAdmin" />
+    }
+    else if (User.IsInRole("User") || User.IsInRole("Doctor"))
+    {
+        <partial name="_Header" />
+    }
+     @if (TempData["successful"] != null)
+    {
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.success('@TempData["successful"]');
+        </script>
+    }
+    @if (TempData["adminCreated"] != null)
+    {
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.success('@TempData["adminCreated"]');
+        </script>
+    }
+    @if (TempData["error"] != null)
+    {
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.error('@TempData["error"]');
+        </script>
+    }
+
+    <div class="container mt-5">
+
+        <form asp-action="UserProfile" asp-area="User" asp-controller="User" method="post">
+            <input type="hidden" asp-for="UserId">
+            <input type="hidden" asp-for="HospitalId">
+            <input type="hidden" asp-for="ManagementId">
+            <table style="width:100%">
+                <tr>
+                    <th class="border" colspan="4">&nbsp; User Details</th>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Name:</td>
+                    <td colspan="3" class="boxpadding">
+                        <input type="text" asp-for="UserName">
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Date Of Birth:</td>
+                    <td class="tr-width boxpadding">
+                        <input type="date" asp-for="DateOfBirth">
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </td>
+                    <td class="tr-width">&nbsp;Age:</td>
+                    <td class="tr-width boxpadding">
+                        <input type="number" asp-for="Age">
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Phone Number:</td>
+                    <td class="tr-width boxpadding">
+                        <input type="text" asp-for="PhoneNo">
+                        <span asp-validation-for="PhoneNo" class="text-danger"></span>
+                    </td>
+                    <td class="tr-width">&nbsp;Email:</td>
+                    <td class="tr-width boxpadding">
+                        <input type="email" asp-for="Email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Role:</td>
+                    <td class="boxpadding" colspan="3">
+                        <input asp-for="RoleType" readonly>
+
+                    </td>
+                </tr>
+            </table>
+            @if (User.IsInRole("ManagementAdmin") || User.IsInRole("Doctor"))
+            {
+                <table class="mt-5" style="width:100%">
+                    <tr>
+                        <th class="border" colspan="4">&nbsp; Hospital Details </th>
+                    </tr>
+                    
+                    @if (User.IsInRole("Doctor"))
+                    {
+                        <tr>
+                            <td class="tr-width">&nbsp;Hospital Name:</td>
+                            <td colspan="3" class="boxpadding">
+                                <input type="text" asp-for="HospitalName" readonly>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tr-width">&nbsp;Hospital Address:</td>
+                            <td colspan="3" class="boxpadding">
+                                <input asp-for="HospitalAddress" style="width:100%;" readonly>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tr-width">&nbsp;Unlink Doctor :</td>
+                            <td class="tick-mark" colspan="3" onclick="UnLinkDoctor()" style="text-decoration: underline; color: blue;">
+                                &nbsp;Unlink
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td class="tr-width">&nbsp;Hospital Name:</td>
+                            <td colspan="3" class="boxpadding">
+                                <input type="text" asp-for="HospitalName">
+                                <span asp-validation-for="HospitalName" class="text-danger"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tr-width">&nbsp;Hospital Address:</td>
+                            <td colspan="3" class="boxpadding">
+                                <input asp-for="HospitalAddress" style="width:100%;">
+                                <span asp-validation-for="HospitalAddress" class="text-danger"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tr-width">&nbsp;Unlink Hospital Management:</td>
+                            <td class="tick-mark" colspan="3" onclick="UnLink()" style="text-decoration: underline; color: blue;">
+                                &nbsp;Unlink
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            <div class="mt-3 container d-flex justify-content-center align-items-center">
+                <button type="submit" class="btn btn-secondary btn-sm">Save</button>
+
+                @if (User.IsInRole("ManagementAdmin"))
+                {
+                    <a asp-route-hospitalId="@hospitalId" asp-area="Management" asp-action="DisplayDoctor" asp-controller="Management" class="btn btn-secondary btn-sm ms-3">Cancel</a>
+                }
+                else if (User.IsInRole("Doctor"))
+                {
+                    <a asp-route-doctorId="@doctorId" asp-area="Management" asp-action="AppoinmentsByDoctor" asp-controller="Management" class="btn btn-secondary btn-sm ms-3">Cancel</a>
+                }
+                else if (User.IsInRole("SuperAdmin"))
+                {
+                    <a asp-area="Management" asp-action="DisplayDoctor" asp-controller="Management" class="btn btn-secondary btn-sm ms-3">Cancel</a>
+                }
+                else
+                {
+                    <a asp-route-userId="@Model.UserId" asp-area="User" asp-action="BookAppoint" asp-controller="User" class="btn btn-secondary btn-sm ms-3">Cancel</a>
+                }
+
+            </div>
+
+             </form>
+
+            @if (User.IsInRole("ManagementAdmin") || User.IsInRole("SuperAdmin"))
+            {
+
+                <div class="mt-5 " id="table1">
+                    @if (User.IsInRole("ManagementAdmin"))
+                    {
+                        <a asp-route-hospitalId="@hospitalId" asp-area="Management" asp-action="AddEditDoctor" asp-controller="Management" class="btn btn-secondary btn-sm">ADD DOCTOR</a>
+                    }
+                    else if (User.IsInRole("SuperAdmin"))
+                    {
+                        <a asp-area="Management" asp-action="AddEditDoctor" asp-controller="Management" class="btn btn-secondary btn-sm">ADD DOCTOR</a>
+                    }
+
+                    <div class="mt-3">
+
+                        @(Html
+                    .Grid(Model.DoctorDetails)
+                    .Build(columns =>
+                    {
+                    columns.Add(model => model.DoctorName).Titled("Doctor Name");
+                    columns.Add(model => model.HospitalName).Titled("Hospital Name");
+                    columns.Add(model => model.Status ? "Active" : "Inactive")
+                    .Titled("Active/Inactive")
+                    .Css("status-cell")
+                    .Filterable(true)
+                    .Sortable(true)
+                    .Css("status-cell")
+                    .Encoded(false);
+                    columns.Add().Titled("Edit").RenderedAs((model, row) =>
+                    {
+                    return Html.ActionLink("Edit", "AddEditDoctor", new {controller="Management" ,area = "Management", id = model.DoctorID }, new { @class = "btn btn-primary" });
+                    });
+
+                    }).Using(GridFilterMode.Header)
+                    .Empty("No data found")
+                    .Pageable(pager =>
+                    {
+                    pager.PageSizes = new Dictionary<Int32, String> { { 0, "All" }, { 2, "2" }, { 4, "4" },{ 5, "5" },{ 10, "10" } };
+                    pager.ShowPageSizes = true;
+                    pager.PagesToDisplay = 3;
+                    pager.CurrentPage = 1;
+                    pager.RowsPerPage = 5;
+                    })
+                    .Filterable()
+                    .Sortable()
+                    )
+                    </div>
+                </div>
+            }
+
+            @if (User.IsInRole("SuperAdmin"))
+            {
+
+                <div class="mt-5">
+
+                    <a asp-area="SuperAdmin" asp-action="Managements" asp-controller="SuperAdmin" class="btn btn-secondary btn-sm">ADD MANAGEMENT</a>
+
+
+                    <div class="mt-3" id="table2">
+
+                        @(Html
+                    .Grid(Model.Managements)
+                    .Build(columns =>
+                    {
+                    columns.Add(model => model.HospitalName).Titled("Hospital Name");
+                    columns.Add(model => model.ManagementName).Titled("Management Name");
+                    columns.Add(model => model.blnActive ? "Active" : "Inactive").Titled("Active/Inactive")
+                    .Css("status-cell")
+                    .Filterable(true)
+                    .Sortable(true)
+                    .Encoded(false);
+                    columns.Add().Titled("Edit").RenderedAs((model, row) =>
+                    {
+                    return Html.ActionLink("Edit", "Managements", new {controller = "SuperAdmin", area = "SuperAdmin", id = model.HospitalId }, new { @class = "btn btn-primary" });
+                    });
+                    }).Using(GridFilterMode.Header)
+                    .Empty("No data found")
+                    .Pageable(pager =>
+                    {
+                    pager.PageSizes = new Dictionary<Int32, String> { { 0, "All" }, { 2, "2" }, { 4, "4" },{ 5, "5" },{ 10, "10" } };
+                    pager.ShowPageSizes = true;
+                    pager.PagesToDisplay = 3;
+                    pager.CurrentPage = 1;
+                    pager.RowsPerPage = 5;
+                    })
+                    .Filterable()
+                    .Sortable()
+                    )
+                    </div>
+                </div>
+                <div class="mt-5 mb-5">
+
+                    <a asp-area="SuperAdmin" asp-action="AddEditHospital" asp-controller="SuperAdmin" class="btn btn-secondary btn-sm">ADD Hospital</a>
+
+
+                    <div class="mt-3" id="table3">
+
+                        @(Html
+                    .Grid(Model.Hospital)
+                    .Build(columns =>
+                    {
+                    columns.Add(model => model.HospitalName).Titled("Hospital Name");
+                    columns.Add(model => model.Description).Titled("Description");
+                    columns.Add(model => model.blnActive ? "Active" : "Inactive").Titled("Active/Inactive")
+                    .Css("status-cell")
+                    .Filterable(true)
+                    .Sortable(true)
+                    .Encoded(false);
+                    columns.Add().Titled("Edit").RenderedAs((model, row) =>
+                    {
+                    return Html.ActionLink("Edit", "AddEditHospital", new {controller="SuperAdmin", area = "SuperAdmin", id = model.HospitalId }, new { @class = "btn btn-primary" });
+                    });
+
+                    }).Using(GridFilterMode.Header)
+                    .Empty("No data found")
+                    .Pageable(pager =>
+                    {
+                    pager.PageSizes = new Dictionary<Int32, String> { { 0, "All" }, { 2, "2" }, { 4, "4" },{ 5, "5" },{ 10, "10" } };
+                    pager.ShowPageSizes = true;
+                    pager.PagesToDisplay = 3;
+                    pager.CurrentPage = 1;
+                    pager.RowsPerPage = 5;
+                    })
+                    .Filterable()
+                    .Sortable()
+                    )
+                    </div>
+                </div>
+
+            }
+       
+
+    </div>
+</div>
+<script src="~/js/mvc-grid/mvc-grid.js"></script>
+
+<script>
+    document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+
+       $(document).ready(function () {
+      $("#table1 td:contains('Active'), #table1 td:contains('Inactive')").click(function (event) {
+            event.stopPropagation();  debugger
+        var cell = $(this);
+        var row = cell.closest("tr");
+        var doctorName = row.find("td:eq(0)").text().trim();
+        var currentStatus = cell.text().trim() === "Active";
+        var updatedStatus = !currentStatus;
+         
+        Swal.fire({
+                title: 'Are you sure?',
+                text: 'This action will remove the Doctor.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                   
+                    $.ajax({
+                 
+                  url: "/Management/Management/UpdateModule",
+                  data: {
+                    doctorName: doctorName,
+                    updatedStatus: updatedStatus
+                  },
+                  success: function (data) {
+                    row.data("status", updatedStatus);
+                    cell.text(updatedStatus ? "Active" : "Inactive").removeClass("active-status inactive-status");
+                    if (updatedStatus) {
+                        cell.addClass("active-status");
+                    } else {
+                        cell.addClass("inactive-status");
+                    }
+
+                  },
+                  error: function (error) {
+                    console.log("Error updating status: " + error);
+                  }
+                });
+                }
+            });
+      });
+
+     $("#table2 td:contains('Active'), #table2 td:contains('Inactive')").click(function (event) {
+         event.stopPropagation();debugger
+        var cell = $(this);
+        var row = cell.closest("tr");
+        var doctorName = row.find("td:eq(0)").text().trim();
+        var currentStatus = cell.text().trim() === "Active";
+        var updatedStatus = !currentStatus;
+
+        Swal.fire({
+                title: 'Are you sure?',
+                text: 'This action will remove the Management.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                  type: "POST",
+                  url: "/Management/Management/UpdateManagementModule",
+                  data: {
+                    hospitalname: doctorName,
+                    updatedStatus: updatedStatus
+                  },
+                  success: function (data) {
+                    row.data("status", updatedStatus);
+                    cell.text(updatedStatus ? "Active" : "Inactive").removeClass("active-status inactive-status");
+                    if (updatedStatus) {
+                        cell.addClass("active-status");
+                    } else {
+                        cell.addClass("inactive-status");
+                    }
+
+                  },
+                  error: function (error) {
+                    console.log("Error updating status: " + error);
+                  }
+                });
+
+                }
+            });
+      });
+      
+     $("#table3 td:contains('Active'), #table3 td:contains('Inactive')").click(function (event) {
+  event.stopPropagation(); debugger
+        var cell = $(this);
+        var row = cell.closest("tr");
+        var doctorName = row.find("td:eq(0)").text().trim();
+        var currentStatus = cell.text().trim() === "Active";
+        var updatedStatus = !currentStatus;
+
+        Swal.fire({
+                title: 'Are you sure?',
+                text: 'This action will remove the Hospital.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                  type: "POST",
+                  url: "/Management/Management/UpdateHospitalModule",
+                  data: {
+                    hospitalname: doctorName,
+                    updatedStatus: updatedStatus
+                  },
+                  success: function (data) {
+                    row.data("status", updatedStatus);
+                    cell.text(updatedStatus ? "Active" : "Inactive").removeClass("active-status inactive-status");
+                    if (updatedStatus) {
+                        cell.addClass("active-status");
+                    } else {
+                        cell.addClass("inactive-status");
+                    }
+
+                  },
+                  error: function (error) {
+                    console.log("Error updating status: " + error);
+                  }
+                });
+
+                }
+            });
+      });
+
+    
+      });
+
+        function UnLink() {
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'This action will remove the Management Hospital.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    removeManagementFunction();
+                }
+            });
+        }
+
+          function UnLinkDoctor() {
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'This action will remove the Doctor.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    removeDoctorFunction();
+                }
+            });
+        }
+        function removeManagementFunction() {
+
+            $.ajax({
+                url: '/Management/Management/RemoveManagement',
+                data: { hospitalId:'@hospitalId'},
+                success: function (response) {
+
+                    Swal.fire({
+                      title: 'Removed!',
+                      text: 'The Management has been successfully removed.',
+                      icon: 'success'
+
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        window.location.href = '/Login/Login/Login';
+                      }
+                    });
+                    },
+                error: function (error) {
+                    // If an error occurs during removal, show an error message using SweetAlert 2
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'An error occurred while removing the management function.',
+                        icon: 'error'
+                    });
+                }
+            });
+        }
+         function removeDoctorFunction() {
+
+            $.ajax({
+                url: '/Doctor/Doctor/RemoveDoctor',
+                data: { doctorId:'@doctorId'},
+                success: function (data) {
+                    Swal.fire({
+                      title: 'Removed!',
+                      text: 'The Doctor has been successfully removed.',
+                      icon: 'success'
+
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        window.location.href = '/Login/Login/Login';
+                      }
+                    });
+                    },
+                error: function (error) {
+                    // If an error occurs during removal, show an error message using SweetAlert 2
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'An error occurred while removing the management function.',
+                        icon: 'error'
+                    });
+                }
+            });
+        }
+
+
+</script>
+<script>
+$(document).ready(function() {
+    $(".status-cell").each(function() {
+        var cell = $(this);
+        if (cell.text().trim() === 'Active') {
+            cell.addClass('active-status');
+        } else if (cell.text().trim() === 'Inactive') {
+            cell.addClass('inactive-status');
+        }
+    });
+});
+</script>
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}

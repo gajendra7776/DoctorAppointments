@@ -12,7 +12,7 @@ using static Demo.Controllers.ErrorController;
 namespace Demo.Areas.SuperAdmin.Controllers
 {
     [Area("SuperAdmin")]
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize(Roles = "SuperAdmin,ManagementAdmin")]
     [CustomExceptionFilter]
     public class SuperAdminController : Controller
     {
@@ -23,34 +23,58 @@ namespace Demo.Areas.SuperAdmin.Controllers
         }
 
         [HttpGet]
-        public IActionResult Managements()
+        public IActionResult Managements(int id)
         {
-            return View();
+            if (id <= 0)
+            {
+                return View();
+            }
+            var data = _db.Management_Admin.Where(model=> model.HospitalId == id).FirstOrDefault();
+            var hospital = _db.Hospital.Where(x=> x.HospitalId == id).FirstOrDefault();
+            var user = _db.User.Where(x=> x.UserId == data.UserId).FirstOrDefault();
+            var model = new ManagementDummy();
+            model.HospitalName = hospital.HospitalName;
+            model.UserName = user.UserName;
+            model.Email = user.Email;
+            return View(model);
         }
         [HttpPost]
         public IActionResult Managements(ManagementDummy model)
         {
+
+            var chkPageAccess = HttpContext.Session.GetInt32("UserProfile");
             if (model != null)
             {
+
+
                 int result = CreateNewAdmin(model);
                 if (result == 1)
                 {
-                    TempData["warning"] = "Selected Hospital Already Have Management";
+                    TempData["warning"] = "Selected User is Other Hospital's Admin";
                     return View(model);
                 }
                 else if (result == 2)
                 {
-                    TempData["warning"] = "Selected User is Management Of Other Hospital";
+                    TempData["warning"] = "Selected Hospital is InActive! ";
                     return View(model);
                 }
                 else if (result == 3)
                 {
-                    TempData["success"] = "Management Created Successfully for Selected Hospital";
+                    TempData["adminCreated"] = "Management Created Successfully for Selected Hospital";
+                    if (chkPageAccess != null)
+                    {
+                        return RedirectToAction("UserProfile", "User", new { area = "User", userId = (int)chkPageAccess });
+                    }
                     return RedirectToAction("ManagementDetails");
                 }
                 else
                 {
-                    TempData["warning"] = "Selected User is Not Management User";
+                    if (chkPageAccess != null)
+                    {
+                        TempData["adminCreated"] = "Management Updated For Selected Hospital";
+                        return RedirectToAction("UserProfile", "User", new { area = "User", userId = (int)chkPageAccess });
+                    }
+                    TempData["success"] = "Management Updated For Selected Hospital";
                 }
             }
             return View(model);
@@ -61,7 +85,7 @@ namespace Demo.Areas.SuperAdmin.Controllers
             using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
             {
                 connection.Open();
-                using (SqlCommand command = new SqlCommand("Admin_CreateForHospital", connection))
+                using (SqlCommand command = new SqlCommand("AddEdit_Management", connection))
                 {
                     var result = new SqlParameter("@result", SqlDbType.VarChar, 50);
                     result.Direction = ParameterDirection.Output;
@@ -70,11 +94,11 @@ namespace Demo.Areas.SuperAdmin.Controllers
                     command.Parameters.AddWithValue("@UserName", model.UserName);
                     command.Parameters.Add(result);
                     command.ExecuteNonQuery();
-                    if (result.Value.ToString() == "haveAdmin")
+                    if (result.Value.ToString() == "otherHAdmin")
                     {
                         return 1;
                     }
-                    else if (result.Value.ToString() == "otherHAdmin")
+                    else if (result.Value.ToString() == "hInactive")
                     {
                         return 2;
                     }
@@ -90,18 +114,47 @@ namespace Demo.Areas.SuperAdmin.Controllers
             }
         }
 
-        public IActionResult AddEditHospital()
+        public IActionResult AddEditHospital(int id)
         {
-            return View();
+            if(id <= 0)
+            {
+                return View();
+            }
+            var hospital = _db.Hospital.Where(x=> x.HospitalId == id).FirstOrDefault();
+            return View(hospital);
         }
         [HttpPost]
         public IActionResult AddEditHospital(Hospital model)
         {
-            if (model != null)
+
+            var chkPageAccess = HttpContext.Session.GetInt32("UserProfile");
+            
+            if (model != null && model.HospitalId != 0)
             {
+                int id = model.HospitalId;
+                var hospital = _db.Hospital.Where(x=> x.HospitalId == id).FirstOrDefault(); 
+                if (hospital != null)
+                {
+                    hospital.HospitalName = model.HospitalName;
+                    hospital.blnActive = model.blnActive;
+                    hospital.Description = model.Description;
+                    hospital.Address = model.Address;
+                    _db.SaveChanges();
+                    TempData["successful"] = "Hospital Edited Successfully";
+                }
+                
+            }
+            else
+            {
+                model.blnActive = true;
                 _db.Hospital.Add(model);
                 _db.SaveChanges();
-                TempData["success"] = "Hospital Added Successfully";
+                TempData["successful"] = "Hospital Added Successfully";
+            }
+            
+            if (chkPageAccess != null)
+            {
+                return RedirectToAction("UserProfile", "User", new { area = "User", userId = (int)chkPageAccess });
             }
             return RedirectToAction("Managements");
         }
@@ -193,5 +246,8 @@ namespace Demo.Areas.SuperAdmin.Controllers
             }
             return managements;
         }
+
+        
+
     }
 }

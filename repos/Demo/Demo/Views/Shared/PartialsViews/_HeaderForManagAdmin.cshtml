@@ -1,8 +1,15 @@
 ﻿@inject IHttpContextAccessor Accessor
 @{
     var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
+    
 }
-
+<style>
+    .nolink{
+        margin-right: 10px;
+        text-decoration: none;
+        color: black;
+    }
+</style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
     <div class="container">
         <!-- Left-aligned links -->
@@ -44,11 +51,24 @@
             <li class="nav-item">
 
             </li>
+            @if (User.IsInRole("ManagementAdmin"))
+            {
+                string username = @Accessor.HttpContext.Session.GetString("ManagementAdminName").ToString();
+                string userId = @Accessor.HttpContext.Session.GetInt32("ManagementForStatus").ToString();
+                <li class="nav-item">
+                <a class="nolink" asp-route-userId = "@userId" asp-area="User" asp-action="UserProfile" asp-controller="User" >@username</a>
+                </li>
+            }
+            else if (User.IsInRole("SuperAdmin"))
+            {
+                 string username = @Accessor.HttpContext.Session.GetString("SuperAdminName").ToString();
+                 string userId = @Accessor.HttpContext.Session.GetInt32("SuperAdminId").ToString();
+                <li class="nav-item">
+                <a  class="nolink" asp-route-userId = "@userId" asp-area="User" asp-action="UserProfile" asp-controller="User" >@username</a>
+                </li>
+            }
             <li class="nav-item">
-
-            </li>
-            <li class="nav-item">
-                <a asp-area="Login" asp-action="Logout" asp-controller="Login" class="btn btn-primary">Logout</a>
+                <a  asp-area="Login" asp-action="Logout" asp-controller="Login" class="btn btn-primary btn-sm">Logout</a>
             </li>
         </ul>
 

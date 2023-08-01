@@ -3,11 +3,21 @@
 @{
     var doctorId = @Accessor.HttpContext.Session.GetInt32("DoctorId");
     var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
+    var chkPageAccess = @Accessor.HttpContext.Session.GetInt32("UserProfile");
 }
 <body>
     @if (User.IsInRole("ManagementAdmin") || User.IsInRole("SuperAdmin"))
     {
         <partial name="PartialsViews/_HeaderForManagAdmin" />
+    }
+    @if (TempData["error"] != null)
+    {
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.error('@TempData["error"]');
+        </script>
     }
     <div class="container mt-5">
 
@@ -22,6 +32,7 @@
 
         <form asp-area="Management" asp-action="AddEditDoctor" asp-controller="Management" id="Createform">
             <input type="hidden" asp-for="DoctorID" name="DoctorID" class="form-control">
+            <input type="hidden" asp-for="UserId" name="UserId" class="form-control">   
             <div class="form-group">
                 <label asp-for="DoctorName" class="control-label">Doctor Name</label>
                 <input asp-for="DoctorName" id="patientName" class="form-control" />
@@ -72,15 +83,57 @@
                 }
                 <span asp-validation-for="DoctorTypeID" class="text-danger"></span>
             </div>
+            @if (Model != null)
+            {
+                <div class="form-group">
+                    <label>Status:</label>
+                    <select asp-for="Status" name="Status" class="form-control">
+                        <option value="True">True</option>
+                        <option value="False">False</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+            }
             <div class="form-group">
-                <label>Status:</label>
-                <select name="Status" class="form-control">
-                    <option value="True">True</option>
-                    <option value="False">False</option>
-                </select>
-                <span asp-validation-for="Status" class="text-danger"></span>
+                <label asp-for="Email" for="date">Email:</label>
+                <input asp-for="Email" name="Email" class="form-control" autocomplete="off">
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+            @if (Model == null)
+            {
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Password" for="date">Password:</label>
+                        <input asp-for="Password" name="Password" class="form-control" autocomplete="off">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
 
+                    <div class="form-group col-md-6">
+                        <label asp-for="ConfirmPassWord" for="appointmentTime">Confirm Password:</label>
+                        <input asp-for="ConfirmPassWord" name="ConfirmPassWord" class="form-control" autocomplete="off">
+                        <span asp-validation-for="ConfirmPassWord" class="text-danger"></span>
+                    </div>
+                </div>
+            }
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Age" for="date">Age:</label>
+                    <input asp-for="Age" name="Age" class="form-control" autocomplete="off">
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label asp-for="DateOfBirth" for="appointmentTime">Date Of Birth:</label>
+                    <input asp-for="DateOfBirth" type="date" name="DateOfBirth" class="form-control" autocomplete="off">
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNo" for="date">Phone No:</label>
+                <input asp-for="PhoneNo" name="PhoneNo" class="form-control" autocomplete="off">
+                <span asp-validation-for="PhoneNo" class="text-danger"></span>
+            </div>
             <!-- Add other form fields here -->
             @if (Model == null)
             {
@@ -92,11 +145,28 @@
             }
             @if (User.IsInRole("ManagementAdmin"))
             {
-                <a asp-route-hospitalId="@hospitalId" asp-area="Management" asp-action="DisplayDoctor" asp-controller="Management" class="btn btn-primary">Back To List</a>
+
+                if (chkPageAccess != null)
+                {
+                    <a asp-route-userId="@chkPageAccess" asp-area="User" asp-action="UserProfile" asp-controller="User" class="btn btn-primary">Back To List</a>
+                }
+                else
+                {
+                    <a asp-route-hospitalId="@hospitalId" asp-area="Management" asp-action="DisplayDoctor" asp-controller="Management" class="btn btn-primary">Back To List</a>
+                }
+
             }
             else
             {
-                <a asp-area="Management" asp-action="DisplayDoctor" asp-controller="Management" class="btn btn-primary">Back To List</a>
+                if (chkPageAccess != null)
+                {
+                    <a asp-route-userId="@chkPageAccess" asp-area="User" asp-action="UserProfile" asp-controller="User" class="btn btn-primary">Back To List</a>
+                }
+                else
+                {
+                    <a asp-area="Management" asp-action="DisplayDoctor" asp-controller="Management" class="btn btn-primary">Back To List</a>
+                }
+
             }
         </form>
     </div>

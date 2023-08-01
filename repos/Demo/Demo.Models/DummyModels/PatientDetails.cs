@@ -17,18 +17,18 @@ namespace Demo.Models.DummyModels
         [Required(ErrorMessage = "Appointment Date is Required")]
         public DateTime AppointmentDate { get; set; }
         [Required(ErrorMessage ="Appointment Time is Required")]
-        public string AppointmentTime { get; set; }
-        public string Description { get; set; }
-        public string PatientName { get; set; }
+        public string? AppointmentTime { get; set; }
+        public string? Description { get; set; }
+        public string? PatientName { get; set; }
         public string? Approve_by { get; set; }
-        public string PatientEmail { get; set; }
-        public string DoctorName { get; set; }
-        public string DoctorEmail { get; set; }
-        public string DoctorType { get; set; }
-        public string HospitalName { get; set; }
-        public string ManagementEmail { get; set; }
+        public string? PatientEmail { get; set; }
+        public string? DoctorName { get; set; }
+        public string? DoctorEmail { get; set; }
+        public string? DoctorType { get; set; }
+        public string? HospitalName { get; set; }
+        public string? ManagementEmail { get; set; }
         [Required(ErrorMessage = "Appointment Status is Required")]
-        public string Status { get; set; }
+        public string? Status { get; set; }
         public DateTime? ApproveDate { get; set; }
         public List<PatientAppoinmentModel> aps { get; set; }  
         public DateTime? DateOfBirth { get; set; }

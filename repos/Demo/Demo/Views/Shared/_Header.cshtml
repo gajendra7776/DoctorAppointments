@@ -1,25 +1,53 @@
-﻿<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container d-flex align-items-center">
-    <!-- Left-aligned links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-      </li>
-      <li class="nav-item">
-      </li>
-      <li class="nav-item">
-      </li>
-    </ul>
+﻿@inject IHttpContextAccessor Accessor
 
-    <!-- Right-aligned username and image -->
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-       
-      </li>
-      <li class="nav-item ml-2">
-          </li>
-      <li class="nav-item ml-2">
-        <a asp-area="Login" asp-action="Logout" asp-controller="Login" class="btn btn-primary">Logout</a>
-      </li>
-    </ul>
-  </div>
+
+<style>
+    .nolink{
+        margin-right: 10px;
+        text-decoration: none;
+        color: black;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container d-flex align-items-center">
+        <!-- Left-aligned links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            </li>
+            <li class="nav-item">
+            </li>
+            <li class="nav-item">
+            </li>
+        </ul>
+
+        <!-- Right-aligned username and image -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+
+            </li>
+           
+             @if (User.IsInRole("User"))
+            {
+
+                string username = @Accessor.HttpContext.Session.GetString("UserName").ToString();
+                string userId = @Accessor.HttpContext.Session.GetInt32("UserId").ToString();
+                
+                 <li class="nav-item">
+                <a  class="nolink" asp-route-userId = "@userId" asp-area="User" asp-action="UserProfile" asp-controller="User" >@username</a>
+                </li>
+            }
+            else if (User.IsInRole("Doctor"))
+            {
+                 string username = @Accessor.HttpContext.Session.GetString("DoctorName").ToString();
+                 string userId = @Accessor.HttpContext.Session.GetInt32("DoctorForStatus").ToString();
+                 <li class="nav-item">
+                <a  class="nolink" asp-route-userId = "@userId" asp-area="User" asp-action="UserProfile" asp-controller="User" >@username</a>
+                </li>
+            }
+            <li class="nav-item ml-2">
+                <a asp-area="Login" asp-action="Logout" asp-controller="Login" class="btn btn-primary btn-sm">Logout</a>
+            </li>
+        </ul>
+    </div>
 </nav>

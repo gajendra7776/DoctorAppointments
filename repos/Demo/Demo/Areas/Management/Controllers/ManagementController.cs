@@ -50,6 +50,7 @@ namespace Demo.Controllers
             }
             else
             {
+
                 TempData["success"] = "Doctor Added Successfully";
                 return RedirectToAction("DisplayDoctor", "Management", new { area = "Management", hospitalId = doctorDetailModel.HospitalId });
             }
@@ -139,7 +140,7 @@ namespace Demo.Controllers
             {
                 return View();
             }
-            if(User.IsInRole("SuperAdmin") || User.IsInRole("ManagementAdmin"))
+            if (User.IsInRole("SuperAdmin") || User.IsInRole("ManagementAdmin"))
             {
                 HttpContext.Session.SetInt32("DoctorIdForSAandAdmin", doctorId);
             }
@@ -153,7 +154,7 @@ namespace Demo.Controllers
                     TempData["NotFound"] = "No Appointment Found";
                     return RedirectToAction("DisplayDoctor", "Management", new { area = "Management" });
                 }
-                else
+                else if (User.IsInRole("ManagementAdmin"))
                 {
                     TempData["NotFound"] = "No Appointment Found";
                     return RedirectToAction("DisplayDoctor", "Management", new { area = "Management", hospitalId = hospitalId });
@@ -315,7 +316,7 @@ namespace Demo.Controllers
 
         // 26 June - UpdateAppointmentStatus Method
 
-        public JsonResult UpdateAppointmentStatus(int id, string status,int approveId=0,int rejectId=0)
+        public JsonResult UpdateAppointmentStatus(int id, string status, int approveId = 0, int rejectId = 0)
         {
             if (id <= 0)
             {
@@ -434,26 +435,46 @@ namespace Demo.Controllers
         public IActionResult AddEditDoctor(DoctorDetails model)
         {
             var adminId = HttpContext.Session.GetInt32("ManagementAdminId");
+            var chkPageAccess = HttpContext.Session.GetInt32("UserProfile");
             string successMessage = "";
+            int result;
             if (model != null && model.DoctorID != 0)
             {
                 int id = model.DoctorID;
-                _common.EditDoctorById(model, id);
+                result = _common.EditDoctorById(model, id);
                 successMessage = "Doctor Edited Successfully";
             }
             else
             {
-                _common.CreateNewDoctor(model);
+                result = _common.CreateNewDoctor(model);
                 successMessage = "Doctor Added Successfully";
             }
-            TempData["success"] = successMessage;
+            if(result == 0)
+            {
+                TempData["error"] = "Email Already Exists!";
+                return View(model);
+            }
+            else
+            {
+                TempData["success"] = successMessage;
+            }
+            
 
             if (User.IsInRole("ManagementAdmin"))
             {
+
+                if (chkPageAccess != null)
+                {
+                    return RedirectToAction("UserProfile", "User", new { area = "User", userId = (int)chkPageAccess });
+                }
                 return RedirectToAction("DisplayDoctor", "Management", new { area = "Management", hospitalId = adminId });
             }
             else
             {
+                if (chkPageAccess != null)
+                {
+                    return RedirectToAction("UserProfile", "User", new { area = "User", userId = (int)chkPageAccess });
+                }
                 return RedirectToAction("DisplayDoctor", "Management", new { area = "Management" });
             }
             return View();
@@ -465,10 +486,10 @@ namespace Demo.Controllers
 
             List<PatientAppoinmentModel> appoints = GetAppointmentsByStatus(status, doctorId);
             int pageSize = 5;
-            var Doctor= HttpContext.Session.GetInt32("DoctorId"); ;
+            var Doctor = HttpContext.Session.GetInt32("DoctorId"); ;
             if (User.IsInRole("SuperAdmin") || User.IsInRole("ManagementAdmin"))
             {
-              Doctor = HttpContext.Session.GetInt32("DoctorIdForSAandAdmin");
+                Doctor = HttpContext.Session.GetInt32("DoctorIdForSAandAdmin");
             }
             ViewBag.Did = (int)Doctor;
             IPagedList<PatientAppoinmentModel> pagedAppointments = appoints.ToPagedList(pageindex, pageSize);
@@ -538,11 +559,11 @@ namespace Demo.Controllers
 
             if (User.IsInRole("SuperAdmin") || User.IsInRole("ManagementAdmin"))
             {
-                if((HttpContext.Session.GetInt32("DoctorIdForSAandAdmin") != null))
+                if ((HttpContext.Session.GetInt32("DoctorIdForSAandAdmin") != null))
                 {
                     DoctorId = (int)HttpContext.Session.GetInt32("DoctorIdForSAandAdmin");
                 }
-                
+
             }
 
 
@@ -612,6 +633,59 @@ namespace Demo.Controllers
                     command.ExecuteNonQuery();
                 }
             }
+        }
+        public JsonResult RemoveManagement(int hospitalId)
+        {
+            if (hospitalId <= 0)
+            {
+                return null;
+            }
+            var hospital = _db.Hospital.Find(hospitalId);
+            var management = _db.Management_Admin.Where(x => x.HospitalId == hospitalId).FirstOrDefault();
+            if (hospital == null || management == null)
+            {
+                return null;
+            }
+            hospital.blnActive = false;
+            management.blnActive = false;
+            _db.SaveChanges();
+            return Json(new { redirectUrl = Url.Action("Login", "Login", new { area = "Login" }) });
+
+        }
+        public JsonResult UpdateModule(string doctorName, bool updatedStatus)
+        {
+            var data = _db.DoctorDetails.Where(x => x.DoctorName == doctorName).FirstOrDefault();
+            if (data != null)
+            {
+                data.blnActive = updatedStatus;
+                _db.SaveChanges();
+            }
+            return Json("true");
+        }
+        public JsonResult UpdateManagementModule(string hospitalname, bool updatedStatus)
+        {
+            var hospital = _db.Hospital.Where(x => x.HospitalName == hospitalname).FirstOrDefault();
+            var data = _db.Management_Admin.Where(x => x.HospitalId == hospital.HospitalId).FirstOrDefault();
+            if (data != null)
+            {
+                data.blnActive = updatedStatus;
+                _db.SaveChanges();
+            }
+            return Json("true");
+        }
+        public JsonResult UpdateHospitalModule(string hospitalname, bool updatedStatus)
+        {
+            var data = _db.Hospital.Where(x => x.HospitalName == hospitalname).FirstOrDefault();
+
+            var management = _db.Management_Admin.Where(x => x.HospitalId == data.HospitalId).FirstOrDefault();
+            if (data != null)
+            {
+                data.blnActive = updatedStatus;
+                if (management != null)
+                    management.blnActive = updatedStatus;
+                _db.SaveChanges();
+            }
+            return Json("true");
         }
     }
 }

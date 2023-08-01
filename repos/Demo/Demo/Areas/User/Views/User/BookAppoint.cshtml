@@ -15,7 +15,10 @@
     }
 </style>
 
-<div class="mt-3">
+ @if (User.IsInRole("User") || User.IsInRole("Doctor"))
+        {
+            <partial name="_Header" />
+        }
     @if (TempData["LoginSuccess"] != null)
     {
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />

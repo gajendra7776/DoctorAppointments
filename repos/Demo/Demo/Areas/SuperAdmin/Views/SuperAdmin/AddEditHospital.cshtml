@@ -1,5 +1,9 @@
 ﻿@model Demo.Models.Hospital
-
+@inject IHttpContextAccessor Accessor
+@{
+   
+    var chkPageAccess =@Accessor.HttpContext.Session.GetInt32("UserProfile");
+}
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
 <!-- MDB -->
@@ -12,6 +16,7 @@
     <h3 class="mt-5">Create Hospital</h3>
 
     <form asp-action="AddEditHospital" method="post">
+        <input type="hidden" asp-for="HospitalId"  class="form-control">
         <div class="form-group">
             <label asp-for="HospitalName" class="control-label">Hospital Name</label>
             <input asp-for="HospitalName" id="patientName" class="form-control" />
@@ -34,12 +39,30 @@
                 <span asp-validation-for="blnActive" class="text-danger"></span>
             </div>
         }
-
+        <div class="form-group">
+          <label for="exampleTextarea">Address:</label>
+          <textarea asp-for="Address" class="form-control" id="exampleTextarea" rows="5"></textarea>
+        </div>
 
         <!-- Add other form fields here -->
 
-        <button type="submit" id="submitBtn" class="btn btn-primary mt-4 ">Create</button>
-        <a asp-area="SuperAdmin" asp-action="Managements" asp-controller="SuperAdmin" class="btn btn-primary mt-4 ms-3">Back To List</a>
+        @if (Model == null)
+            {
+                <button type="submit" class="btn btn-primary mt-4">Create</button>
+            }
+            else
+            {
+                <button type="submit" class="btn btn-primary mt-4">Edit</button>
+            }
+        @if (chkPageAccess != null)
+        {
+            <a asp-route-userId="@chkPageAccess" asp-area="User" asp-action="UserProfile" asp-controller="User" class="btn btn-primary">Back To List</a>
+        }
+        else
+        {
+            <a asp-area="SuperAdmin" asp-action="Managements" asp-controller="SuperAdmin" class="btn btn-primary mt-4 ms-3">Back To List</a>
+        }
+
 
     </form>
 </div>

@@ -13,6 +13,7 @@ namespace Demo.Models
         public int ManagementId { get; set; }
         public int HospitalId { get; set; }
         public int UserId { get; set; }
+        public bool? blnActive { get; set; } 
       
 
     }

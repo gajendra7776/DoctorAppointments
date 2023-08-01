@@ -1,6 +1,7 @@
 ﻿using Demo.DataAccess.Common;
 using Demo.DataAccess.Data;
 using Demo.Models;
+using Demo.Models.DummyModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -64,34 +65,45 @@ namespace Demo.Controllers
         public async Task<IActionResult> Login(UserModel model)
         {
             var user = _db.User.FirstOrDefault(x => x.Email == model.Email && x.Password == model.Password);
-            var chkManage = _db.Management_Admin.FirstOrDefault(m => m.UserId == user.UserId);
-            var chkDoc = _db.DoctorDetails.Where(m => m.UserId == user.UserId).FirstOrDefault();
-
-            if (user.RoleID == 3 && (_db.Management_Admin.Any(m => m.UserId == user.UserId)))
+            if(user == null)
             {
-
-                List<Claim> claims = new List<Claim>()
-                {
-                    new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.Role, "ManagementAdmin")
-                };
-                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                AuthenticationProperties authenticationProperties = new AuthenticationProperties()
-                {
-                    AllowRefresh = true,
-                };
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity), authenticationProperties);
-                int id = chkManage.HospitalId;
-                HttpContext.Session.SetInt32("ManagementAdminId", chkManage.HospitalId);
-                HttpContext.Session.SetInt32("ManagementForStatus", user.UserId);
-                TempData["LoginSuccess"] = "Login Successful";
-                return RedirectToAction("DisplayDoctor", "Management", new { area = "Management", hospitalId = chkManage.HospitalId });
+                TempData["Invalid"] = "Invalid Credentials";
+                return View(model);
+            }
+            var chkManage = _db.Management_Admin.FirstOrDefault(m => m.UserId == user.UserId && m.blnActive == true);
+            var chkDoc = _db.DoctorDetails.Where(m => m.UserId == user.UserId && m.blnActive == true).FirstOrDefault();
+            var chkHospital=new Hospital();
+            chkHospital = null;
+            if (chkManage != null)
+            {
+                 chkHospital = _db.Hospital.Where(h => h.HospitalId == chkManage.HospitalId && h.blnActive == true).FirstOrDefault();
             }
 
             if (user != null)
             {
-                if (user.RoleID == 1)
+                if (user.RoleID == 3 && chkHospital != null )
+                {
+
+                    List<Claim> claims = new List<Claim>()
+                {
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.Role, "ManagementAdmin")
+                };
+                    ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    AuthenticationProperties authenticationProperties = new AuthenticationProperties()
+                    {
+                        AllowRefresh = true,
+                    };
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity), authenticationProperties);
+                    int id = chkManage.HospitalId;
+                    HttpContext.Session.SetInt32("ManagementAdminId", chkManage.HospitalId);
+                    HttpContext.Session.SetInt32("ManagementForStatus", user.UserId);
+                    HttpContext.Session.SetString("ManagementAdminName", user.UserName);
+                    TempData["LoginSuccess"] = "Login Successful";
+                    return RedirectToAction("DisplayDoctor", "Management", new { area = "Management", hospitalId = chkManage.HospitalId });
+                }
+                else if (user.RoleID == 1)
                 {
 
                     List<Claim> claims = new List<Claim>()
@@ -108,11 +120,18 @@ namespace Demo.Controllers
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity), authenticationProperties);
                     HttpContext.Session.SetInt32("UserId", user.UserId);
+                    HttpContext.Session.SetString("UserName", user.UserName);
                     TempData["LoginSuccess"] = "Login Successful";
                     return RedirectToAction("BookAppoint", "User", new { area = "User", userId = user.UserId });
                 }
-                else if (user.RoleID == 2)
+                else if (user.RoleID == 2 && chkDoc != null)
                 {
+                    var hospital = _db.Hospital.Where(x => x.HospitalId == chkDoc.HospitalId && x.blnActive==true).FirstOrDefault();
+                    if(hospital == null)
+                    {
+                        TempData["Invalid"] = "Hospital Is InActive For This Doctor";
+                        return View(model);
+                    }
                     List<Claim> claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.Email, user.Email),
@@ -128,7 +147,7 @@ namespace Demo.Controllers
                     new ClaimsPrincipal(claimsIdentity), authenticationProperties);
                     HttpContext.Session.SetInt32("DoctorId", chkDoc.DoctorID);
                     HttpContext.Session.SetInt32("DoctorForStatus", user.UserId);
-
+                    HttpContext.Session.SetString("DoctorName", user.UserName);
                     TempData["LoginSuccess"] = "Login Successful";
                     return RedirectToAction("AppoinmentsByDoctor", "Management", new { area = "Management", doctorId = chkDoc.DoctorID });
                 }
@@ -151,10 +170,26 @@ namespace Demo.Controllers
                         DateTime today = DateTime.Today;
                         int data = _db.Patient_Appoinments.Where(x => x.AppointmentDate == today).Count();
                         HttpContext.Session.SetInt32("total", data);
-
+                        HttpContext.Session.SetString("SuperAdminName", user.UserName);
                         TempData["LoginSuccess"] = "Login Successful";
                         return RedirectToAction("DisplayDoctor", "Management", new { area = "Management" });
                     }
+                }
+                if(user.RoleID == 2)
+                {
+                    TempData["Invalid"] = "Doctor is  Inactive";
+                    return View(model);
+                }
+            
+                else if(user.RoleID == 3 && chkManage == null)
+                {
+                    TempData["Invalid"] = "Management is  Inactive";
+                    return View(model);
+                }
+                else if(user.RoleID == 3 && chkHospital == null)
+                {
+                    TempData["Invalid"] = "Hospital is  Inactive";
+                    return View(model);
                 }
             }
 
@@ -175,6 +210,9 @@ namespace Demo.Controllers
             HttpContext.Session.Remove("ManagementForStatus");
             HttpContext.Session.Remove("DoctorIdForSAandAdmin");
             HttpContext.Session.Remove("DoctorId");
+            HttpContext.Session.Remove("UserName");
+            HttpContext.Session.Remove("DoctorName");
+            HttpContext.Session.Remove("UserId");
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Login", new { area = "Login" });
         }

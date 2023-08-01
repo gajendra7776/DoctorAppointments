@@ -11,21 +11,14 @@ namespace Demo.Models.DummyModels
     public class DoctorHelper
     {
         [Key]
-        [Column("DoctorID")]
         public int DoctorID { get; set; }
-
-        [Required(ErrorMessage = "Enter Doctor Name")]
-        [Column("DoctorName")]
-        public string DoctorName { get; set; }
-
-        public int HospitalId { get; set; }
-
-        [Required(ErrorMessage = "Select Status")]
-        [Column("blnActive")]
-        public bool blnActive { get; set; }
-
-        public int DoctorTypeId { get; set; }
-        public int UserId { get; set; }
+        public string? DoctorName { get; set; }
+        public int? HospitalId { get; set; }
+        public bool? blnActive { get; set; }
+        public int? DoctorTypeId { get; set; }
+        public DateTime? Deleted_At { get; set; }
+        public int? UserId { get; set; }
+        
         
     }
 }
