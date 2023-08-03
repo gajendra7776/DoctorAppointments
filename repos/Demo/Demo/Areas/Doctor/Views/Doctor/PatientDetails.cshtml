@@ -12,6 +12,7 @@
     var superadminId = @Accessor.HttpContext.Session.GetInt32("SuperAdminId");
     var doctorId = @Accessor.HttpContext.Session.GetInt32("DoctorId");
     var doctorIdForSAandA = @Accessor.HttpContext.Session.GetInt32("DoctorIdForSAandAdmin");
+     var chkHactive = @Accessor.HttpContext.Session.GetInt32("HospitalFlag3");
 }
 
 
@@ -164,7 +165,14 @@
         </table>
 
         <div class="mt-3 container d-flex justify-content-center align-items-center">
-            <button type="submit" class="btn btn-secondary btn-sm">Save</button>
+                @if(@chkHactive == null)
+                {
+                    <button type="submit" class="btn btn-secondary btn-sm">Save</button>
+                }
+                else 
+                {
+                    <a onclick="NotAccess()" class="btn btn-secondary btn-sm text-white">Save</a>
+                }
 
                 @if (User.IsInRole("ManagementAdmin"))
                 {
@@ -219,9 +227,19 @@
 <script>
     document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
 </script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+<script>
+function NotAccess(){
+            swal.fire({
+      title: "Hospital InActive!",
+      text: "As a doctor, you don't have the required privileges to perform CRUD operations.!",
+      icon: "error",
+      button: "OK",
+    });
+        }
+</script>
 
 
 @section Scripts{

@@ -28,69 +28,9 @@ namespace Demo.Controllers
         }
 
 
-        public IActionResult CreateDoctor(int id = 0)
-        {
-            DoctorDetails model = new DoctorDetails();
-            model.HospitalId = id;
-            return View(model);
-        }
-
-        [HttpPost, ActionName("CreateDoctor")]
-        public IActionResult CreateDoctor(DoctorDetails doctorDetailModel)
-        {
-            if (doctorDetailModel == null)
-            {
-                return View();
-            }
-            _common.CreateNewDoctor(doctorDetailModel);
-            if (User.IsInRole("Doctor"))
-            {
-                TempData["success"] = "Doctor Added Successfully";
-                return RedirectToAction("DisplayDoctor", "Management", new { area = "Management" });
-            }
-            else
-            {
-
-                TempData["success"] = "Doctor Added Successfully";
-                return RedirectToAction("DisplayDoctor", "Management", new { area = "Management", hospitalId = doctorDetailModel.HospitalId });
-            }
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult EditDoctor(int id)
-        {
-            if (id <= null)
-            {
-                return View();
-            }
-            DoctorDetails doctors = new DoctorDetails();
-            doctors = _common.EditDocotrGetData(id);
-            return View(doctors);
-        }
-
-        [HttpPost, ActionName("EditDoctor")]
-        public IActionResult EditDoctor(DoctorDetails doctorDetailModel, int id)
-        {
-            if (id <= 0)
-            {
-                return View();
-            }
-            _common.EditDoctorById(doctorDetailModel, id);
-            if (User.IsInRole("Doctor"))
-            {
-                TempData["success"] = "Doctor Edited Successfully";
-                return RedirectToAction("DisplayDoctor", "Management", new { area = "Management" });
-            }
-            else
-            {
-                TempData["success"] = "Doctor Edited Successfully";
-                return RedirectToAction("DisplayDoctor", "Management", new { area = "Management", hospitalId = doctorDetailModel.HospitalId });
-            }
-            return View();
-        }
         public IActionResult DisplayDoctor(int hospitalId = 0)
         {
+            
             List<DoctorDetails> doctorDetails = _commonmethods.GetDoctorsByManagement(hospitalId);
             List<PatientAppoinmentModel> palist = _commonmethods.GetAppointmentsByManagement(0);
             var viewModel = new AdminInstances
@@ -140,9 +80,11 @@ namespace Demo.Controllers
             {
                 return View();
             }
+            HttpContext.Session.SetInt32("DoctorIdForCreateApp", doctorId);
             if (User.IsInRole("SuperAdmin") || User.IsInRole("ManagementAdmin"))
             {
                 HttpContext.Session.SetInt32("DoctorIdForSAandAdmin", doctorId);
+                HttpContext.Session.SetInt32("FlagforMSA", doctorId);
             }
             ViewBag.Did = doctorId;
             ViewBag.HospitalId = hospitalId;
@@ -193,127 +135,6 @@ namespace Demo.Controllers
             return View(pagedAppointments);
         }
 
-        // 26 June - Create New Appoinment Method
-        public IActionResult CreateAppoinment(int id = 0, int doctorId = 0)
-        {
-            var model = new PatientAppoinmentModel();
-            model.HospitalID = id;
-            model.DoctorID = doctorId;
-            return View(model);
-        }
-        [HttpPost]
-        public IActionResult CreateAppoinment(PatientAppoinmentModel model)
-        {
-            if (model == null)
-            {
-                return View();
-            }
-
-            int result = _common.CreateNewAppoinment(model);
-            string successMessage = "Appoinment Added Successfully";
-            string errorMessage = "Slot is not Available, Select Different Slot";
-
-            if (User.IsInRole("Doctor"))
-            {
-                if (result == 1)
-                {
-                    TempData["success"] = successMessage;
-                    return RedirectToAction("Appoinments", "Management", new { area = "Management"/*, hospitalId = model.HospitalID*/ });
-                }
-                else if (result == 0)
-                {
-                    TempData["error"] = errorMessage;
-                    return RedirectToAction("CreateAppoinment", "Management", new { area = "Management"/*, id = model.HospitalID */});
-                }
-            }
-            else if (User.IsInRole("ManagementAdmin"))
-            {
-                if (result == 1)
-                {
-                    TempData["success"] = successMessage;
-                    return RedirectToAction("Appoinments", "Management", new { area = "Management", hospitalId = model.HospitalID });
-                }
-                else if (result == 0)
-                {
-                    TempData["error"] = errorMessage;
-                    return RedirectToAction("CreateAppoinment", "Management", new { area = "Management", id = model.HospitalID });
-                }
-            }
-
-            return View();
-        }
-
-        //27 June - Complete Edit Method 
-        [HttpPost]
-        public IActionResult EditAppoinment(PatientAppoinmentModel model, int id)
-        {
-            if (id == 0)
-            {
-                return View();
-            }
-            int result = _common.EditAppoinment(model, id);
-            string success = "Appoinment Edited Successfully";
-            string errorMessage = "Slot is not Available, Select Different Slot";
-
-            if (User.IsInRole("User"))
-            {
-                if (result == 1)
-                {
-                    TempData["success"] = success;
-                    return RedirectToAction("BookAppoint", "User", new { area = "User", userId = model.PatientId });
-                }
-                else if (result == 0)
-                {
-                    TempData["error"] = errorMessage;
-                    return RedirectToAction("CreateAppointments", "User", new { area = "User", userId = model.PatientId });
-                }
-            }
-            else if (User.IsInRole("ManagementAdmin"))
-            {
-                if (result == 1)
-                {
-                    TempData["success"] = success;
-                    return RedirectToAction("Appoinments", "Management", new { area = "Management", hospitalId = model.HospitalID });
-                }
-                else if (result == 0)
-                {
-                    TempData["error"] = errorMessage;
-                    return RedirectToAction("CreateAppoinment", "Management", new { area = "Management", id = model.HospitalID });
-                }
-            }
-            else if (User.IsInRole("Doctor"))
-            {
-                if (result == 1)
-                {
-                    TempData["success"] = success;
-                    return RedirectToAction("AppoinmentsByDoctor", "Management", new { area = "Management", doctorId = model.DoctorID });
-                }
-                else if (result == 0)
-                {
-                    TempData["error"] = errorMessage;
-                    return RedirectToAction("CreateAppoinment", "Management", new { area = "Management"/*, id = model.HospitalID */});
-                }
-            }
-            else
-            {
-                TempData["success"] = success;
-                return RedirectToAction("Appoinments", "Management", new { area = "Management" });
-            }
-            return View();
-
-        }
-        [HttpGet, ActionName("EditAppoinment")]
-        public IActionResult EditAppoinment(int id)
-        {
-            if (id <= 0)
-            {
-                return View();
-            }
-            PatientAppoinmentModel data = new PatientAppoinmentModel();
-            data = _common.GetAppoinmentData(id);
-            return View(data);
-        }
-
         // 26 June - UpdateAppointmentStatus Method
 
         public JsonResult UpdateAppointmentStatus(int id, string status, int approveId = 0, int rejectId = 0)
@@ -332,10 +153,26 @@ namespace Demo.Controllers
         {
             if (appId <= 0)
             {
+                var chkHMAccess = HttpContext.Session.GetInt32("DoctorIdForSAandAdmin");
+                if (User.IsInRole("Doctor") || (User.IsInRole("ManagementAdmin") || User.IsInRole("ManagementAdmin") && chkHMAccess != null))
+                {
+
+                    PatientAppoinmentModel datas = new PatientAppoinmentModel();
+                    var doctorId = (int)HttpContext.Session.GetInt32("DoctorIdForCreateApp");
+                    var doctor = _db.DoctorDetails.Where(x => x.DoctorID == doctorId).FirstOrDefault();
+                    if (doctor != null)
+                    {
+                        datas.DoctorID = doctorId;
+                        datas.DoctorTypeId = (int)doctor.DoctorTypeId;
+                        datas.HospitalID = (int)doctor.HospitalId;
+                    }
+                    return View(datas);
+                }
+                
+                
                 return View();
             }
             PatientAppoinmentModel data = new PatientAppoinmentModel();
-
             data = _common.GetAppoinmentData(appId);
             return View(data);
         }
@@ -566,11 +403,10 @@ namespace Demo.Controllers
 
             }
 
-
-
-
             DateTime lowerBound = new DateTime(1753, 1, 1, 0, 0, 0);
             DateTime upperBound = new DateTime(9999, 12, 31, 23, 59, 59);
+            var d1 = DateTime.MinValue;
+            var d2 = DateTime.MaxValue;
             if (!(date1 >= lowerBound && date1 <= upperBound && date2 >= lowerBound && date2 <= upperBound))
             {
                 TempData["error"] = "Please Select Valid Date";

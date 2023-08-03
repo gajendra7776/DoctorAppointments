@@ -12,7 +12,7 @@ namespace Demo.Models
         public int ManagementId { get; set; }   
         public string? ManagementName { get; set; }   
         
-        public string? HospitalName { get; set; }
+        public string? HospitalNameforAdmin { get; set; }
         public int HospitalId { get; set; }
         
         public int UserId { get; set; }

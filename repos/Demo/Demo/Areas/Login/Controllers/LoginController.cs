@@ -100,6 +100,7 @@ namespace Demo.Controllers
                     HttpContext.Session.SetInt32("ManagementAdminId", chkManage.HospitalId);
                     HttpContext.Session.SetInt32("ManagementForStatus", user.UserId);
                     HttpContext.Session.SetString("ManagementAdminName", user.UserName);
+                    HttpContext.Session.SetString("HospitalName", chkHospital.HospitalName);
                     TempData["LoginSuccess"] = "Login Successful";
                     return RedirectToAction("DisplayDoctor", "Management", new { area = "Management", hospitalId = chkManage.HospitalId });
                 }
@@ -127,10 +128,11 @@ namespace Demo.Controllers
                 else if (user.RoleID == 2 && chkDoc != null)
                 {
                     var hospital = _db.Hospital.Where(x => x.HospitalId == chkDoc.HospitalId && x.blnActive==true).FirstOrDefault();
-                    if(hospital == null)
+                    var management = _db.Management_Admin.Where(x => x.HospitalId == chkDoc.HospitalId && x.blnActive == true).FirstOrDefault();
+
+                    if (hospital == null || management == null)
                     {
-                        TempData["Invalid"] = "Hospital Is InActive For This Doctor";
-                        return View(model);
+                        HttpContext.Session.SetInt32("HospitalFlag3", 3);
                     }
                     List<Claim> claims = new List<Claim>()
                 {
@@ -213,6 +215,7 @@ namespace Demo.Controllers
             HttpContext.Session.Remove("UserName");
             HttpContext.Session.Remove("DoctorName");
             HttpContext.Session.Remove("UserId");
+            HttpContext.Session.Remove("HospitalFlag3");
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Login", new { area = "Login" });
         }

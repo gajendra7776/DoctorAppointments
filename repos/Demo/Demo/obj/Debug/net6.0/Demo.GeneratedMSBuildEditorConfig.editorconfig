@@ -71,24 +71,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xNYW5hZ2VtZW50XEFwcG9pbm1lbnRzQnlEb2N0b3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/Management/CreateAppoinment.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xNYW5hZ2VtZW50XENyZWF0ZUFwcG9pbm1lbnQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/Management/CreateDoctor.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xNYW5hZ2VtZW50XENyZWF0ZURvY3Rvci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/Management/DisplayDoctor.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xNYW5hZ2VtZW50XERpc3BsYXlEb2N0b3IuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/Management/EditAppoinment.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xNYW5hZ2VtZW50XEVkaXRBcHBvaW5tZW50LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/Management/EditDoctor.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlbWVudFxWaWV3c1xNYW5hZ2VtZW50XEVkaXREb2N0b3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Areas/Management/Views/_ViewImports.cshtml]
@@ -173,6 +157,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/PartialsViews/_UserFooter.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzVmlld3NcX1VzZXJGb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/_DoctorAddAppointment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Eb2N0b3JBZGRBcHBvaW50bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/_doctorTable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9kb2N0b3JUYWJsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Tatvasoft/DoctorAppointments/repos/Demo/Demo/Views/Shared/_FilterByStatus.cshtml]

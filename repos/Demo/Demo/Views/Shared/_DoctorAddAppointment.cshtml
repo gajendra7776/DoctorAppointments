@@ -1,0 +1,30 @@
+﻿@inject IHttpContextAccessor Accessor
+@model Demo.Models.PatientAppoinmentModel
+
+
+    <input type="hidden" asp-for="AppointmentID" name="AppointmentID" class="form-control">
+    <input asp-for="HospitalID" type="hidden" />
+    <input asp-for="DoctorTypeId" type="hidden" />
+    <input asp-for="DoctorID" type="hidden" />
+    <div class="form-group">
+        <label asp-for="HospitalID" for="hospitalSelect">Hospital:</label>
+        <select asp-for="HospitalID" id="hospitalSelect" name="HospitalId" class="form-control" disabled>
+            <option value="@Model.HospitalID">Select Hospital</option>
+        </select>
+        <span asp-validation-for="HospitalID" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DoctorTypeId" for="doctorTypeSelect">Doctor Type:</label>
+        <select asp-for="DoctorTypeId" id="doctorTypeSelect" name="DoctorTypeId" class="form-control" disabled>
+            <option value="@Model.DoctorTypeId">Select DoctorType</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DoctorID" for="doctorSelect">Doctor:</label>
+
+        <select asp-for="DoctorID" id="doctorSelect" name="DoctorID" class="form-control" disabled>
+            <option value="@Model.DoctorID">Select DoctorType</option>
+        </select>
+    </div>

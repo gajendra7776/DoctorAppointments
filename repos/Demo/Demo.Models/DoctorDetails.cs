@@ -30,12 +30,12 @@ namespace Demo.Models
 
         [Required(ErrorMessage = "Select Hospital Name")]
         [NotMapped] // Exclude from mapping as it is not a column in the database
-        public string? HospitalName { get; set; }
+        public string? HospitalNameForDoctor { get; set; }
 
         public List<Hospital>? HospitalList { get; set; }
         public List<DoctorType>? DoctorTypeList { get; set; }
 
-        [Column("DoctorTypeID")] // Remove the [ForeignKey] attribute
+        [Required(ErrorMessage ="Select Doctor Type")]
         public int? DoctorTypeID { get; set; }
         public string? DoctorType { get; set; } = null;
         public int? UserId { get; set; }

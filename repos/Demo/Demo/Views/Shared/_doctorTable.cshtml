@@ -1,0 +1,61 @@
+﻿@using Demo.Models.DummyModels
+@using NonFactors.Mvc.Grid
+@using System.Web.Mvc
+@inject IHttpContextAccessor Accessor
+@model Demo.Models.DummyModels.UserDetails
+
+@{
+    ViewData["Title"] = "Doctor Details";
+    var count = @Accessor.HttpContext.Session.GetInt32("total");
+    var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
+    var hospitalID = @Accessor.HttpContext.Session.GetInt32("ManagementForStatus");
+    var superadminId = @Accessor.HttpContext.Session.GetInt32("SuperAdminId");
+    var doctorId = @Accessor.HttpContext.Session.GetInt32("DoctorId");
+    var doctorIdForSAandA = @Accessor.HttpContext.Session.GetInt32("DoctorIdForSAandAdmin");
+
+}
+<div class="mt-5 " id="table1">
+    @if (User.IsInRole("ManagementAdmin"))
+    {
+        <a asp-route-hospitalId="@hospitalId" asp-area="Management" asp-action="AddEditDoctor" asp-controller="Management" class="btn btn-secondary btn-sm">ADD DOCTOR</a>
+    }
+    else if (User.IsInRole("SuperAdmin"))
+    {
+        <a asp-area="Management" asp-action="AddEditDoctor" asp-controller="Management" class="btn btn-secondary btn-sm">ADD DOCTOR</a>
+    }
+
+    <div class="mt-3">
+
+        @(Html
+        .Grid(Model.DoctorDetails)
+        .Build(columns =>
+        {
+        columns.Add(model => model.DoctorName).Titled("Doctor Name");
+        columns.Add(model => model.HospitalNameForDoctor).Titled("Hospital Name");
+        columns.Add(model => model.Status ? "Active" : "Inactive")
+        .Titled("Active/Inactive")
+        .Css("status-cell")
+        .Filterable(true)
+        .Sortable(true)
+        .Css("status-cell")
+        .Encoded(false);
+        columns.Add().Titled("Edit").RenderedAs((model, row) =>
+        {
+        return Html.ActionLink("Edit", "AddEditDoctor", new {controller="Management" ,area = "Management", id = model.DoctorID }, new { @class = "btn btn-primary" });
+        });
+
+        }).Using(GridFilterMode.Header)
+        .Empty("No data found")
+        .Pageable(pager =>
+        {
+        pager.PageSizes = new Dictionary<Int32, String> { { 0, "All" }, { 2, "2" }, { 4, "4" },{ 5, "5" },{ 10, "10" } };
+        pager.ShowPageSizes = true;
+        pager.PagesToDisplay = 3;
+        pager.CurrentPage = 1;
+        pager.RowsPerPage = 5;
+        })
+        .Filterable()
+        .Sortable()
+        )
+    </div>
+</div>

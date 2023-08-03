@@ -77,7 +77,7 @@ namespace Demo.DataAccess.Common
                     {
 
                         ManagementName = reader["HospitalName"].ToString(),
-                        HospitalName = reader["HospitalName"].ToString(),
+                        HospitalNameforAdmin = reader["HospitalName"].ToString(),
                         HospitalId= (int)(reader["HospitalId"]),
                         ManagementId = (int)(reader["ManagementId"]),
                         blnActive = (bool)reader["blnActive"]
@@ -203,6 +203,7 @@ namespace Demo.DataAccess.Common
                     command.Parameters.AddWithValue("@DateOfBirth", doctorDetailModel.DateOfBirth);
                     command.Parameters.AddWithValue("@PhoneNo", doctorDetailModel.PhoneNo);
                     command.Parameters.AddWithValue("@UserId", doctorDetailModel.UserId);
+                    command.Parameters.AddWithValue("@Password", doctorDetailModel.Password);
                     command.Parameters.AddWithValue("@Id", id);
                     command.Parameters.Add(result);
                     command.ExecuteNonQuery();
@@ -283,14 +284,26 @@ namespace Demo.DataAccess.Common
                             doctors.DoctorName = reader["DoctorName"].ToString();
                             doctors.HospitalId = (int)reader["HospitalId"];
                             doctors.Status = (bool)reader["blnActive"];
-                            doctors.HospitalName = reader["HospitalName"].ToString();
+                            doctors.HospitalNameForDoctor = reader["HospitalName"].ToString();
                             doctors.DoctorType = reader["DoctorType"].ToString();
                             doctors.DoctorTypeID = (int)reader["DoctorTypeId"];
                             doctors.Email = reader["Email"].ToString();
                             doctors.PhoneNo = reader["PhoneNo"].ToString();
-                            doctors.DateOfBirth = (DateTime)reader["DateOfBirth"];
-                            doctors.Age = (int)reader["Age"];
-                            doctors.UserId = (int)reader["UserId"];
+                            doctors.Password = reader["DoctorPassword"].ToString();
+                            if (!reader.IsDBNull("DateOfBirth"))
+                            {
+                                doctors.DateOfBirth = (DateTime)reader["DateOfBirth"];
+                            }
+                            if (!reader.IsDBNull("Age"))
+                            {
+                                doctors.Age = Convert.ToInt32(reader["Age"]);
+                            }
+                            if (!reader.IsDBNull("UserId"))
+                            {
+                                doctors.UserId = Convert.ToInt32(reader["UserId"]);
+                            }
+                            
+                            
                         }
                     }
                 }
@@ -438,6 +451,7 @@ namespace Demo.DataAccess.Common
                             PatientAppoinmentModel appoinments = new PatientAppoinmentModel
                             {
                                 AppointmentID = (int)reader["AppointmentID"],
+                                HospitalID = (int)reader["HospitalID"],
                                 PatientId = (int)reader["PatientId"],
                                 DoctorName = reader["DoctorName"].ToString(),
                                 AppointmentStatus = reader["AppointmentStatus"].ToString(),
@@ -445,7 +459,9 @@ namespace Demo.DataAccess.Common
                                 DoctorType = reader["DoctorType"].ToString(),
                                 UserName = reader["UserName"].ToString(),
                                 AppointmentDate = (DateTime)reader["AppointmentDate"],
-                                AppointmentTime = reader["AppoinmentTime"].ToString()
+                                AppointmentTime = reader["AppoinmentTime"].ToString(),
+                                HospitalStatus = (Boolean)reader["blnActive"],
+                                ManagementAdminStatus = (Boolean)reader["mstatus"]
                             };
 
                             model.Add(appoinments);

@@ -20,19 +20,27 @@
         </script>
     }
     <div class="container mt-5">
-
-        @if (Model == null)
-        {
-            <h3>Create New Doctor</h3>
-        }
-        else
-        {
-            <h3>Edit Doctor</h3>
+        @{
+            if (Model == null)
+            {
+                <h3>Create New Doctor</h3>
+            }
+            else
+            {
+                if (@Model.DoctorID == 0)
+                {
+                    <h3>Create New Doctor</h3>
+                }
+                else
+                {
+                    <h3>Edit Doctor</h3>
+                }
+            }
         }
 
         <form asp-area="Management" asp-action="AddEditDoctor" asp-controller="Management" id="Createform">
             <input type="hidden" asp-for="DoctorID" name="DoctorID" class="form-control">
-            <input type="hidden" asp-for="UserId" name="UserId" class="form-control">   
+            <input type="hidden" asp-for="UserId" name="UserId" class="form-control">
             <div class="form-group">
                 <label asp-for="DoctorName" class="control-label">Doctor Name</label>
                 <input asp-for="DoctorName" id="patientName" class="form-control" />
@@ -41,12 +49,21 @@
             <!-- Doctor Dropdown List -->
             @if (User.IsInRole("ManagementAdmin"))
             {
+                if(Model != null)
+                {
+                    <input asp-for="HospitalId" type="hidden" />
+                }
+                else
+                {
+                    <input asp-for="HospitalId" value="@hospitalId"  type="hidden" />
+                }
                 <label asp-for="HospitalId" for="hospitalSelect">Hospital:</label>
-                <select asp-for="HospitalId" id="hospitalSelect" name="HospitalId" class="form-control">
+                <select asp-for="HospitalId" id="hospitalSelect" name="HospitalId" class="form-control" disabled>
                     <option value="@hospitalId">Select Hospital</option>
                 </select>
                 <span asp-validation-for="HospitalId" class="text-danger"></span>
             }
+            
             else
             {
                 <div class="form-group">
@@ -85,36 +102,61 @@
             </div>
             @if (Model != null)
             {
-                <div class="form-group">
-                    <label>Status:</label>
-                    <select asp-for="Status" name="Status" class="form-control">
-                        <option value="True">True</option>
-                        <option value="False">False</option>
-                    </select>
-                    <span asp-validation-for="Status" class="text-danger"></span>
-                </div>
+                if (@Model.DoctorID != 0)
+                {
+                    <div class="form-group">
+                        <label>Status:</label>
+                        <select asp-for="Status" name="Status" class="form-control">
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                        </select>
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+                }
             }
             <div class="form-group">
                 <label asp-for="Email" for="date">Email:</label>
                 <input asp-for="Email" name="Email" class="form-control" autocomplete="off">
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            @if (Model == null)
-            {
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label asp-for="Password" for="date">Password:</label>
-                        <input asp-for="Password" name="Password" class="form-control" autocomplete="off">
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
 
-                    <div class="form-group col-md-6">
-                        <label asp-for="ConfirmPassWord" for="appointmentTime">Confirm Password:</label>
-                        <input asp-for="ConfirmPassWord" name="ConfirmPassWord" class="form-control" autocomplete="off">
-                        <span asp-validation-for="ConfirmPassWord" class="text-danger"></span>
-                    </div>
-                </div>
-            }
+            <div class="form-row">
+
+                @{
+                    if (Model == null)
+                    {
+                        <div class="form-group col-md-6">
+                            <label asp-for="Password" for="date">Password:</label>
+                            <input type="password" asp-for="Password" name="Password" class="form-control" autocomplete="off">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="ConfirmPassWord" for="appointmentTime">Confirm Password:</label>
+                            <input type="password" asp-for="ConfirmPassWord" name="ConfirmPassWord" class="form-control" autocomplete="off">
+                            <span asp-validation-for="ConfirmPassWord" class="text-danger"></span>
+                        </div>
+                    }
+                    else
+                    {
+                         <div class="form-group col-md-6">
+                            <label asp-for="Password" for="date">Password:</label>
+                            <input type="password" asp-for="Password" name="Password" value="@Model.Password" class="form-control" autocomplete="off">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        if (@Model.DoctorID == 0)
+                        {
+                            <div class="form-group col-md-6">
+                                <label asp-for="ConfirmPassWord" for="appointmentTime">Confirm Password:</label>
+                                <input type="password" asp-for="ConfirmPassWord" name="ConfirmPassWord" value="@Model.ConfirmPassWord" class="form-control" autocomplete="off">
+                                <span asp-validation-for="ConfirmPassWord" class="text-danger"></span>
+                            </div>
+                        }
+                    }
+                }
+
+            </div>
+
 
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -134,14 +176,22 @@
                 <input asp-for="PhoneNo" name="PhoneNo" class="form-control" autocomplete="off">
                 <span asp-validation-for="PhoneNo" class="text-danger"></span>
             </div>
-            <!-- Add other form fields here -->
-            @if (Model == null)
-            {
-                <button type="submit" class="btn btn-primary">Create</button>
-            }
-            else
-            {
-                <button type="submit" class="btn btn-primary">Edit</button>
+            @{
+                if (Model == null)
+                {
+                    <button type="submit" class="btn btn-primary">Create</button>
+                }
+                else
+                {
+                    if (@Model.DoctorID == 0)
+                    {
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    }
+                }
             }
             @if (User.IsInRole("ManagementAdmin"))
             {

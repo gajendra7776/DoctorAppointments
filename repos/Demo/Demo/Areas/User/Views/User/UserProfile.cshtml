@@ -20,8 +20,6 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
 <!-- MDB -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"></script>
-<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
-
 
 <style>
     .tick-mark {
@@ -73,13 +71,13 @@
     {
         <partial name="_Header" />
     }
-     @if (TempData["successful"] != null)
+     @if (TempData["profileUpdate"] != null)
     {
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script type="text/javascript">
-            toastr.success('@TempData["successful"]');
+            toastr.success('@TempData["profileUpdate"]');
         </script>
     }
     @if (TempData["adminCreated"] != null)
@@ -230,7 +228,8 @@
             @if (User.IsInRole("ManagementAdmin") || User.IsInRole("SuperAdmin"))
             {
 
-                <div class="mt-5 " id="table1">
+               
+               <div class="mt-5 " id="table1">
                     @if (User.IsInRole("ManagementAdmin"))
                     {
                         <a asp-route-hospitalId="@hospitalId" asp-area="Management" asp-action="AddEditDoctor" asp-controller="Management" class="btn btn-secondary btn-sm">ADD DOCTOR</a>
@@ -247,7 +246,7 @@
                     .Build(columns =>
                     {
                     columns.Add(model => model.DoctorName).Titled("Doctor Name");
-                    columns.Add(model => model.HospitalName).Titled("Hospital Name");
+                    columns.Add(model => model.HospitalNameForDoctor).Titled("Hospital Name");
                     columns.Add(model => model.Status ? "Active" : "Inactive")
                     .Titled("Active/Inactive")
                     .Css("status-cell")
@@ -291,7 +290,7 @@
                     .Grid(Model.Managements)
                     .Build(columns =>
                     {
-                    columns.Add(model => model.HospitalName).Titled("Hospital Name");
+                    columns.Add(model => model.HospitalNameforAdmin).Titled("Hospital Name");
                     columns.Add(model => model.ManagementName).Titled("Management Name");
                     columns.Add(model => model.blnActive ? "Active" : "Inactive").Titled("Active/Inactive")
                     .Css("status-cell")
@@ -383,7 +382,7 @@
          
         Swal.fire({
                 title: 'Are you sure?',
-                text: 'This action will remove the Doctor.',
+                text: 'This action will Update the Doctor Status.',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -427,7 +426,7 @@
 
         Swal.fire({
                 title: 'Are you sure?',
-                text: 'This action will remove the Management.',
+                text: 'This action will Update the Management Status.',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -471,7 +470,7 @@
 
         Swal.fire({
                 title: 'Are you sure?',
-                text: 'This action will remove the Hospital.',
+                text: 'This action will Update the Hospital Status.',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -601,6 +600,7 @@
 
 
 </script>
+
 <script>
 $(document).ready(function() {
     $(".status-cell").each(function() {
@@ -611,7 +611,11 @@ $(document).ready(function() {
             cell.addClass('inactive-status');
         }
     });
+    
+    
 });
+
+
 </script>
 @section Scripts{
     @{

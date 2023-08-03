@@ -6,11 +6,11 @@
     var doctorIdforStatus = @Accessor.HttpContext.Session.GetInt32("DoctorForStatus");
     var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementForStatus");
     var superadminId = @Accessor.HttpContext.Session.GetInt32("SuperAdminId");
-
+    var chkHactive = @Accessor.HttpContext.Session.GetInt32("HospitalFlag3");
 }
 
 
-            @(Html
+@(Html
             .Grid(Model)
             .Build(columns =>
             {
@@ -18,7 +18,46 @@
             columns.Add(model => model.DoctorName).Titled("Doctornames").Filterable(true);
             columns.Add(model => model.AppointmentTime).Titled("Time");
             columns.Add(model => model.AppointmentDate).Titled("Date");
-            columns.Add(model => model.AppointmentStatus).Titled("Status").RenderedAs((model, row) =>
+
+
+            if(chkHactive != null){
+                columns.Add().Titled("Status").RenderedAs((model, row) =>
+            {
+                var statusText = model.AppointmentStatus == "Approve" ? "Approved" : "Rejected";
+            var statusClass = model.AppointmentStatus == "Approve" ? "text-success" : "text-danger";
+            if(model.AppointmentStatus == "Pending"){
+            statusText = "Pending";
+            statusClass = "text-warning";
+
+            }
+             if(model.AppointmentStatus == "Missed"){
+            statusText = "Missed";
+            statusClass = "text-danger";
+            }
+             if(model.AppointmentStatus == "Completed"){
+            statusText = "Completed";
+            statusClass = "text-success";
+            }
+
+
+                 return Html.Raw($"<span class='tick-mark'  onclick='NotAccess()'>&#10004;</span>" +
+            $"<span class='tick-mark' onclick='NotAccess()'>&#10008;</span>" +
+            $"<span id='status_{model.AppointmentID}' class='{statusClass}'>{statusText}</span>");
+            });
+             columns.Add().Titled("Edit").RenderedAs((model, row) =>
+            {
+                 return Html.Raw($"<span class='btn btn-primary' onclick='NotAccess()'>Edit</span>");
+            });
+            columns.Add().Titled("Delete").RenderedAs((model, row) =>
+            {
+                 return Html.Raw($"<span class='btn btn-danger' onclick='NotAccess()'>Delete</span>");
+            });
+
+            }
+            else
+            {
+
+                 columns.Add(model => model.AppointmentStatus).Titled("Status").RenderedAs((model, row) =>
             {
             var approveId = "approve_" + model.AppointmentID;
             var rejectId = "reject_" + model.AppointmentID;
@@ -39,7 +78,7 @@
                  approveUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Approve",approveId = @doctorIdforStatus });
                  rejectUrl = Url.Action("UpdateAppointmentStatus", "Management", new { id = model.AppointmentID, status = "Reject",rejectId = @doctorIdforStatus });
             }
-             
+
             var statusText = model.AppointmentStatus == "Approve" ? "Approved" : "Rejected";
             var statusClass = model.AppointmentStatus == "Approve" ? "text-success" : "text-danger";
             if(model.AppointmentStatus == "Pending"){
@@ -64,21 +103,25 @@
             })
             .Encoded(false);
 
-            columns.Add().Titled("Edit").RenderedAs((model, row) =>
-            {
+                 columns.Add().Titled("Edit").RenderedAs((model, row) =>
+                {
+                return Html.ActionLink("Edit", "AddEditAppointment", new { area = "Management", appId = model.AppointmentID }, new { @class = "btn btn-primary" });
+                });
 
-            return Html.ActionLink("Edit", "AddEditAppointment", new { area = "Management", appId = model.AppointmentID }, new { @class = "btn btn-primary" });
-            });
+                columns.Add().Titled("Delete").RenderedAs((model, row) =>
+                {
+                return Html.ActionLink("Delete", "DeleteAppoinment", new { area = "Management", id = model.AppointmentID, hospitalId = @ViewBag.Did }, new { @class = "btn btn-danger" });
+                });
 
-            columns.Add().Titled("Delete").RenderedAs((model, row) =>
-            {
-            return Html.ActionLink("Delete", "DeleteAppoinment", new { area = "Management", id = model.AppointmentID, hospitalId = @ViewBag.Did }, new { @class = "btn btn-danger" });
-            });
+            }
+
+
+
              columns.Add().Titled("Show Patient Details").RenderedAs((model, row) =>
             {
             return Html.ActionLink("Show Patient Details", "PatientDetails", new {controller = "Doctor", area = "Doctor", id = model.AppointmentID}, new { @class = "btn btn-primary" });
             });
-                
+
             }).Using(GridFilterMode.Header)
             .Empty("No data found")
             .Filterable()

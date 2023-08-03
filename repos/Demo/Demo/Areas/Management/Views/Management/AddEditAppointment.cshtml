@@ -4,6 +4,8 @@
     var userId = @Accessor.HttpContext.Session.GetInt32("UserId");
     var doctorId = @Accessor.HttpContext.Session.GetInt32("DoctorId");
     var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
+    var hospitalName = @Accessor.HttpContext.Session.GetString("HospitalName");
+    var flag = @Accessor.HttpContext.Session.GetInt32("FlagforMSA");
 }
 <title>Add & Edit Appointment</title>
 <!-- MDB -->
@@ -29,26 +31,50 @@
             toastr.success('@TempData["success"]');
         </script>
     }
-    @if (Model == null)
-    {
-        <h3>Create New Appointment</h3>
-    }
-    else
-    {
-        <h3>Edit Appointment</h3>
-    }
+    @{
+            if (Model == null)
+            {
+                <h3>Create New Appointment</h3>
+            }
+            else
+            {
+                if (@Model.AppointmentID == 0)
+                {
+                    <h3>Create New Appointment</h3>
+                }
+                else
+                {
+                    <h3>Edit Appointment</h3>
+                }
+            }
+        }
     <div class="container mt-5">
 
         <form asp-action="AddEditAppointment" asp-area="Management" asp-controller="Management" method="post">
             <input type="hidden" asp-for="AppointmentID" name="AppointmentID" class="form-control">
-            @if (User.IsInRole("ManagementAdmin"))
+            @if(User.IsInRole("Doctor") || flag != null)
             {
+                <partial name = "_DoctorAddAppointment" />
+            }
+            else
+            {
+                @if (User.IsInRole("ManagementAdmin"))
+            {
+                if(Model != null)
+                {
+                    <input asp-for="HospitalID" type="hidden" />
+                }
+                else
+                {
+                    <input asp-for="HospitalID" value="@hospitalId"  type="hidden" />
+                }
                 <label asp-for="HospitalID" for="hospitalSelect">Hospital:</label>
-                <select asp-for="HospitalID" id="hospitalSelect" name="HospitalId" class="form-control">
+                <select asp-for="HospitalID" id="hospitalSelect" name="HospitalId" class="form-control" disabled>
                     <option value="@hospitalId">Select Hospital</option>
                 </select>
                 <span asp-validation-for="HospitalID" class="text-danger"></span>
             }
+            
             else
             {
                 <div class="form-group">
@@ -113,6 +139,8 @@
                 <span asp-validation-for="DoctorID" class="text-danger"></span>
             </div>
 
+            }
+            
 
 
             @if (!(User.IsInRole("User")))
@@ -135,7 +163,7 @@
                     <span asp-validation-for="PatientId" class="text-danger"></span>
                 </div>
             }
-            @if (User.IsInRole("User"))
+            @if (User.IsInRole("User") )
             {
                 <input type="hidden" name="PatientId" value="@userId" />
             }
@@ -164,13 +192,22 @@
                 <textarea asp-for="DiseaseDescriptions" class="form-control" id="diseaseDescription" name="DiseaseDescriptions" rows="3" placeholder="Enter appointment description"></textarea>
                 <span asp-validation-for="DiseaseDescriptions" class="text-danger"></span>
             </div>
-            @if (Model == null)
-            {
-                <button type="submit" class="btn btn-primary">Create</button>
-            }
-            else
-            {
-                <button type="submit" class="btn btn-primary">Edit</button>
+            @{
+                if (Model == null)
+                {
+                    <button type="submit" class="btn btn-primary">Create</button>
+                }
+                else
+                {
+                    if (@Model.AppointmentID == 0)
+                    {
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    }
+                }
             }
             @*28 June - Update Edit Appoinment For User*@
             @if (User.IsInRole("User"))
@@ -332,6 +369,7 @@
 
     });
 </script>
+
 
 
 @section Scripts{

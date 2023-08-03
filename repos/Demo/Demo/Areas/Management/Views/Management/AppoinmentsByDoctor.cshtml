@@ -14,6 +14,7 @@
     var doctorId = @Accessor.HttpContext.Session.GetInt32("DoctorId");
     var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
     var count = @Accessor.HttpContext.Session.GetInt32("total");
+    var chkHactive = @Accessor.HttpContext.Session.GetInt32("HospitalFlag3");
 
 }
 <style>
@@ -21,8 +22,7 @@
         cursor: pointer;
     }
 </style>
-@*   20 June - Added Filter Functionality By Mvc Grid Package
-*@
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
@@ -33,9 +33,9 @@
         <partial name="PartialsViews/_HeaderForManagAdmin" />
     }
     else if (User.IsInRole("Doctor"))
-        {
-            <partial name="_Header" />
-        }
+    {
+        <partial name="_Header" />
+    }
     @if (TempData["success"] != null)
     {
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
@@ -54,7 +54,17 @@
             toastr.warning('@TempData["error"]');
         </script>
     }
-    <div class="row mt-2 ms-1">
+    <div class="ms-3 mt-2">
+
+        @if (@chkHactive != null)
+        {
+            <div class="alert alert-danger" style="margin: 0px !important;padding: 10px !important;">
+                Hospital is Inactive! As a doctor, you can't make any further changes.
+            </div>
+        }
+
+    </div>
+    <div class="row mt-3 ms-1">
         <div class="col-md-12" style="display: flex; align-content: stretch; justify-content: flex-start;">
             <h4 class="row col-md-6">Today's Total Appointments: @count</h4>
             @if (User.IsInRole("Doctor"))
@@ -79,7 +89,15 @@
             <div class="col-md-6 ">
                 @if (User.IsInRole("Doctor"))
                 {
-                    <a asp-area="Management" asp-action="AddEditAppointment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
+                    if(@chkHactive != null)
+                    {
+                        <a onclick="NotAccess()" class="btn btn-success text-white">Create Appointment</a>
+                    }
+                    else
+                    {
+                        <a asp-area="Management" asp-action="AddEditAppointment" asp-controller="Management" class="btn btn-success ">Create Appointment</a>
+                    }
+                    
                 }
                 else
                 {
@@ -96,9 +114,21 @@
                     <input type="date" name="toDate" class="form-control" id="toDate" autocomplete="off">
                 </div>
                 <div class="col-md-3">
-                    <button class="btn btn-primary btn-sm " style="margin-top: 33px;" onclick="ApproveAll()">
-                        Approve All
-                    </button>
+                    @{
+                        if (chkHactive != null)
+                        {
+                            <button class="btn btn-primary btn-sm " style="margin-top: 33px;" onclick="NotAccess()">
+                                Approve All
+                            </button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary btn-sm " style="margin-top: 33px;" onclick="ApproveAll()">
+                                Approve All
+                            </button>
+                        }
+                    }
+
                 </div>
             </div>
         </div>
@@ -145,15 +175,15 @@
     })
     $(this).addClass('active');
     console.log($(this).children().attr("id"))
-    var pageIndex = $('.pagination .active a').attr("id"); 
+    var pageIndex = $('.pagination .active a').attr("id");
     pager(pageIndex);
     });
         $("#appointmentStatus").on("change", function() {
             var pa =1
             pager(pa);  });
         function pager(pageIndex){
-           
-             @*var pageIndex = $('.pagination .active a').attr("id");*@
+
+    @*var pageIndex = $('.pagination .active a').attr("id");*@
             var selectedStatus = $('#appointmentStatus').val();
             var doctorId = '@ViewBag.Did';
 
@@ -192,28 +222,36 @@
         }
 </script>
 <script>
-    function ApproveAll() {
-        var date1 = document.getElementById('fromDate').value
-        var date2 = document.getElementById('toDate').value
-       $.ajax({
-                url: '/Management/Management/ApproveSelectedAppointments',
-                data: { date1: date1, date2: date2,DoctorId: '@doctorId'},
-                success: function (response) {
-                    location.reload();
-                }
-            });
-    }
-     function Complete() {
-         if (@(ViewBag.id != null ? "true" : "false")){
-       $.ajax({
-                url: '/Management/Management/UpdateStatusComplete',
-                data: { appId:'@ViewBag.id'},
-                success: function (response) {
-                    location.reload();
-                }
-            });
-     }
-    }
+        function ApproveAll() {
+            var date1 = document.getElementById('fromDate').value
+            var date2 = document.getElementById('toDate').value
+           $.ajax({
+                    url: '/Management/Management/ApproveSelectedAppointments',
+                    data: { date1: date1, date2: date2,DoctorId: '@doctorId'},
+                    success: function (response) {
+                        location.reload();
+                    }
+                });
+        }
+         function Complete() {
+             if (@(ViewBag.id != null ? "true" : "false")){
+           $.ajax({
+                    url: '/Management/Management/UpdateStatusComplete',
+                    data: { appId:'@ViewBag.id'},
+                    success: function (response) {
+                        location.reload();
+                    }
+                });
+         }
+        }
+        function NotAccess(){
+            swal.fire({
+      title: "Hospital InActive!",
+      text: "As a doctor, you don't have the required privileges to perform CRUD operations.!",
+      icon: "error",
+      button: "OK",
+    });
+        }
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -24,7 +24,7 @@ namespace Demo.DataAccess.Data
        // public DbSet<DoctorDetails> DoctorDetails { get; set; }  
         public DbSet<DoctorHelper> DoctorDetails { get; set; }  
         public DbSet<Hospital> Hospital { get; set; }
-        public DbSet<DoctorType> DoctorType { get; set; }  
+        public DbSet<DoctorTypeModel> DoctorType { get; set; }  
 
     }
 }

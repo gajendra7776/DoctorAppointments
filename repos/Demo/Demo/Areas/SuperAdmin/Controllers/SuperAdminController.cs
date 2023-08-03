@@ -220,7 +220,6 @@ namespace Demo.Areas.SuperAdmin.Controllers
             return model;
         }
 
-
         public List<ManagementDummy> GetManagementDetails()
         {
             List<ManagementDummy> managements = new List<ManagementDummy>();

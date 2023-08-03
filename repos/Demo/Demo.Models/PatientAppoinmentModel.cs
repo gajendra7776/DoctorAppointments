@@ -39,6 +39,8 @@ namespace Demo.Models
         public int Approved_By { get; set; }
         public int Rejected_By { get; set; }
         public DateTime Approved_Date { get; set; }
+        public bool HospitalStatus { get; set; }
+        public bool ManagementAdminStatus { get; set; }
 
         
 

@@ -16,42 +16,42 @@
 </style>
 
  @if (User.IsInRole("User") || User.IsInRole("Doctor"))
-        {
-            <partial name="_Header" />
-        }
-    @if (TempData["LoginSuccess"] != null)
-    {
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-        <script type="text/javascript">
-            toastr.success('@TempData["LoginSuccess"]');
-        </script>
-    }
-    @if (TempData["success"] != null)
-    {
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-        <script type="text/javascript">
-            toastr.success('@TempData["success"]');
-        </script>
-    }
-    <div class="container mt-5">
-        <div>
-            @if (Model != null && Model.Any())
-            {
-                var userName = Model.FirstOrDefault()?.UserName;
-                <h4>Total Appoinments of Mr.@userName</h4>
-            }
-        </div>
-    </div>
+{
+    <partial name="_Header" />
+}
+@if (TempData["LoginSuccess"] != null)
+{
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["LoginSuccess"]');
+    </script>
+}
+@if (TempData["success"] != null)
+{
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+    </script>
+}
+<div class="container mt-5">
     <div>
-        <a asp-area="Management" asp-action="AddEditAppointment" asp-controller="Management" class="btn btn-success">Create Appointment</a>
+        @if (Model != null && Model.Any())
+        {
+            var userName = Model.FirstOrDefault()?.UserName;
+            <h4>Total Appoinments of Mr.@userName</h4>
+        }
+        </div>
+ 
+    <div>
+        <a asp-area="Management" asp-action="AddEditAppointment" asp-controller="Management" class="btn btn-success mt-3">Create Appointment</a>
     </div>
      @*28 June - User Appoinments *@
     <div class="mt-5 mb-5" id="stt">
-        <h3>My Appoinments</h3>
+        
         @(Html
         .Grid(Model)
         .Build(columns =>
@@ -62,12 +62,19 @@
         columns.Add(model => model.AppointmentDate).Titled("Date");
         columns.Add(model => model.AppointmentTime).Titled("Time");
         columns.Add(model => model.AppointmentStatus).Titled("Status");
+        
 
         columns.Add().Titled("Edit").RenderedAs((model, row) =>
         {
-
-        return Html.ActionLink("Edit", "AddEditAppointment", new { area = "Management", controller="Management", appId = model.AppointmentID }, new { @class = "btn btn-primary" });
-        });
+            if(model.HospitalStatus == false || model.ManagementAdminStatus == false){
+                 return Html.Raw($"<span class='btn btn-primary' onclick='NotAccess()'>Edit</span>");
+            }
+            else{
+                 return Html.ActionLink("Edit", "AddEditAppointment", new { area = "Management", controller="Management", appId = model.AppointmentID }, new { @class = "btn btn-primary" });
+                 
+            }
+           });
+       
         columns.Add().Titled("Delete").RenderedAs((model, row) =>
         {
         return Html.ActionLink("Delete", "DeleteAppoinment", new { area = "User", id = model.AppointmentID,userId = @ViewBag.userId }, new { @class = "btn btn-danger" });
@@ -98,4 +105,14 @@
         document.querySelectorAll("[id^='Check_'").forEach(checkbox => checkbox.checked = this.checked);
     });
 </script>
-
+<script>
+   
+   function NotAccess(){
+            swal.fire({
+      title: "Hospital InActive!",
+      text: "As a User, you don't have the required privileges to perform any operations.!",
+      icon: "error",
+      button: "OK",
+    });
+        }
+</script>

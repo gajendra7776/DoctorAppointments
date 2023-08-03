@@ -36,7 +36,7 @@ namespace Demo.DataAccess.Common
                         DoctorDetails management = new DoctorDetails();
                         management.DoctorID = (int)reader["DoctorID"];
                         management.DoctorName = reader["DoctorName"].ToString();
-                        management.HospitalName = reader["HospitalName"].ToString();
+                        management.HospitalNameForDoctor = reader["HospitalName"].ToString();
                         management.DoctorType = reader["DoctorType"].ToString();
                         management.Status = Convert.ToBoolean(reader["blnActive"]);
                         management.HospitalId = (int)reader["HospitalId"];
