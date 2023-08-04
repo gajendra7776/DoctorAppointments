@@ -127,6 +127,12 @@ namespace Demo.Controllers
                 }
                 else if (user.RoleID == 2 && chkDoc != null)
                 {
+                    var dId = HttpContext.Session.GetInt32("DoctorId");
+                    if(dId != null)
+                    {
+                        TempData["Invalid"] = "Other Doctor is Logged In in Other Tab";
+                        return RedirectToAction("Login");
+                    }
                     var hospital = _db.Hospital.Where(x => x.HospitalId == chkDoc.HospitalId && x.blnActive==true).FirstOrDefault();
                     var management = _db.Management_Admin.Where(x => x.HospitalId == chkDoc.HospitalId && x.blnActive == true).FirstOrDefault();
 
@@ -216,6 +222,7 @@ namespace Demo.Controllers
             HttpContext.Session.Remove("DoctorName");
             HttpContext.Session.Remove("UserId");
             HttpContext.Session.Remove("HospitalFlag3");
+            HttpContext.Session.Remove("FlagforMSA");
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Login", new { area = "Login" });
         }

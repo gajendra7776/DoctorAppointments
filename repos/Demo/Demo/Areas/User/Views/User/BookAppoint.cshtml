@@ -2,20 +2,23 @@
 @using NonFactors.Mvc.Grid
 @using System.Web.Mvc
 @model IEnumerable<PatientAppoinmentModel>
+@{
+    DateTime today = DateTime.Today;
+    var todayAppointments = @Model.Where(x => x.AppointmentDate.Date == today && (x.AppointmentStatus == "Approve" || x.AppointmentStatus == "Completed")).ToList();
+}
 
 <title>Book Appointment</title>
 <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
-<!-- MDB -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
-<!-- MDB -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <style>
     .tick-mark {
         cursor: pointer;
     }
 </style>
 
- @if (User.IsInRole("User") || User.IsInRole("Doctor"))
+@if (User.IsInRole("User") || User.IsInRole("Doctor"))
 {
     <partial name="_Header" />
 }
@@ -39,19 +42,83 @@
 }
 <div class="container mt-5">
     <div>
-        @if (Model != null && Model.Any())
+        @if (todayAppointments.Count > 0)
+        {
+            var Name = Model.FirstOrDefault()?.UserName;
+            <h4>Today's Total Appointments of Mr.@Name : @todayAppointments.Count</h4>
+        }
+        else if(Model != null && Model.Any())
         {
             var userName = Model.FirstOrDefault()?.UserName;
             <h4>Total Appoinments of Mr.@userName</h4>
         }
+    </div>
+    
+    @if (todayAppointments.Count > 4)
+    {
+        <div id="appointmentCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                @for (int i = 0; i < todayAppointments.Count; i += 4)
+                {
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <div class="row">
+                            @for (int j = i; j < Math.Min(i + 4, todayAppointments.Count); j++)
+                            {
+                                var appointment = todayAppointments[j];
+                                <div class="col-md-3">
+                                    <div class="card @(appointment.AppointmentStatus == "Completed" ? "bg-success" : "bg-primary") text-white">
+                                        <div class="card-body">
+                                            <p class="card-title">Doctor : @appointment.DoctorName</p>
+                                            <p class="card-text">Hospital :@appointment.HospitalName</p>
+                                            <p class="card-text">Your appointment is booked on @appointment.AppointmentDate & @appointment.AppointmentTime.
+                                            <p class="card-text">Status : @appointment.AppointmentStatus</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
- 
+
+    }
+    else
+    {
+        if(todayAppointments != null)
+        {
+            <div class="row mt-3">
+            @foreach (var appointment in todayAppointments)
+            {
+                <div class="col-md-3">
+                    <div class="card @(appointment.AppointmentStatus == "Completed" ? "bg-secondary" : "bg-primary") text-white">
+                        <div class="card-body">
+                            <p class="card-text"><strong>Your appointment is booked on @appointment.AppointmentDate.Date.ToString("dd-MM-yyyy") & @appointment.AppointmentTime.</strong></p>
+                             <p class="card-text">Hospital :@appointment.HospitalName</p>
+                            <p class="card-title">Doctor : @appointment.DoctorName</p>
+                                @if(@appointment.AppointmentStatus == "Completed")
+                                {
+                                   <span>Status :<span class="card-text text-black"> <strong>@appointment.AppointmentStatus</strong></span></span>
+                                }
+                                else
+                                {
+                                    <span>Status :<span class="card-text text-red"> <strong>@appointment.AppointmentStatus</strong></span></span>
+                                }
+                                
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        }
+    }
+
     <div>
         <a asp-area="Management" asp-action="AddEditAppointment" asp-controller="Management" class="btn btn-success mt-3">Create Appointment</a>
     </div>
-     @*28 June - User Appoinments *@
+    @*28 June - User Appoinments *@
     <div class="mt-5 mb-5" id="stt">
-        
+
         @(Html
         .Grid(Model)
         .Build(columns =>
@@ -62,19 +129,19 @@
         columns.Add(model => model.AppointmentDate).Titled("Date");
         columns.Add(model => model.AppointmentTime).Titled("Time");
         columns.Add(model => model.AppointmentStatus).Titled("Status");
-        
+
 
         columns.Add().Titled("Edit").RenderedAs((model, row) =>
         {
-            if(model.HospitalStatus == false || model.ManagementAdminStatus == false){
-                 return Html.Raw($"<span class='btn btn-primary' onclick='NotAccess()'>Edit</span>");
-            }
-            else{
-                 return Html.ActionLink("Edit", "AddEditAppointment", new { area = "Management", controller="Management", appId = model.AppointmentID }, new { @class = "btn btn-primary" });
-                 
-            }
-           });
-       
+        if(model.HospitalStatus == false || model.ManagementAdminStatus == false){
+        return Html.Raw($"<span class='btn btn-primary' onclick='NotAccess()'>Edit</span>");
+        }
+        else{
+        return Html.ActionLink("Edit", "AddEditAppointment", new { area = "Management", controller="Management", appId = model.AppointmentID }, new { @class = "btn btn-primary" });
+
+        }
+        });
+
         columns.Add().Titled("Delete").RenderedAs((model, row) =>
         {
         return Html.ActionLink("Delete", "DeleteAppoinment", new { area = "User", id = model.AppointmentID,userId = @ViewBag.userId }, new { @class = "btn btn-danger" });
@@ -106,13 +173,22 @@
     });
 </script>
 <script>
-   
-   function NotAccess(){
-            swal.fire({
-      title: "Hospital InActive!",
-      text: "As a User, you don't have the required privileges to perform any operations.!",
-      icon: "error",
-      button: "OK",
-    });
-        }
+
+    function NotAccess(){
+             swal.fire({
+       title: "Hospital InActive!",
+       text: "As a User, you don't have the required privileges to perform any operations.!",
+       icon: "error",
+       button: "OK",
+     });
+         }
 </script>
+@if (todayAppointments.Count > 4)
+{
+    <script>
+        
+        $(document).ready(function () {
+            $('#appointmentCarousel').carousel();
+        });
+    </script>
+}

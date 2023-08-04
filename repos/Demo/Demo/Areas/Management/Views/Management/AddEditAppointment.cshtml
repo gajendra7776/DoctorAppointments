@@ -6,6 +6,7 @@
     var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
     var hospitalName = @Accessor.HttpContext.Session.GetString("HospitalName");
     var flag = @Accessor.HttpContext.Session.GetInt32("FlagforMSA");
+    @Accessor.HttpContext.Session.Remove("FlagforMSA");
 }
 <title>Add & Edit Appointment</title>
 <!-- MDB -->
@@ -31,6 +32,15 @@
             toastr.success('@TempData["success"]');
         </script>
     }
+    @if (TempData["error"] != null)
+    {
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.error('@TempData["error"]');
+        </script>
+    }
     @{
             if (Model == null)
             {
@@ -52,7 +62,7 @@
 
         <form asp-action="AddEditAppointment" asp-area="Management" asp-controller="Management" method="post">
             <input type="hidden" asp-for="AppointmentID" name="AppointmentID" class="form-control">
-            @if(User.IsInRole("Doctor") || flag != null)
+            @if(User.IsInRole("Doctor"))
             {
                 <partial name = "_DoctorAddAppointment" />
             }

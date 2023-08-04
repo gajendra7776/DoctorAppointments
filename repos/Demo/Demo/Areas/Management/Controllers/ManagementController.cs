@@ -84,6 +84,7 @@ namespace Demo.Controllers
             if (User.IsInRole("SuperAdmin") || User.IsInRole("ManagementAdmin"))
             {
                 HttpContext.Session.SetInt32("DoctorIdForSAandAdmin", doctorId);
+                HttpContext.Session.SetInt32("Did", doctorId);
                 HttpContext.Session.SetInt32("FlagforMSA", doctorId);
             }
             ViewBag.Did = doctorId;
@@ -147,14 +148,12 @@ namespace Demo.Controllers
             return Json(new { success = true, st, id });
         }
 
-
-
         public IActionResult AddEditAppointment(int appId = 0)
         {
             if (appId <= 0)
             {
-                var chkHMAccess = HttpContext.Session.GetInt32("DoctorIdForSAandAdmin");
-                if (User.IsInRole("Doctor") || (User.IsInRole("ManagementAdmin") || User.IsInRole("ManagementAdmin") && chkHMAccess != null))
+                var chkHMAccess = HttpContext.Session.GetInt32("Did");
+                if (User.IsInRole("Doctor") || ((User.IsInRole("ManagementAdmin") || User.IsInRole("ManagementAdmin")) && chkHMAccess != null))
                 {
 
                     PatientAppoinmentModel datas = new PatientAppoinmentModel();
@@ -168,8 +167,8 @@ namespace Demo.Controllers
                     }
                     return View(datas);
                 }
-                
-                
+                HttpContext.Session.Remove("Did");
+
                 return View();
             }
             PatientAppoinmentModel data = new PatientAppoinmentModel();
@@ -201,14 +200,18 @@ namespace Demo.Controllers
                 errorMessage = "Slot is not Available, Select Different Slot";
             }
 
-            TempData["success"] = (result == 1) ? successMessage : errorMessage;
+            
             if (result == 1)
             {
                 TempData["success"] = successMessage;
             }
-            else
+            else if(result == 0)
             {
                 TempData["error"] = errorMessage;
+            }
+            else
+            {
+                TempData["error"] = "Patient Already Booked This Slot for today Select Other Option";
             }
 
             if (result == 1)

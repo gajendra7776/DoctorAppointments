@@ -69,6 +69,7 @@ namespace Demo.Controllers
                 List<PatientAppoinmentModel> model = new List<PatientAppoinmentModel>();
                 model = _common.GetUserAppoinmentData(userId);
                 ViewBag.UserId = userId;
+
                 return View(model);
             }
             catch (Exception ex)

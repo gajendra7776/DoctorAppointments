@@ -351,9 +351,13 @@ namespace Demo.DataAccess.Common
                     {
                         return 1;
                     }
-                    else
+                    else if (result.Value.ToString() == "error")
                     {
                         return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
