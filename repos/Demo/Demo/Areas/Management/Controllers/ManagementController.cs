@@ -76,6 +76,7 @@ namespace Demo.Controllers
         [HttpGet]
         public IActionResult AppoinmentsByDoctor(int doctorId, int? page, int hospitalId = 0)
         {
+            HttpContext.Session.Remove("flag");
             if (doctorId <= 0)
             {
                 return View();
@@ -90,6 +91,8 @@ namespace Demo.Controllers
             ViewBag.Did = doctorId;
             ViewBag.HospitalId = hospitalId;
             List<PatientAppoinmentModel> appointments = _commonmethods.GetAppointmentsByDoctor(doctorId);
+            
+            
             if (appointments.Count <= 0)
             {
                 if (User.IsInRole("SuperAdmin"))
@@ -111,26 +114,39 @@ namespace Demo.Controllers
             DateTime today = DateTime.Today;
             int hour = DateTime.Now.Hour;
 
-            int data = _db.Patient_Appoinments.Where(x => x.AppointmentDate == today && x.DoctorID == doctorId && x.AppointmentStatus == "Approve").Count();
+            int data = _db.Patient_Appoinments.Where(x => x.AppointmentDate == today && x.DoctorID == doctorId && (x.AppointmentStatus == "Approve" || x.AppointmentStatus == "Completed") && x.DeletedAt == null).Count();
+            
 
             List<PatientAppoinmentModel> apps = _commonmethods.GetData(doctorId, today);
+            var user = new List<UserHelper>();
             if (apps != null)
             {
                 var matchingAppointments = apps.Where(app =>
-                app.AppointmentStatus == "Approve" &&
-                ((hour >= 7 && hour < 9 && app.AppointmentTime == "9 AM") ||
-                 (hour >= 9 && hour < 11 && app.AppointmentTime == "11 AM") ||
-                 (hour >= 11 && hour < 14 && app.AppointmentTime == "2 PM") ||
+                app.AppointmentStatus == "Approve" || app.AppointmentStatus == "Completed"  &&
+                ((hour >= 7 && hour < 11 && app.AppointmentTime == "9 AM") ||
+                 (hour >= 9 && hour < 14 && app.AppointmentTime == "11 AM") ||
+                 (hour >= 11 && hour < 17 && app.AppointmentTime == "2 PM") ||
                  (hour >= 14 && hour < 19 && app.AppointmentTime == "5 PM"))).ToList();
 
-
-                if (matchingAppointments.Count > 0)
+                foreach(var appointment in apps)
                 {
-                    var selectedAppointment = matchingAppointments.First();
-                    ViewBag.time = selectedAppointment.AppointmentTime;
-                    ViewBag.id = selectedAppointment.AppointmentID;
-                    ViewBag.name = selectedAppointment.UserName;
+                    var uh = new UserHelper();
+                    uh.AppID = appointment.AppointmentID;
+                    uh.Name = appointment.UserName;
+                    uh.AppointmentTime = appointment.AppointmentTime;
+                    uh.UserId = appointment.PatientId;
+                    uh.Status = appointment.AppointmentStatus;
+                    user.Add(uh);
                 }
+                ViewBag.UserList = user;
+                //if (matchingAppointments.Count > 0)
+                //{
+                //    var selectedAppointment = matchingAppointments.First();
+                //    ViewBag.time = selectedAppointment.AppointmentTime;
+                //    ViewBag.id = selectedAppointment.AppointmentID;
+                //    ViewBag.name = selectedAppointment.UserName;
+                //    ViewBag.userId = selectedAppointment.PatientId;
+                //}
             }
             HttpContext.Session.SetInt32("total", data);
             return View(pagedAppointments);
@@ -150,9 +166,15 @@ namespace Demo.Controllers
 
         public IActionResult AddEditAppointment(int appId = 0)
         {
+            int chkTodayAppointments = _db.Patient_Appoinments.Where(x => x.AppointmentDate == DateTime.Today && (x.AppoinmentTime == "9 AM" || x.AppoinmentTime == "11 AM" || x.AppoinmentTime == "2 PM" || x.AppoinmentTime == "5 PM") && (x.AppointmentStatus == "Approve" || x.AppointmentStatus == "Pending") && x.DeletedAt == null).Count();
+            if(chkTodayAppointments == 4)
+            {
+                HttpContext.Session.SetInt32("appFlag", 1);
+            }
             if (appId <= 0)
             {
                 var chkHMAccess = HttpContext.Session.GetInt32("Did");
+               
                 if (User.IsInRole("Doctor") || ((User.IsInRole("ManagementAdmin") || User.IsInRole("ManagementAdmin")) && chkHMAccess != null))
                 {
 
@@ -173,6 +195,7 @@ namespace Demo.Controllers
             }
             PatientAppoinmentModel data = new PatientAppoinmentModel();
             data = _common.GetAppoinmentData(appId);
+            
             return View(data);
         }
         [HttpPost]
@@ -188,6 +211,7 @@ namespace Demo.Controllers
 
             if (model != null && model.AppointmentID != 0)
             {
+                
                 int id = model.AppointmentID;
                 result = _common.EditAppoinment(model, id);
                 successMessage = "Appointment Edited Successfully";

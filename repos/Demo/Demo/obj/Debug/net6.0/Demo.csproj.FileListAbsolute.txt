@@ -377,6 +377,14 @@ C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\obj\Debug\ne
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\obj\Debug\net6.0\ref\Demo.dll
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\obj\Debug\net6.0\Demo.pdb
 C:\Users\pce65\Desktop\Tatvasoft\DoctorAppointments\repos\Demo\Demo\obj\Debug\net6.0\Demo.genruntimeconfig.cache
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\NuGet.Protocol.dll
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\System.Runtime.Caching.dll
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\ar\Humanizer.resources.dll
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.Features.resources.dll
+D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\appsettings.Development.json
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\appsettings.json
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\libman.json
@@ -457,7 +465,6 @@ D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Microsoft.Web.I
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Mono.TextTemplating.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Nancy.dll
-D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Newtonsoft.Json.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Mvc.Grid.Core.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\NuGet.Common.dll
@@ -467,7 +474,6 @@ D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\NuGet.Framework
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\NuGet.LibraryModel.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\NuGet.Packaging.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\NuGet.ProjectModel.dll
-D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\NuGet.Protocol.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\NuGet.Versioning.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\PagedList.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
@@ -484,14 +490,11 @@ D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\System.Drawing.
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\System.Memory.Data.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
-D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\System.Runtime.Caching.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\System.Security.Permissions.dll
-D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\System.Text.Json.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\System.Windows.Extensions.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\af\Humanizer.resources.dll
-D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\ar\Humanizer.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\az\Humanizer.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\bg\Humanizer.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\bn-BD\Humanizer.resources.dll
@@ -569,7 +572,6 @@ D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\de\Microsoft.Co
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
-D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Features.resources.dll
@@ -597,7 +599,6 @@ D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\fr\Microsoft.Co
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.Features.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.Features.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.Features.resources.dll
-D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.Features.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.Features.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.Features.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.Features.resources.dll
@@ -629,7 +630,6 @@ D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\ru\Microsoft.Co
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
 D:\Tatvasoft\DoctorAppointments\repos\Demo\Demo\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll

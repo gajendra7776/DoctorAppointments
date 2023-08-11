@@ -1,0 +1,61 @@
+﻿@using Demo.Models.DummyModels
+@using NonFactors.Mvc.Grid
+@using System.Web.Mvc
+@model IEnumerable<PatientAppoinmentModel>
+
+<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<div class="container">
+
+    <partial name="_UserHeader" />
+    
+    <div class="container mt-5">
+        
+        <h3>Appointment History</h3>
+       
+        <div class="mt-4">
+        @(Html
+        .Grid(Model)
+        .Build(columns =>
+        {
+
+        columns.Add(model => model.DoctorName).Titled("DoctorName");
+        columns.Add(model => model.AppointmentDate.ToString("dd-MM-yyyy")+" : " + model.AppointmentTime).Titled(" Appointment Date & Time");
+
+
+        columns.Add().Titled("Show Details").RenderedAs((model, row) =>
+        {
+        return Html.ActionLink("Show Details", "Prescription", new { area = "User", controller="User", appId = model.AppointmentID }, new { @class = "btn btn-primary" });
+        });
+
+       
+        }).Using(GridFilterMode.Header)
+        .Empty("No data found")
+        .Filterable()
+        .Pageable(pager =>
+        {
+        pager.PageSizes = new Dictionary<Int32, String> { { 0, "All" }, { 2, "2" }, { 4, "4" },{5, "5" }};
+        pager.ShowPageSizes = true;
+        pager.PagesToDisplay = 3;
+        pager.CurrentPage = 1;
+        pager.RowsPerPage = 5;
+        })
+        .Sortable()
+        )
+         </div>
+</div>
+
+<script src="~/js/mvc-grid/mvc-grid.js"></script>
+
+<script>
+        document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+        document.getElementById("CheckAll").addEventListener("change", function () {
+        document.querySelectorAll("[id^='Check_'").forEach(checkbox => checkbox.checked = this.checked);
+    });
+</script>
+
+    </div>
+
+</div>

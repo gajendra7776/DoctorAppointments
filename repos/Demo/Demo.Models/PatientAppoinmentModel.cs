@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Demo.Models.DummyModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -41,8 +42,9 @@ namespace Demo.Models
         public DateTime Approved_Date { get; set; }
         public bool HospitalStatus { get; set; }
         public bool ManagementAdminStatus { get; set; }
-
-        
+        public List<Documents>? Documents { get; set; }
+        public List<UserHelper>? UserHelper { get; set; }
+       
 
     }
 }

@@ -77,6 +77,43 @@ namespace Demo.Controllers
                 return View(ex.Message);
             }
         }
+        public IActionResult AppointmentHistory(int userId)
+        {
+            List<PatientAppoinmentModel> model= GetCompletedAppointments(userId);
+            return View(model);
+        }
+
+        public IActionResult Prescription(int appId)
+        {
+           
+                if (appId <= 0)
+                {
+                    return View();
+                }
+               
+                PatientDetails appointmentById = new PatientDetails();
+                appointmentById = _commonmethods.GetPatientDetailsByAppointmentId(appId);
+               
+                var docs = _db.Documents.Where(x => x.AppointmentId == appId && x.DeletedAt == null).ToList();
+                //var fileNames = Directory.GetFiles(wwwrootDirectory, "*").Select(Path.GetFileName).ToList();
+                var doc = new List<Documents>();
+                foreach (var d in docs)
+                {
+                    var doctype = new Documents();
+                    doctype.Document_name = d.Document_name;
+                    string extension = Path.GetExtension(d.Document_name);
+                    doctype.Document_type = extension;
+                    doctype.Document_path = d.Document_path;
+                    doctype.AppointmentId = d.AppointmentId;
+
+                    doc.Add(doctype);
+                }
+                appointmentById.Documents = doc;
+
+                return View(appointmentById);
+          
+        }
+
         // 29 June - Delete Appoinment
         public IActionResult DeleteAppoinment(int id, int userId)
         {
@@ -96,16 +133,16 @@ namespace Demo.Controllers
             List<Hospital> hospitals = new List<Hospital>();
             if (User.IsInRole("User"))
             {
-                
+
                 var hospital = _db.Hospital.Where(x => x.blnActive == true && _db.Management_Admin.Any(m => m.HospitalId == x.HospitalId && m.blnActive == true)).ToList();
-                
+
                 return Json(hospital);
             }
             hospitals = _common.GetHospitalList();
             return Json(hospitals);
         }
 
-       
+
         public JsonResult GetFilterHospitals()
         {
             List<Hospital> hospitals = new List<Hospital>();
@@ -189,7 +226,7 @@ namespace Demo.Controllers
                         {
                             userData.ManagementId = managementData.ManagementId;
                         }
-                        if(hospitalData != null)
+                        if (hospitalData != null)
                         {
                             userData.HospitalId = hospitalData.HospitalId;
                             userData.HospitalName = hospitalData.HospitalName;
@@ -207,7 +244,7 @@ namespace Demo.Controllers
                         var hospitalData = _db.Hospital.Where(x => x.HospitalId == managementData.HospitalId).FirstOrDefault();
                         userData.HospitalId = managementData.HospitalId;
                         userData.ManagementId = managementData.ManagementId;
-                        if(hospitalData != null) 
+                        if (hospitalData != null)
                         {
                             userData.HospitalName = hospitalData.HospitalName;
                             userData.HospitalAddress = hospitalData.Address;
@@ -216,8 +253,6 @@ namespace Demo.Controllers
                         List<DoctorDetails> doctorDetails = _commonmethods.GetDoctorsByManagement(managementData.HospitalId);
                         userData.DoctorDetails = doctorDetails;
                     }
-                    
-
                 }
                 else if (userData.RoleID == 4)
                 {
@@ -328,17 +363,57 @@ namespace Demo.Controllers
                     command.ExecuteNonQuery();
                     if (result.Value.ToString() == "success")
                     {
-                        
+
                         return 1;
 
                     }
                     else
                     {
-                        
+
                         return 0;
                     }
                 }
             }
+        }
+        public List<PatientAppoinmentModel> GetCompletedAppointments(int userId)
+        {
+            List<PatientAppoinmentModel> model = new List<PatientAppoinmentModel>();
+
+            using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("Appointments_ByUserANDCompleted", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            PatientAppoinmentModel appoinments = new PatientAppoinmentModel
+                            {
+                                AppointmentID = (int)reader["AppointmentID"],
+                                HospitalID = (int)reader["HospitalID"],
+                                PatientId = (int)reader["PatientId"],
+                                DoctorName = reader["DoctorName"].ToString(),
+                                AppointmentStatus = reader["AppointmentStatus"].ToString(),
+                                HospitalName = reader["HospitalName"].ToString(),
+                                DoctorType = reader["DoctorType"].ToString(),
+                                AppointmentDate = (DateTime)reader["AppointmentDate"],
+                                AppointmentTime = reader["AppoinmentTime"].ToString(),
+                            };
+
+                            model.Add(appoinments);
+                        }
+
+                        reader.Close();
+                    }
+                }
+
+            }
+
+            return model;
         }
 
     }

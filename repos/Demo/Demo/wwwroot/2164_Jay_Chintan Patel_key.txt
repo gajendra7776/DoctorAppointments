@@ -1,0 +1,188 @@
+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
+
+1. Treated Disable after complete
+2. Ongoing gayab 
+
+=> I opened Multiple Tabs If I Logout From any Tabs , Will This Should Effect any ohter Tabs
+
+
+
+
+            @if (User.IsInRole("ManagementAdmin"))
+            {
+                if(Model != null)
+                {
+                    <input asp-for="HospitalID" type="hidden" />
+                }
+                else
+                {
+                    <input asp-for="HospitalID" value="@hospitalId"  type="hidden" />
+                }
+                <label asp-for="HospitalID" for="hospitalSelect">Hospital:</label>
+                <select asp-for="HospitalID" id="hospitalSelect" name="HospitalId" class="form-control" disabled>
+                    <option value="@hospitalId">Select Hospital</option>
+                </select>
+                <span asp-validation-for="HospitalID" class="text-danger"></span>
+            }
+            
+            else
+            {
+                <div class="form-group">
+                    <label asp-for="HospitalID" for="hospitalSelect">Hospital:</label>
+                    @if (Model != null)
+                    {
+                        <select asp-for="HospitalID" id="hospitalSelect" name="HospitalID" class="form-control">
+                            <option value="@Model.HospitalID">Select Hospital</option>
+                        </select>
+                    }
+                    else
+                    {
+                        <select asp-for="HospitalID" id="hospitalSelect" name="HospitalID" class="form-control">
+                            <option value="">Select Hospital</option>
+                        </select>
+                    }
+                    @*<input type="hidden" id="hospitalID" asp-for="HospitalID" class="form-control ">
+
+                        <select asp-for="HospitalID" id="hospitalSelect" name="HospitalID" class="form-control">
+                        <option value="">Select Hospital</option>
+                        </select>*@
+                    <span asp-validation-for="HospitalID" class="text-danger"></span>
+                </div>
+            }
+            <div class="form-group">
+                <label asp-for="DoctorTypeId" for="doctorTypeSelect">Doctor Type:</label>
+                @if (Model != null)
+                {
+
+                    <select asp-for="DoctorTypeId" id="doctorTypeSelect" name="DoctorTypeId" class="form-control">
+                        <option value="@Model.DoctorTypeId">Select DoctorType</option>
+                    </select>
+
+                }
+                else
+                {
+                    <select asp-for="DoctorTypeId" id="doctorTypeSelect" name="DoctorTypeId" class="form-control">
+                        <option value="">Select DoctorType</option>
+                    </select>
+                }
+                <span asp-validation-for="DoctorTypeId" class="text-danger"></span>
+                @*<select asp-for="DoctorTypeId" id="doctorTypeSelect" name="DoctorTypeId" class="form-control">
+                    <option value="doctorTypeId">Select Doctor Type</option>
+                    </select>*@
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DoctorID" for="doctorSelect">Doctor:</label>
+                @if (Model != null)
+                {
+                    <select asp-for="DoctorID" id="doctorSelect" name="DoctorID" class="form-control">
+                        <option value="@Model.DoctorID">Select DoctorType</option>
+                    </select>
+                }
+                else
+                {
+                    <select asp-for="DoctorID" id="doctorSelect" name="DoctorID" class="form-control">
+                        <option value="">Select DoctorType</option>
+                    </select>
+                }
+                <span asp-validation-for="DoctorID" class="text-danger"></span>
+            </div>
+
+
+
+
+
+
+
+
+
+
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using System.Threading.Tasks;
+
+public class DoctorController : Controller
+{
+    private readonly IWebHostEnvironment _hostEnvironment;
+    private readonly YourDbContext _db; // Replace with your DbContext type
+
+    public DoctorController(IWebHostEnvironment hostEnvironment, YourDbContext db)
+    {
+        _hostEnvironment = hostEnvironment;
+        _db = db;
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UploadDocuments(IEnumerable<IFormFile> files, int userId)
+    {
+        foreach (var file in files)
+        {
+            if (file != null && file.Length > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var uploads = Path.Combine(_hostEnvironment.WebRootPath, "documents", fileName);
+
+                using (var fileStream = new FileStream(uploads, FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+
+                Documents docModel = new Documents()
+                {
+                    UserId = userId,
+                    Document_name = fileName,
+                    Document_path = @"\documents\",
+                };
+
+                switch (Path.GetExtension(fileName))
+                {
+                    case ".doc":
+                    case ".docx":
+                        docModel.Document_type = "docx";
+                        break;
+                    case ".xls":
+                    case ".xlsx":
+                        docModel.Document_type = "xlsx";
+                        break;
+                    case ".pdf":
+                        docModel.Document_type = "pdf";
+                        break;
+                    default:
+                        break;
+                }
+
+                _db.Documents.Add(docModel);
+                await _db.SaveChangesAsync();
+            }
+        }
+
+        return Content("Files uploaded successfully!");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

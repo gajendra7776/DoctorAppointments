@@ -110,8 +110,9 @@ namespace Demo.Controllers
                     List<Claim> claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.Role, "User")
+                    new Claim(ClaimTypes.Role, "User" ),
                 };
+                   
                     ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     AuthenticationProperties authenticationProperties = new AuthenticationProperties()
                     {
@@ -120,6 +121,7 @@ namespace Demo.Controllers
                     };
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity), authenticationProperties);
+
                     HttpContext.Session.SetInt32("UserId", user.UserId);
                     HttpContext.Session.SetString("UserName", user.UserName);
                     TempData["LoginSuccess"] = "Login Successful";
@@ -145,6 +147,7 @@ namespace Demo.Controllers
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.Role, "Doctor")
                 };
+                    
                     ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     AuthenticationProperties authenticationProperties = new AuthenticationProperties()
                     {
@@ -223,6 +226,8 @@ namespace Demo.Controllers
             HttpContext.Session.Remove("UserId");
             HttpContext.Session.Remove("HospitalFlag3");
             HttpContext.Session.Remove("FlagforMSA");
+            HttpContext.Session.Remove("flag");
+            HttpContext.Session.Remove("appFlag");
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Login", new { area = "Login" });
         }

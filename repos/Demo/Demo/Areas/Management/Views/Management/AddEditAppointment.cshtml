@@ -6,7 +6,20 @@
     var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
     var hospitalName = @Accessor.HttpContext.Session.GetString("HospitalName");
     var flag = @Accessor.HttpContext.Session.GetInt32("FlagforMSA");
+    var appFlag = @Accessor.HttpContext.Session.GetInt32("appFlag");
     @Accessor.HttpContext.Session.Remove("FlagforMSA");
+    int chkapp = 0;
+    if (appFlag != null)
+    {
+         chkapp = (int)appFlag;
+    }
+     string minDate = chkapp == 1 ? DateTime.Now.AddDays(1).ToString("yyyy-MM-dd") : DateTime.Now.ToString("yyyy-MM-dd");
+    DateTime dateFromDatabase = DateTime.Today;
+    if (Model != null)
+    {
+        dateFromDatabase = @Model.AppointmentDate;
+    }
+    string formattedDateFromDatabase = dateFromDatabase.ToString("yyyy-MM-dd");
 }
 <title>Add & Edit Appointment</title>
 <!-- MDB -->
@@ -19,9 +32,13 @@
     {
         <partial name="PartialsViews/_HeaderForManagAdmin" />
     }
-    else if (User.IsInRole("User") || User.IsInRole("Doctor"))
+    else if (User.IsInRole("Doctor"))
     {
-                <partial name="_Header" />
+        <partial name="_Header" />
+    }
+    else if (User.IsInRole("User"))
+    {
+        <partial name="_UserHeader" />
     }
     @if (TempData["success"] != null)
     {
@@ -42,115 +59,109 @@
         </script>
     }
     @{
-            if (Model == null)
+        if (Model == null)
+        {
+            <h3>Create New Appointment</h3>
+        }
+        else
+        {
+            if (@Model.AppointmentID == 0)
             {
                 <h3>Create New Appointment</h3>
             }
             else
             {
-                if (@Model.AppointmentID == 0)
-                {
-                    <h3>Create New Appointment</h3>
-                }
-                else
-                {
-                    <h3>Edit Appointment</h3>
-                }
+                <h3>Edit Appointment</h3>
             }
         }
+    }
     <div class="container mt-5">
 
         <form asp-action="AddEditAppointment" asp-area="Management" asp-controller="Management" method="post">
             <input type="hidden" asp-for="AppointmentID" name="AppointmentID" class="form-control">
-            @if(User.IsInRole("Doctor"))
+            @if (User.IsInRole("Doctor"))
             {
-                <partial name = "_DoctorAddAppointment" />
+                <partial name="_DoctorAddAppointment" />
             }
             else
             {
                 @if (User.IsInRole("ManagementAdmin"))
-            {
-                if(Model != null)
                 {
-                    <input asp-for="HospitalID" type="hidden" />
+                    if (Model != null)
+                    {
+                        <input asp-for="HospitalID" type="hidden" />
+                    }
+                    else
+                    {
+                        <input asp-for="HospitalID" value="@hospitalId" type="hidden" />
+                    }
+                    <label asp-for="HospitalID" for="hospitalSelect">Hospital:</label>
+                    <select asp-for="HospitalID" id="hospitalSelect" name="HospitalId" class="form-control" disabled>
+                        <option value="@hospitalId">Select Hospital</option>
+                    </select>
+                    <span asp-validation-for="HospitalID" class="text-danger"></span>
                 }
+
                 else
                 {
-                    <input asp-for="HospitalID" value="@hospitalId"  type="hidden" />
+                    <div class="form-group">
+                        <label asp-for="HospitalID" for="hospitalSelect">Hospital:</label>
+                        @if (Model != null)
+                        {
+                            <select asp-for="HospitalID" id="hospitalSelect" name="HospitalID" class="form-control">
+                                <option value="@Model.HospitalID">Select Hospital</option>
+                            </select>
+                        }
+                        else
+                        {
+                            <select asp-for="HospitalID" id="hospitalSelect" name="HospitalID" class="form-control">
+                                <option value="">Select Hospital</option>
+                            </select>
+                        }
+
+                        <span asp-validation-for="HospitalID" class="text-danger"></span>
+                    </div>
                 }
-                <label asp-for="HospitalID" for="hospitalSelect">Hospital:</label>
-                <select asp-for="HospitalID" id="hospitalSelect" name="HospitalId" class="form-control" disabled>
-                    <option value="@hospitalId">Select Hospital</option>
-                </select>
-                <span asp-validation-for="HospitalID" class="text-danger"></span>
-            }
-            
-            else
-            {
                 <div class="form-group">
-                    <label asp-for="HospitalID" for="hospitalSelect">Hospital:</label>
+                    <label asp-for="DoctorTypeId" for="doctorTypeSelect">Doctor Type:</label>
                     @if (Model != null)
                     {
-                        <select asp-for="HospitalID" id="hospitalSelect" name="HospitalID" class="form-control">
-                            <option value="@Model.HospitalID">Select Hospital</option>
+
+                        <select asp-for="DoctorTypeId" id="doctorTypeSelect" name="DoctorTypeId" class="form-control">
+                            <option value="@Model.DoctorTypeId">Select DoctorType</option>
+                        </select>
+
+                    }
+                    else
+                    {
+                        <select asp-for="DoctorTypeId" id="doctorTypeSelect" name="DoctorTypeId" class="form-control">
+                            <option value="">Select DoctorType</option>
+                        </select>
+                    }
+                    <span asp-validation-for="DoctorTypeId" class="text-danger"></span>
+
+
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DoctorID" for="doctorSelect">Doctor:</label>
+                    @if (Model != null)
+                    {
+                        <select asp-for="DoctorID" id="doctorSelect" name="DoctorID" class="form-control">
+                            <option value="@Model.DoctorID">Select DoctorType</option>
                         </select>
                     }
                     else
                     {
-                        <select asp-for="HospitalID" id="hospitalSelect" name="HospitalID" class="form-control">
-                            <option value="">Select Hospital</option>
+                        <select asp-for="DoctorID" id="doctorSelect" name="DoctorID" class="form-control">
+                            <option value="">Select DoctorType</option>
                         </select>
                     }
-                    @*<input type="hidden" id="hospitalID" asp-for="HospitalID" class="form-control ">
-
-                        <select asp-for="HospitalID" id="hospitalSelect" name="HospitalID" class="form-control">
-                        <option value="">Select Hospital</option>
-                        </select>*@
-                    <span asp-validation-for="HospitalID" class="text-danger"></span>
+                    <span asp-validation-for="DoctorID" class="text-danger"></span>
                 </div>
-            }
-            <div class="form-group">
-                <label asp-for="DoctorTypeId" for="doctorTypeSelect">Doctor Type:</label>
-                @if (Model != null)
-                {
-
-                    <select asp-for="DoctorTypeId" id="doctorTypeSelect" name="DoctorTypeId" class="form-control">
-                        <option value="@Model.DoctorTypeId">Select DoctorType</option>
-                    </select>
-
-                }
-                else
-                {
-                    <select asp-for="DoctorTypeId" id="doctorTypeSelect" name="DoctorTypeId" class="form-control">
-                        <option value="">Select DoctorType</option>
-                    </select>
-                }
-                <span asp-validation-for="DoctorTypeId" class="text-danger"></span>
-                @*<select asp-for="DoctorTypeId" id="doctorTypeSelect" name="DoctorTypeId" class="form-control">
-                    <option value="doctorTypeId">Select Doctor Type</option>
-                    </select>*@
-
-            </div>
-
-            <div class="form-group">
-                <label asp-for="DoctorID" for="doctorSelect">Doctor:</label>
-                @if (Model != null)
-                {
-                    <select asp-for="DoctorID" id="doctorSelect" name="DoctorID" class="form-control">
-                        <option value="@Model.DoctorID">Select DoctorType</option>
-                    </select>
-                }
-                else
-                {
-                    <select asp-for="DoctorID" id="doctorSelect" name="DoctorID" class="form-control">
-                        <option value="">Select DoctorType</option>
-                    </select>
-                }
-                <span asp-validation-for="DoctorID" class="text-danger"></span>
-            </div>
 
             }
-            
+
 
 
             @if (!(User.IsInRole("User")))
@@ -173,16 +184,43 @@
                     <span asp-validation-for="PatientId" class="text-danger"></span>
                 </div>
             }
-            @if (User.IsInRole("User") )
+            @if (User.IsInRole("User"))
             {
                 <input type="hidden" name="PatientId" value="@userId" />
             }
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label asp-for="AppointmentDate" for="date">Date:</label>
-                    <input asp-for="AppointmentDate" type="date" name="AppointmentDate" class="form-control" id="date" autocomplete="off">
-                    <span asp-validation-for="AppointmentDate" class="text-danger"></span>
-                </div>
+
+                @if (User.IsInRole("SuperAdmin"))
+                {
+                    if (Model != null)
+                    {
+                        <div class="form-group col-md-6">
+                            <label asp-for="AppointmentDate" for="date">Date:</label>
+                            <input asp-for="AppointmentDate" type="date" name="AppointmentDate" class="form-control" autocomplete="off">
+                            <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group col-md-6">
+                            <label asp-for="AppointmentDate" for="date">Date:</label>
+                            <input asp-for="AppointmentDate" type="date" name="AppointmentDate" class="form-control" id="date" autocomplete="off"
+                           min="@minDate">
+                            <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+                        </div>
+                    }
+
+                }
+                else
+                {
+                    <div class="form-group col-md-6">
+                        <label asp-for="AppointmentDate" for="date">Date:</label>
+                        <input asp-for="AppointmentDate" type="date" name="AppointmentDate" class="form-control" id="date" autocomplete="off"
+                           min="@minDate">
+                        <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+                    </div>
+                }
+
 
                 <div class="form-group col-md-6">
                     <label asp-for="AppointmentTime" for="appointmentTime">Timezone:</label>
@@ -376,6 +414,29 @@
                 }
             }
         });
+
+     @* var dateInput = document.getElementById('date');
+
+    // Get the specific date from the Razor variable
+    var specificDateFromDatabase = '@formattedDateFromDatabase';
+
+    // Get today's date in yyyy-MM-dd format
+    var today = new Date().toISOString().split('T')[0];
+
+    // Get the flag value from Razor
+    var flag = @chkapp;
+    debugger
+    // Set the min attribute to today's date, except the specific date and today (if flag is 1)
+    if (flag == 0) {
+        debugger
+        if (dateInput.value === '') {
+            dateInput.min = today;
+        } else {
+            if (dateInput.value !== specificDateFromDatabase) {
+                dateInput.min = today;
+            }
+        }
+    }*@
 
     });
 </script>

@@ -18,10 +18,7 @@
     }
 </style>
 
-@if (User.IsInRole("User") || User.IsInRole("Doctor"))
-{
-    <partial name="_Header" />
-}
+
 @if (TempData["LoginSuccess"] != null)
 {
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
@@ -40,20 +37,25 @@
         toastr.success('@TempData["success"]');
     </script>
 }
+@if (User.IsInRole("User"))
+    {
+        <partial name="_UserHeader" />
+    }
 <div class="container mt-5">
+    
     <div>
         @if (todayAppointments.Count > 0)
         {
             var Name = Model.FirstOrDefault()?.UserName;
             <h4>Today's Total Appointments of Mr.@Name : @todayAppointments.Count</h4>
         }
-        else if(Model != null && Model.Any())
+        else if (Model != null && Model.Any())
         {
             var userName = Model.FirstOrDefault()?.UserName;
             <h4>Total Appoinments of Mr.@userName</h4>
         }
     </div>
-    
+
     @if (todayAppointments.Count > 4)
     {
         <div id="appointmentCarousel" class="carousel slide" data-ride="carousel">
@@ -85,31 +87,31 @@
     }
     else
     {
-        if(todayAppointments != null)
+        if (todayAppointments != null)
         {
             <div class="row mt-3">
-            @foreach (var appointment in todayAppointments)
-            {
-                <div class="col-md-3">
-                    <div class="card @(appointment.AppointmentStatus == "Completed" ? "bg-secondary" : "bg-primary") text-white">
-                        <div class="card-body">
-                            <p class="card-text"><strong>Your appointment is booked on @appointment.AppointmentDate.Date.ToString("dd-MM-yyyy") & @appointment.AppointmentTime.</strong></p>
-                             <p class="card-text">Hospital :@appointment.HospitalName</p>
-                            <p class="card-title">Doctor : @appointment.DoctorName</p>
-                                @if(@appointment.AppointmentStatus == "Completed")
+                @foreach (var appointment in todayAppointments)
+                {
+                    <div class="col-md-3">
+                        <div class="card @(appointment.AppointmentStatus == "Completed" ? "bg-secondary" : "bg-primary") text-white">
+                            <div class="card-body">
+                                <p class="card-text"><strong>Your appointment is booked on @appointment.AppointmentDate.Date.ToString("dd-MM-yyyy") & @appointment.AppointmentTime.</strong></p>
+                                <p class="card-text">Hospital :@appointment.HospitalName</p>
+                                <p class="card-title">Doctor : @appointment.DoctorName</p>
+                                @if (@appointment.AppointmentStatus == "Completed")
                                 {
-                                   <span>Status :<span class="card-text text-black"> <strong>@appointment.AppointmentStatus</strong></span></span>
+                                    <span>Status :<span class="card-text text-info"> <strong>@appointment.AppointmentStatus</strong></span></span>
                                 }
                                 else
                                 {
-                                    <span>Status :<span class="card-text text-red"> <strong>@appointment.AppointmentStatus</strong></span></span>
+                                    <span>Status :<span class="card-text text-dark"> <strong>@appointment.AppointmentStatus</strong></span></span>
                                 }
-                                
+
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
-        </div>
+                }
+            </div>
         }
     }
 
@@ -186,7 +188,7 @@
 @if (todayAppointments.Count > 4)
 {
     <script>
-        
+
         $(document).ready(function () {
             $('#appointmentCarousel').carousel();
         });

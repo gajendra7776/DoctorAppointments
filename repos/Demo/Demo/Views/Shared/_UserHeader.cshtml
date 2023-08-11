@@ -1,0 +1,47 @@
+﻿@inject IHttpContextAccessor Accessor
+
+@{
+     string userId = @Accessor.HttpContext.Session.GetInt32("UserId").ToString();
+}
+<style>
+    .nolink{
+        margin-right: 10px;
+        text-decoration: none;
+        color: black;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container d-flex align-items-center">
+        <!-- Left-aligned links -->
+        <ul class="navbar-nav">
+             <li class="nav-item mb-2">
+                <a class="nav-link"  asp-route-userId="@userId" asp-action="BookAppoint" asp-area="User" asp-controller="User" style="text-decoration: none; color: black;">Home</a>
+                </li>
+                <li class="nav-item mb-2">
+                <a class="nav-link" asp-route-userId = "@userId" asp-action="AppointmentHistory" asp-area="User" asp-controller="User"  style="text-decoration: none; color: black;">History Appointments</a>
+                </li>
+            <li class="nav-item">
+            </li>
+        </ul>
+
+        <!-- Right-aligned username and image -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+
+            </li>
+           
+             @if (User.IsInRole("User"))
+            {
+                string username = @Accessor.HttpContext.Session.GetString("UserName").ToString();
+                 <li class="nav-item">
+                <a  class="nolink" asp-route-userId = "@userId" asp-area="User" asp-action="UserProfile" asp-controller="User" >@username</a>
+                </li>
+            }
+            <li class="nav-item ml-2">
+                <a asp-area="Login" asp-action="Logout" asp-controller="Login" class="btn btn-primary btn-sm">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+

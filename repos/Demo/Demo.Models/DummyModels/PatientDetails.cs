@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -33,7 +34,10 @@ namespace Demo.Models.DummyModels
         public List<PatientAppoinmentModel> aps { get; set; }  
         public DateTime? DateOfBirth { get; set; }
         public int Age { get; set; }
-        
+        public List<Documents?> Documents { get; set; }
+        [Required]
+        public string? Prescription { get; set; }
+        public string? Suggestions { get; set; }
 
     }
 }

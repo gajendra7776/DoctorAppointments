@@ -167,12 +167,63 @@ namespace Demo.DataAccess.Common
                         management.UserName = reader["UserName"].ToString();
                         management.AppointmentTime = reader["AppoinmentTime"].ToString();
                         management.AppointmentStatus = reader["AppointmentStatus"].ToString();
+                        management.PatientId = (int)reader["PatientId"];
                         managementList.Add(management);
                     }
                 }
             }
             return managementList;
         }
+        public PatientDetails GetPatientDetailsByAppointmentId(int id)
+        {
+            PatientDetails appointment = new PatientDetails();
 
+            using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
+            {
+                SqlCommand command = new SqlCommand("Patient_Details", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@appId", id);
+
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        appointment.AppointmentId = Convert.ToInt32(reader["AppointmentID"]);
+                        appointment.PatientId = Convert.ToInt32(reader["PatientId"]);
+                        appointment.HospitalId = Convert.ToInt32(reader["HospitalID"]);
+                        appointment.DoctorTypeId = Convert.ToInt32(reader["DoctorTypeId"]);
+                        appointment.DoctorId = Convert.ToInt32(reader["DoctorID"]);
+                        appointment.Age = Convert.ToInt32(reader["Age"]);
+                        appointment.Description = reader["DiseaseDescriptions"].ToString();
+                        appointment.Status = reader["AppointmentStatus"].ToString();
+                        appointment.HospitalName = reader["HospitalName"].ToString();
+                        appointment.DoctorType = reader["DoctorType"].ToString();
+                        appointment.DoctorName = reader["DoctorName"].ToString();
+                        appointment.PatientName = reader["UserName"].ToString();
+                        appointment.PatientEmail = reader["Email"].ToString();
+                        appointment.DoctorEmail = reader["DEmail"].ToString();
+                        appointment.ManagementEmail = reader["MaEmail"].ToString();
+                        appointment.Approve_by = reader["ApproveBy"].ToString();
+                        appointment.Status = reader["AppointmentStatus"].ToString();
+                        appointment.Prescription = reader["Prescription"].ToString();
+                        appointment.Suggestions = reader["Suggestions"].ToString();
+                        appointment.AppointmentDate = (DateTime)reader["AppointmentDate"];
+                        appointment.DateOfBirth = (DateTime)reader["DateOfBirth"];
+                        if (reader["Approved_Date"] != DBNull.Value)
+                        {
+                            appointment.ApproveDate = (DateTime)reader["Approved_Date"];
+                        }
+                        appointment.AppointmentTime = reader["AppoinmentTime"].ToString();
+
+                    }
+                }
+            }
+
+            return appointment;
+        }
     }
 }

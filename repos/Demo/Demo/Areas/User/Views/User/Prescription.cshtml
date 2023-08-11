@@ -1,0 +1,232 @@
+﻿@using Demo.Models.DummyModels
+@using NonFactors.Mvc.Grid
+@using System.Web.Mvc
+@inject IHttpContextAccessor Accessor
+@model Demo.Models.DummyModels.PatientDetails
+
+@{
+    ViewData["Title"] = "Doctor Details";
+    var count = @Accessor.HttpContext.Session.GetInt32("total");
+    var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
+    var hospitalID = @Accessor.HttpContext.Session.GetInt32("ManagementForStatus");
+    var superadminId = @Accessor.HttpContext.Session.GetInt32("SuperAdminId");
+    var userId = @Accessor.HttpContext.Session.GetInt32("UserId");
+    var doctorIdForSAandA = @Accessor.HttpContext.Session.GetInt32("DoctorIdForSAandAdmin");
+    var chkHactive = @Accessor.HttpContext.Session.GetInt32("HospitalFlag3");
+    var ongoing = @Accessor.HttpContext.Session.GetInt32("flag");
+
+}
+
+
+
+
+<style>
+    .nobox {
+        border: none;
+        outline: none;
+    }
+
+    .border {
+        background-color: #b5b8bb;
+        font-weight: bold;
+        color: darkblue;
+        border: 1px solid black;
+    }
+
+    .tr-width {
+        width: 20%;
+    }
+
+    .tr-width-row {
+        width: 80%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+
+<div class="container">
+   
+        <partial name="_UserHeader" />
+    
+    @if (TempData["error"] != null)
+    {
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.warning('@TempData["error"]');
+        </script>
+    }
+
+
+    <div class="container mt-5">
+
+        <form asp-action="PatientDetails" asp-area="Doctor" asp-controller="Doctor" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="PatientId">
+            <input type="hidden" asp-for="HospitalId">
+            <input type="hidden" asp-for="DoctorTypeId">
+            <input type="hidden" asp-for="AppointmentId">
+            <input type="hidden" asp-for="DoctorId">
+            <table style="width:100%">
+                <tr>
+                    <th class="border" colspan="4">&nbsp; Appointment Details</th>
+                </tr>
+                <tr rowspan="0">
+                    <td class="tr-width">&nbsp;Appointment Time:</td>
+                    <td class="tr-width">
+                        &nbsp;
+                        <input class="nobox" asp-for="AppointmentTime" id="appointmentTime" name="AppointmentTime" readonly>
+                        <span asp-validation-for="AppointmentTime" class="text-danger"></span>
+                    </td>
+                    <td class="tr-width">&nbsp;Appointment Date:</td>
+                    <td class="tr-width">
+                        &nbsp<input asp-for="AppointmentDate" type="date" name="AppointmentDate" autocomplete="off" readonly>
+                        <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="tr-width">&nbsp;Status:</td>
+                    <td colspan="3">
+                        &nbsp;
+                        <input class="nobox" id="appointmentStatus" asp-for="Status" name="Status" readonly>
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Appointment Approve Date:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="ApproveDate" name="ApproveDate" readonly class="nobox"></td>
+                    <td class="tr-width">&nbsp;Appointment Approve By:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="Approve_by" name="Approve_by" readonly class="nobox"></td>
+                </tr>
+                <tr>
+                    <th class="border" colspan="4">&nbsp; Disease Details </th>
+                </tr>
+                <tr style="height:80px; vertical-align: top;">
+                    <td class="tr-width">&nbsp;Description:</td>
+                    <td colspan="3">&nbsp;<input asp-for="Description" name="Description" readonly class="nobox"></td>
+                </tr>
+                <tr>
+                    <th class="border" colspan="4">&nbsp; Patient Details </th>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Patient Name::</td>
+                    <td class="tr-width">&nbsp;<input asp-for="PatientName" name="PatientName" readonly class="nobox"></td>
+                    <td class="tr-width">&nbsp;Date Of Birth:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="DateOfBirth" name="DateOfBirth" readonly class="nobox"></td>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Age:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="Age" name="Age" readonly class="nobox"></td>
+                    <td class="tr-width">&nbsp;Email:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="PatientEmail" name="PatientEmail" readonly class="nobox"></td>
+                </tr>
+                <tr>
+                    <th class="border" colspan="4">&nbsp; Doctor Details </th>
+                </tr>
+                <tr>
+
+                    <td class="tr-width">&nbsp;Doctor Type:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="DoctorType" name="DoctorType" readonly class="nobox"></td>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Doctor Name:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="DoctorName" name="DoctorName" readonly class="nobox"></td>
+                    <td class="tr-width">&nbsp;Email:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="DoctorEmail" name="DoctorEmail" readonly class="nobox"></td>
+                </tr>
+                <tr>
+                    <th class="border" colspan="4">&nbsp;Hospital Details </th>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Hospital Name:</td>
+                    <td colspan="3">&nbsp;<input asp-for="HospitalName" name="HospitalName" readonly class="nobox"></td>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Management Email:</td>
+                    <td colspan="3">&nbsp;<input asp-for="ManagementEmail" name="ManagementEmail" readonly class="nobox"></td>
+                </tr>
+            </table>
+            
+                <div class="form-group mt-2">
+                    <label asp-for="Prescription" for="diseaseDescription">Prescription:</label>
+                    <textarea asp-for="Prescription" class="form-control" name="Prescription" rows="3" placeholder="Enter Prescription" readonly></textarea>
+                    <span asp-validation-for="Prescription" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-2">
+                    <label asp-for="Suggestions" for="diseaseDescription">Suggestions:</label>
+                    <textarea asp-for="Suggestions" class="form-control" name="Suggestions" rows="3" placeholder="Enter Prescription" readonly></textarea>
+                    <span asp-validation-for="Suggestions" class="text-danger"></span>
+                </div>
+            <div class="mt-4">
+                <h3>Files For Health Guides</h3>
+            </div>
+            <div class="container mt-4">
+                <div class="">
+                    <div class="d-flex">
+                        @{
+                            foreach (var n in Model.Documents)
+                            {
+
+                                @if (@n.Document_type == ".pdf")
+                                {
+                                    <a href="@Url.Content("~/" + n.Document_name)" download class="btn px-4" style="border: 1px solid #E8E8E8; border-radius: 23px;">
+
+                                        <img src="~/images/pdf.png" alt="">
+                                        <span>@n.Document_name</span>
+                                    </a>
+                                    
+                                }
+                                else if (@n.Document_type == ".docx")
+                                {
+                                    <a href="@Url.Content("~/" + n.Document_name)" download class="btn px-4" style="border: 1px solid #E8E8E8; border-radius: 23px;">
+                                        <img src="~/images/doc.png" alt="">
+                                        <span>@n.Document_name</span>
+                                    </a>
+                                }
+                                else if (@n.Document_type == ".txt")
+                                {
+                                    <a href="@Url.Content("~/" + n.Document_name)" download class="btn px-4" style="border: 1px solid #E8E8E8; border-radius: 23px;">
+                                        <img src="~/images/doc.png" alt="">
+                                        <span>@n.Document_name</span>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Content("~/" + n.Document_name)" download class="btn px-4 mt-md-1 align-content-end-md" style="border: 1px solid #E8E8E8; border-radius: 23px;">
+                                        <img src="~/Images/doc.png" alt="">
+                                        <span>@n.Document_name</span>
+                                    </a>
+                                }
+
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3 container d-flex justify-content-center align-items-center">
+                <a asp-route-userId="@userId"  asp-area="User" asp-action="AppointmentHistory" asp-controller="User" class="btn btn-secondary btn-sm ms-3">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}

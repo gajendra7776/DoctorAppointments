@@ -3,6 +3,7 @@ using Demo.DataAccess.Data;
 using Demo.Models;
 using Demo.Models.DummyModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -12,20 +13,20 @@ using static Demo.Controllers.ErrorController;
 
 namespace Demo.Controllers
 {
-     [Area("Doctor")]
-     [Authorize(Roles ="Doctor,ManagementAdmin,SuperAdmin")]
-     [CustomExceptionFilter]
+    [Area("Doctor")]
+    [Authorize(Roles = "Doctor,ManagementAdmin,SuperAdmin")]
+    [CustomExceptionFilter]
     public class DoctorController : Controller
     {
-
+        private readonly string wwwrootDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
         private readonly CommonMethods _commonmethods;
-
         private readonly AppDbContext _db;
-
-        public DoctorController(AppDbContext db, CommonMethods commonmethods)
+        private readonly IWebHostEnvironment _hostEnvironment;
+        public DoctorController(AppDbContext db, CommonMethods commonmethods, IWebHostEnvironment hostEnvironment)
         {
             _db = db;
             _commonmethods = commonmethods;
+            _hostEnvironment = hostEnvironment;
         }
         public IActionResult DoctorPanel(int hospitalId = 0)
         {
@@ -33,19 +34,39 @@ namespace Demo.Controllers
             return View(appointments);
         }
 
-        public IActionResult PatientDetails(int id)
+        public IActionResult PatientDetails(int id, string ongoing = null)
         {
-            if(id <= 0)
+            if (id <= 0)
             {
                 return View();
             }
+            if (ongoing != null)
+            {
+                HttpContext.Session.SetInt32("flag", 1);
+            }
             PatientDetails appointmentById = new PatientDetails();
-            appointmentById = GetPatientDetailsByAppointmentId(id);
+            appointmentById = _commonmethods.GetPatientDetailsByAppointmentId(id);
             var appointmentList = GetAppointmentListByUserId(appointmentById.PatientId);
             if (appointmentList != null)
             {
                 appointmentById.aps = appointmentList;
             }
+            var docs = _db.Documents.Where(x => x.AppointmentId == id && x.DeletedAt == null ).ToList();
+            //var fileNames = Directory.GetFiles(wwwrootDirectory, "*").Select(Path.GetFileName).ToList();
+            var doc = new List<Documents>();
+            foreach (var d in docs)
+            {
+                var doctype = new Documents();
+                doctype.DocumentId = d.DocumentId;
+                doctype.Document_name = d.Document_name;
+                string extension = Path.GetExtension(d.Document_name);
+                doctype.Document_type = extension;
+                doctype.Document_path = d.Document_path;
+                doctype.AppointmentId = d.AppointmentId;
+
+                doc.Add(doctype);
+            }
+            appointmentById.Documents = doc;
 
             return View(appointmentById);
         }
@@ -59,7 +80,7 @@ namespace Demo.Controllers
             var adminId = HttpContext.Session.GetInt32("ManagementAdminId");
             var doctorIdforAdmin = HttpContext.Session.GetInt32("DoctorIdForSAandAdmin");
 
-            int statusUpdateId =0;
+            int statusUpdateId = 0;
             if (User.IsInRole("Doctor"))
             {
                 statusUpdateId = (int)doctorIdStatus;
@@ -95,14 +116,14 @@ namespace Demo.Controllers
 
             if (result == 1)
             {
-                
+
                 if (User.IsInRole("Doctor"))
                 {
                     return RedirectToAction("AppoinmentsByDoctor", "Management", new { area = "Management", doctorId = doctorId });
                 }
                 else if (User.IsInRole("ManagementAdmin"))
                 {
-                    return RedirectToAction("AppoinmentsByDoctor", "Management", new { area = "Management", doctorId =(int)doctorIdforAdmin, hospitalId = adminId });
+                    return RedirectToAction("AppoinmentsByDoctor", "Management", new { area = "Management", doctorId = (int)doctorIdforAdmin, hospitalId = adminId });
                 }
                 else
                 {
@@ -111,11 +132,11 @@ namespace Demo.Controllers
             }
             else
             {
-                return RedirectToAction("PatientDetails",  new {  id = model.AppointmentId });
+                return RedirectToAction("PatientDetails", new { id = model.AppointmentId });
             }
             return View(model);
         }
-        public int EditAppoinment(PatientDetails model, int id,int statusUpdateId)
+        public int EditAppoinment(PatientDetails model, int id, int statusUpdateId)
         {
             if (id <= 0)
             {
@@ -139,6 +160,8 @@ namespace Demo.Controllers
                     command.Parameters.AddWithValue("@AppoinmentTime", model.AppointmentTime);
                     command.Parameters.AddWithValue("@AppointmentStatus", model.Status);
                     command.Parameters.AddWithValue("@StatusUpdaterId", statusUpdateId);
+                    command.Parameters.AddWithValue("@Prescription", model.Prescription);
+                    command.Parameters.AddWithValue("@Suggestions", model.Suggestions);
                     command.Parameters.Add(result);
                     command.ExecuteNonQuery();
                     if (result.Value.ToString() == "success")
@@ -153,55 +176,7 @@ namespace Demo.Controllers
             }
 
         }
-        public PatientDetails GetPatientDetailsByAppointmentId(int id)
-        {
-            PatientDetails appointment = new PatientDetails();
 
-            using (SqlConnection connection = new SqlConnection(_db.Database.GetConnectionString()))
-            {
-                SqlCommand command = new SqlCommand("Patient_Details", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                command.Parameters.AddWithValue("@appId", id);
-
-                connection.Open();
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                       
-                        appointment.AppointmentId = Convert.ToInt32(reader["AppointmentID"]);
-                        appointment.PatientId = Convert.ToInt32(reader["PatientId"]);
-                        appointment.HospitalId = Convert.ToInt32(reader["HospitalID"]);
-                        appointment.DoctorTypeId = Convert.ToInt32(reader["DoctorTypeId"]);
-                        appointment.DoctorId = Convert.ToInt32(reader["DoctorID"]);
-                        appointment.Age = Convert.ToInt32(reader["Age"]);
-                        appointment.Description = reader["DiseaseDescriptions"].ToString();
-                        appointment.Status = reader["AppointmentStatus"].ToString();
-                        appointment.HospitalName = reader["HospitalName"].ToString();
-                        appointment.DoctorType = reader["DoctorType"].ToString();
-                        appointment.DoctorName = reader["DoctorName"].ToString();
-                        appointment.PatientName = reader["UserName"].ToString();
-                        appointment.PatientEmail = reader["Email"].ToString();
-                        appointment.DoctorEmail = reader["DEmail"].ToString();
-                        appointment.ManagementEmail = reader["MaEmail"].ToString();
-                        appointment.Approve_by = reader["ApproveBy"].ToString();
-                        appointment.Status = reader["AppointmentStatus"].ToString();
-                        appointment.AppointmentDate = (DateTime)reader["AppointmentDate"];
-                        appointment.DateOfBirth = (DateTime)reader["DateOfBirth"];
-                        if(reader["Approved_Date"] != DBNull.Value)
-                        {
-                            appointment.ApproveDate = (DateTime)reader["Approved_Date"];
-                        }
-                        appointment.AppointmentTime = reader["AppoinmentTime"].ToString();
-                        
-                    }
-                }
-            }
-
-            return appointment;
-        }
         public List<PatientAppoinmentModel> GetAppointmentListByUserId(int doctorId)
         {
             List<PatientAppoinmentModel> appointments = new List<PatientAppoinmentModel>();
@@ -232,16 +207,20 @@ namespace Demo.Controllers
             return appointments;
         }
 
+
+
+
+
         public JsonResult RemoveDoctor(int doctorId)
         {
-            if(doctorId <= 0)
+            if (doctorId <= 0)
             {
                 return null;
             }
             var doctor = _db.DoctorDetails.Find(doctorId);
             if (doctor == null)
             {
-                return null; 
+                return null;
             }
 
             doctor.blnActive = false;
@@ -250,5 +229,68 @@ namespace Demo.Controllers
 
         }
 
+
+        public async Task<IActionResult> UploadDocuments(IEnumerable<IFormFile> files, int userId, string userName, string doctorName,int appId)
+        {
+            foreach (var file in files)
+            {
+                if (file != null)
+                {
+                    var fileName = appId.ToString() + "_" + userName + "_" + doctorName + "_" + Path.GetFileName(file.FileName);
+                    var data = _db.Documents.Where(x => x.Document_name == fileName).FirstOrDefault();
+                    if (data != null)
+                    {
+                        TempData["error"] = "File Already Exists.";
+                        return Content("File Already Exists.");
+                    }
+
+                    //var uploads = Path.Combine(_hostEnvironment.WebRootPath, "documents", fileName);
+                    var extension = Path.GetExtension(file.FileName);
+                    var path = Path.Combine(wwwrootDirectory, fileName);
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await file.CopyToAsync(fileStream);
+                    }
+
+                    Documents docModel = new Documents()
+                    {
+                        AppointmentId = appId,
+                        Document_name = fileName,
+                        Document_path = @"\wwwroot\",
+                        Document_type = extension
+                    };
+                    _db.Documents.Add(docModel);
+                    _db.SaveChanges();
+                }
+            }
+
+            return Content("Success uploading file.");
+        }
+        [HttpPost]
+        public void RemoveFile(int documentId)
+        {
+
+            var file = _db.Documents.Where(x => x.DocumentId == documentId).FirstOrDefault();
+            if (file != null)
+            {
+                if (file.Document_name != null)
+                {
+                    string documentName = file.Document_name;
+                    var filePath = Path.Combine(wwwrootDirectory, documentName);
+
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
+                    if (file != null)
+                    {
+                        file.DeletedAt = DateTime.Now;
+                        _db.SaveChanges();
+                    }
+                }
+
+            }
+
+        }
     }
 }

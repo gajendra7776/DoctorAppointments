@@ -12,7 +12,9 @@
     var superadminId = @Accessor.HttpContext.Session.GetInt32("SuperAdminId");
     var doctorId = @Accessor.HttpContext.Session.GetInt32("DoctorId");
     var doctorIdForSAandA = @Accessor.HttpContext.Session.GetInt32("DoctorIdForSAandAdmin");
-     var chkHactive = @Accessor.HttpContext.Session.GetInt32("HospitalFlag3");
+    var chkHactive = @Accessor.HttpContext.Session.GetInt32("HospitalFlag3");
+    var ongoing = @Accessor.HttpContext.Session.GetInt32("flag");
+ 
 }
 
 
@@ -20,9 +22,11 @@
 
 
 <style>
-    .nobox{
-        border: none; outline: none;
+    .nobox {
+        border: none;
+        outline: none;
     }
+
     .border {
         background-color: #b5b8bb;
         font-weight: bold;
@@ -47,129 +51,199 @@
 <div class="container">
     @if (User.IsInRole("SuperAdmin") || User.IsInRole("ManagementAdmin"))
     {
-            <partial name="PartialsViews/_HeaderForManagAdmin" />
+        <partial name="PartialsViews/_HeaderForManagAdmin" />
     }
     else
     {
-            <partial name="_Header" />
+        <partial name="_Header" />
     }
     @if (TempData["error"] != null)
     {
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-            <script src="~/lib/jquery/dist/jquery.min.js"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-            <script type="text/javascript">
-                toastr.warning('@TempData["error"]');
-            </script>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script type="text/javascript">
+            toastr.warning('@TempData["error"]');
+        </script>
     }
+
 
     <div class="container mt-5">
 
-           <form asp-action="PatientDetails" asp-area="Doctor" asp-controller="Doctor" method="post">
-               <input type="hidden" asp-for="PatientId" >
-               <input type="hidden" asp-for="HospitalId" >
-               <input type="hidden" asp-for="DoctorTypeId" >
-               <input type="hidden" asp-for="AppointmentId">
-               <input type="hidden" asp-for="DoctorId" >
-        <table style="width:100%">
-            <tr>
-                <th class="border" colspan="4">&nbsp; Appointment Details</th>
-            </tr>
-            <tr rowspan="0">
-                <td class="tr-width">&nbsp;Appointment Time:</td>
-                <td class="tr-width">
-                    &nbsp;
-                    <select asp-for="AppointmentTime" id="appointmentTime" name="AppointmentTime">
-                        <option value="">Select Timezone</option>
-                        <option value="9 AM">9 AM</option>
-                        <option value="11 AM">11 AM</option>
-                        <option value="2 PM">2 PM</option>
-                        <option value="5 PM">5 PM</option>
-                    </select>
-                    <span asp-validation-for="AppointmentTime" class="text-danger"></span>
-                </td>
-                <td class="tr-width">&nbsp;Appointment Date:</td>
-                <td class="tr-width">
-                    &nbsp<input asp-for="AppointmentDate" type="date" name="AppointmentDate" autocomplete="off">
-                    <span asp-validation-for="AppointmentDate" class="text-danger"></span>
-                </td>
-            </tr>
-           
-            <tr>
-                <td class="tr-width">&nbsp;Status:</td>
-                <td colspan="3">
-                    &nbsp;
-                    <select id="appointmentStatus" asp-for="Status" name="Status">
-                        <option value="Approve">Approved</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Missed">Missed</option>
-                        <option value="Reject">Rejected</option>
-                        <option value="Completed">Treated/Completed</option>
-                    </select>
-                    <span asp-validation-for="Status" class="text-danger"></span>
-                </td>
-            </tr>
-            <tr>
-                <td class="tr-width">&nbsp;Appointment Approve Date:</td>
-                <td class="tr-width">&nbsp;<input asp-for="ApproveDate"  name="ApproveDate" readonly class="nobox"></td>
-                <td class="tr-width">&nbsp;Appointment Approve By:</td>
-                <td class="tr-width">&nbsp;<input asp-for="Approve_by"  name="Approve_by" readonly class="nobox"></td>
-            </tr>
-            <tr>
-                <th class="border" colspan="4">&nbsp; Disease Details </th>
-            </tr>
-            <tr style="height:80px; vertical-align: top;">
-                <td class="tr-width">&nbsp;Description:</td>
-                <td colspan="3">&nbsp;<input asp-for="Description" name="Description" readonly class="nobox"></td>
-            </tr>
-            <tr>
-                <th class="border" colspan="4">&nbsp; Patient Details </th>
-            </tr>
-            <tr>
-                <td class="tr-width">&nbsp;Patient Name::</td>
-                <td class="tr-width">&nbsp;<input asp-for="PatientName" name="PatientName" readonly class="nobox"></td>
-                <td class="tr-width">&nbsp;Date Of Birth:</td>
-                <td class="tr-width">&nbsp;<input asp-for="DateOfBirth" name="DateOfBirth" readonly class="nobox"></td>
-            </tr>
-            <tr>
-                <td class="tr-width">&nbsp;Age:</td>
-                <td class="tr-width">&nbsp;<input asp-for="Age" name="Age" readonly class="nobox"></td>
-                <td class="tr-width">&nbsp;Email:</td>
-                <td class="tr-width">&nbsp;<input asp-for="PatientEmail" name="PatientEmail" readonly class="nobox"></td>
-            </tr>
-            <tr>
-                <th class="border" colspan="4">&nbsp; Doctor Details </th>
-            </tr>
-            <tr>
-                
-                <td class="tr-width">&nbsp;Doctor Type:</td>
-                <td class="tr-width">&nbsp;<input asp-for="DoctorType" name="DoctorType" readonly class="nobox"></td>
-            </tr>
-            <tr>
-                <td class="tr-width">&nbsp;Doctor Name:</td>
-                <td class="tr-width">&nbsp;<input asp-for="DoctorName" name="DoctorName" readonly class="nobox"></td>
-                <td class="tr-width">&nbsp;Email:</td>
-                <td class="tr-width">&nbsp;<input asp-for="DoctorEmail" name="DoctorEmail" readonly class="nobox"></td>
-            </tr>
-            <tr>
-                <th class="border" colspan="4">&nbsp;Hospital Details </th>
-            </tr>
-            <tr>
-                <td class="tr-width">&nbsp;Hospital Name:</td>
-                <td colspan="3">&nbsp;<input asp-for="HospitalName" name="HospitalName" readonly class="nobox"></td>
-            </tr>
-            <tr>
-                <td class="tr-width">&nbsp;Management Email:</td>
-                <td colspan="3">&nbsp;<input asp-for="ManagementEmail" name="ManagementEmail" readonly class="nobox"></td>
-            </tr>
-        </table>
+        <form asp-action="PatientDetails" asp-area="Doctor" asp-controller="Doctor" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="PatientId">
+            <input type="hidden" asp-for="HospitalId">
+            <input type="hidden" asp-for="DoctorTypeId">
+            <input type="hidden" asp-for="AppointmentId">
+            <input type="hidden" asp-for="DoctorId">
+            <table style="width:100%">
+                <tr>
+                    <th class="border" colspan="4">&nbsp; Appointment Details</th>
+                </tr>
+                <tr rowspan="0">
+                    <td class="tr-width">&nbsp;Appointment Time:</td>
+                    <td class="tr-width">
+                        &nbsp;
+                        <select asp-for="AppointmentTime" id="appointmentTime" name="AppointmentTime">
+                            <option value="">Select Timezone</option>
+                            <option value="9 AM">9 AM</option>
+                            <option value="11 AM">11 AM</option>
+                            <option value="2 PM">2 PM</option>
+                            <option value="5 PM">5 PM</option>
+                        </select>
+                        <span asp-validation-for="AppointmentTime" class="text-danger"></span>
+                    </td>
+                    <td class="tr-width">&nbsp;Appointment Date:</td>
+                    <td class="tr-width">
+                        &nbsp<input asp-for="AppointmentDate" type="date" name="AppointmentDate" autocomplete="off">
+                        <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+                    </td>
+                </tr>
 
-        <div class="mt-3 container d-flex justify-content-center align-items-center">
-                @if(@chkHactive == null)
+                <tr>
+                    <td class="tr-width">&nbsp;Status:</td>
+                    <td colspan="3">
+                        &nbsp;
+                        <select id="appointmentStatus" asp-for="Status" name="Status">
+                            <option value="Approve">Approved</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Missed">Missed</option>
+                            <option value="Reject">Rejected</option>
+                            <option value="Completed">Treated/Completed</option>
+                        </select>
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Appointment Approve Date:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="ApproveDate" name="ApproveDate" readonly class="nobox"></td>
+                    <td class="tr-width">&nbsp;Appointment Approve By:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="Approve_by" name="Approve_by" readonly class="nobox"></td>
+                </tr>
+                <tr>
+                    <th class="border" colspan="4">&nbsp; Disease Details </th>
+                </tr>
+                <tr style="height:80px; vertical-align: top;">
+                    <td class="tr-width">&nbsp;Description:</td>
+                    <td colspan="3">&nbsp;<input asp-for="Description" name="Description" readonly class="nobox"></td>
+                </tr>
+                <tr>
+                    <th class="border" colspan="4">&nbsp; Patient Details </th>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Patient Name::</td>
+                    <td class="tr-width">&nbsp;<input asp-for="PatientName" name="PatientName" readonly class="nobox"></td>
+                    <td class="tr-width">&nbsp;Date Of Birth:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="DateOfBirth" name="DateOfBirth" readonly class="nobox"></td>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Age:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="Age" name="Age" readonly class="nobox"></td>
+                    <td class="tr-width">&nbsp;Email:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="PatientEmail" name="PatientEmail" readonly class="nobox"></td>
+                </tr>
+                <tr>
+                    <th class="border" colspan="4">&nbsp; Doctor Details </th>
+                </tr>
+                <tr>
+
+                    <td class="tr-width">&nbsp;Doctor Type:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="DoctorType" name="DoctorType" readonly class="nobox"></td>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Doctor Name:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="DoctorName" name="DoctorName" readonly class="nobox"></td>
+                    <td class="tr-width">&nbsp;Email:</td>
+                    <td class="tr-width">&nbsp;<input asp-for="DoctorEmail" name="DoctorEmail" readonly class="nobox"></td>
+                </tr>
+                <tr>
+                    <th class="border" colspan="4">&nbsp;Hospital Details </th>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Hospital Name:</td>
+                    <td colspan="3">&nbsp;<input asp-for="HospitalName" name="HospitalName" readonly class="nobox"></td>
+                </tr>
+                <tr>
+                    <td class="tr-width">&nbsp;Management Email:</td>
+                    <td colspan="3">&nbsp;<input asp-for="ManagementEmail" name="ManagementEmail" readonly class="nobox"></td>
+                </tr>
+            </table>
+            
+            
+               <div class="form-group mt-2">
+    <label asp-for="Prescription" for="diseaseDescription">Prescription:</label>
+    <textarea asp-for="Prescription" class="form-control" id="Prescription" name="Prescription" rows="3" placeholder="Enter Prescription" oninput="saveFormValues()"></textarea>
+    <span asp-validation-for="Prescription" class="text-danger"></span>
+</div>
+<div class="form-group mt-2">
+    <label asp-for="Suggestions" for="diseaseDescription">Suggestions:</label>
+    <textarea asp-for="Suggestions" class="form-control" id="Suggestions" name="Suggestions" rows="3" placeholder="Enter Suggestions" oninput="saveFormValues()"></textarea>
+    <span asp-validation-for="Suggestions" class="text-danger"></span>
+</div>
+
+
+
+                <input class="mt-3" type="file" id="fileInput" multiple />
+                <input type="button" id="uploadButton" value="Upload" />    
+                <div id="result">
+                </div>
+               
+
+            
+             <div class="container mt-3">
+                    <div class="">
+                        <div class="d-flex">
+                            @{
+                                foreach (var n in Model.Documents)
+                                {
+
+                                    @if (@n.Document_type == ".pdf")
+                                    {
+                                        <a href="@Url.Content("~/" + n.Document_name)" download class="btn px-4" style="border: 1px solid #E8E8E8; border-radius: 23px;">
+
+                                            <img src="~/images/pdf.png" alt="">
+                                            <span>@n.Document_name</span>
+                                        </a>
+                                        <span class=" mt-2 ms-1" style="cursor:pointer;" onclick="deleteFile('@n.DocumentId')">❌</span>
+                                    }
+                                    else if (@n.Document_type == ".docx")
+                                    {
+                                        <a href="@Url.Content("~/" + n.Document_name)" download class="btn px-4" style="border: 1px solid #E8E8E8; border-radius: 23px;">
+                                            <img src="~/images/doc.png" alt="">
+                                            <span>@n.Document_name</span>
+                                        </a>
+                                        <span class=" mt-2 ms-1" style="cursor:pointer; " onclick="deleteFile('@n.DocumentId')">❌</span>
+                                    }
+                                    else if (@n.Document_type == ".txt")
+                                    {
+                                        <a href="@Url.Content("~/" + n.Document_name)" download class="btn px-4" style="border: 1px solid #E8E8E8; border-radius: 23px;">
+                                            <img src="~/images/doc.png" alt="">
+                                            <span>@n.Document_name</span>
+                                        </a>
+                                        <span class=" mt-2 ms-1" style="cursor:pointer;" onclick="deleteFile('@n.DocumentId')">❌</span>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Content("~/" + n.Document_name)" download class="btn px-4 mt-md-1 align-content-end-md" style="border: 1px solid #E8E8E8; border-radius: 23px;">
+                                            <img src="~/Images/doc.png" alt="">
+                                            <span>@n.Document_name</span>
+                                        </a>
+                                        <span class=" mt-2 ms-1" style="cursor:pointer;" onclick="deleteFile('@n.DocumentId')">❌</span>
+                                    }
+
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+            <div class="mt-3 container d-flex justify-content-center align-items-center">
+                @if (@chkHactive == null)
                 {
                     <button type="submit" class="btn btn-secondary btn-sm">Save</button>
                 }
-                else 
+                else
                 {
                     <a onclick="NotAccess()" class="btn btn-secondary btn-sm text-white">Save</a>
                 }
@@ -187,8 +261,7 @@
                     <a asp-route-doctorId="@doctorIdForSAandA" asp-area="Management" asp-action="AppoinmentsByDoctor" asp-controller="Management" class="btn btn-secondary btn-sm ms-3">Cancel</a>
                 }
 
-        </div>
-
+            </div>
         </form>
     </div>
 
@@ -231,15 +304,94 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-function NotAccess(){
-            swal.fire({
-      title: "Hospital InActive!",
-      text: "As a doctor, you don't have the required privileges to perform CRUD operations.!",
-      icon: "error",
-      button: "OK",
+
+        $(document).ready(function () {
+        $("#uploadButton").click(function () {
+            uploadFiles();
+        });
     });
+
+    function uploadFiles() {
+    var fileInput = document.getElementById("fileInput");
+    var files = fileInput.files;
+
+        if (files.length > 0) {
+        var formData = new FormData();
+        for (var i = 0; i < files.length; i++) {
+            formData.append("files", files[i]);
         }
+        formData.append("userId", @Model.PatientId);
+        formData.append("userName", '@Model.PatientName');
+        formData.append("doctorName", '@Model.DoctorName');
+        formData.append("appId", '@Model.AppointmentId');
+        debugger
+        $.ajax({
+            url: "/Doctor/Doctor/UploadDocuments",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $("#result").html(response);
+                location.reload();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+}
+
+         function NotAccess(){
+                     swal.fire({
+               title: "Hospital InActive!",
+               text: "As a doctor, you don't have the required privileges to perform CRUD operations.!",
+               icon: "error",
+               button: "OK",
+             });
+                 }
+
+    function deleteFile(documentId) {
+        if (confirm("Are you sure you want to delete this file?")) {
+            $.ajax({
+                url: '/Doctor/Doctor/RemoveFile',  
+                method: 'POST',      
+                data: { documentId: documentId },
+                success: function () {
+                    location.reload(); 
+                },
+                error: function () {
+                    
+                }
+            });
+        }
+    }
 </script>
+<!-- Add this script tag in the head of your HTML document -->
+<script>
+    // Function to store values in local storage
+    function saveFormValues() {
+        const prescriptionValue = document.getElementById('Prescription').value;
+        const suggestionsValue = document.getElementById('Suggestions').value;
+        
+        localStorage.setItem('prescriptionValue', prescriptionValue);
+        localStorage.setItem('suggestionsValue', suggestionsValue);
+    }
+    
+    // Function to retrieve values from local storage and populate the fields
+    function loadFormValues() {
+        const prescriptionValue = localStorage.getItem('prescriptionValue');
+        const suggestionsValue = localStorage.getItem('suggestionsValue');
+        
+        document.getElementById('Prescription').value = prescriptionValue;
+        document.getElementById('Suggestions').value = suggestionsValue;
+    }
+    
+    // Call the loadFormValues function when the page loads
+    window.onload = loadFormValues;
+</script>
+
+
 
 
 @section Scripts{

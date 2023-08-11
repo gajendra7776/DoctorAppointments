@@ -5,6 +5,7 @@
     var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
     var chkPageAccess = @Accessor.HttpContext.Session.GetInt32("UserProfile");
 }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
     @if (User.IsInRole("ManagementAdmin") || User.IsInRole("SuperAdmin"))
     {
@@ -49,13 +50,13 @@
             <!-- Doctor Dropdown List -->
             @if (User.IsInRole("ManagementAdmin"))
             {
-                if(Model != null)
+                if (Model != null)
                 {
                     <input asp-for="HospitalId" type="hidden" />
                 }
                 else
                 {
-                    <input asp-for="HospitalId" value="@hospitalId"  type="hidden" />
+                    <input asp-for="HospitalId" value="@hospitalId" type="hidden" />
                 }
                 <label asp-for="HospitalId" for="hospitalSelect">Hospital:</label>
                 <select asp-for="HospitalId" id="hospitalSelect" name="HospitalId" class="form-control" disabled>
@@ -63,7 +64,7 @@
                 </select>
                 <span asp-validation-for="HospitalId" class="text-danger"></span>
             }
-            
+
             else
             {
                 <div class="form-group">
@@ -138,7 +139,7 @@
                     }
                     else
                     {
-                         <div class="form-group col-md-6">
+                        <div class="form-group col-md-6">
                             <label asp-for="Password" for="date">Password:</label>
                             <input type="password" asp-for="Password" name="Password" value="@Model.Password" class="form-control" autocomplete="off">
                             <span asp-validation-for="Password" class="text-danger"></span>
@@ -159,17 +160,19 @@
 
 
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label asp-for="Age" for="date">Age:</label>
-                    <input asp-for="Age" name="Age" class="form-control" autocomplete="off">
-                    <span asp-validation-for="Age" class="text-danger"></span>
-                </div>
 
                 <div class="form-group col-md-6">
                     <label asp-for="DateOfBirth" for="appointmentTime">Date Of Birth:</label>
-                    <input asp-for="DateOfBirth" type="date" name="DateOfBirth" class="form-control" autocomplete="off">
+                    <input asp-for="DateOfBirth" type="date" name="DateOfBirth" id="dateOfBirthInput" class="form-control" autocomplete="off" max="">
                     <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                 </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Age" for="date">Age:</label>
+                    <input asp-for="Age" name="Age" id="ageInput" class="form-control" autocomplete="off" readonly>
+
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+
             </div>
             <div class="form-group">
                 <label asp-for="PhoneNo" for="date">Phone No:</label>
@@ -289,6 +292,51 @@
                 });
         });
     </script>
+
+   <script>
+   document.addEventListener("DOMContentLoaded", function () {
+        const dateOfBirthInput = document.getElementById("dateOfBirthInput");
+        const ageInput = document.getElementById("ageInput");
+
+        function calculateAge(dateOfBirth) {
+            const today = new Date();
+            const birthDate = new Date(dateOfBirth);
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            return age;
+        }
+
+        function updateAgeField() {
+            const dateOfBirth = dateOfBirthInput.value;
+            const selectedDate = new Date(dateOfBirth);
+            const today = new Date();
+
+            if (selectedDate > today) {
+                ageInput.value = ''; 
+                return;
+            }
+
+            const age = calculateAge(dateOfBirth);
+            ageInput.value = age;
+        }
+
+        dateOfBirthInput.addEventListener("input", updateAgeField);
+
+        const today = new Date().toISOString().split("T")[0];
+        dateOfBirthInput.setAttribute("max", today);
+    });
+</script>
+
+
+
+
+
+
 
 
     @section Scripts {

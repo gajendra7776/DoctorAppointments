@@ -15,6 +15,8 @@
     var hospitalId = @Accessor.HttpContext.Session.GetInt32("ManagementAdminId");
     var count = @Accessor.HttpContext.Session.GetInt32("total");
     var chkHactive = @Accessor.HttpContext.Session.GetInt32("HospitalFlag3");
+    DateTime today = DateTime.Today;
+    int hour = DateTime.Now.Hour;
 
 }
 <style>
@@ -66,17 +68,61 @@
     </div>
     <div class="row mt-3 ms-1">
         <div class="col-md-12" style="display: flex; align-content: stretch; justify-content: flex-start;">
-            <h4 class="row col-md-6">Today's Total Appointments: @count</h4>
+            <h4 class=" row col-md-6">Today's Total Appointments: @count</h4>
             @if (User.IsInRole("Doctor"))
             {
                 <div class="row col-md-6">
-                    @if (count != 0 && (@ViewBag.name != null || @ViewBag.time != null || @ViewBag.id != null))
-                    {
-                        <span>
-                            <strong> Patient Name:</strong> @ViewBag.name <strong> Timezone:</strong> @ViewBag.time  <strong> AppointmentId:</strong> @ViewBag.id <button class="btn btn-primary btn-sm ms-4" onclick="Complete()">
-                                Treated
-                            </button>
-                        </span>
+                    @*@if (count != 0 && (@ViewBag.name != null || @ViewBag.time != null || @ViewBag.id != null))*@
+                    @{
+                        foreach (var user in @ViewBag.UserList)
+                        {
+
+                            @if (@user.Status == "Approve" && ((@hour >= 7 && @hour < 11 && @user.AppointmentTime == "9 AM") ||
+                       (@hour >= 9 && @hour < 14 && @user.AppointmentTime == "11 AM") ||
+                       (@hour >= 11 && @hour < 17 && @user.AppointmentTime == "2 PM") ||
+                       (@hour >= 14 && @hour < 19 && @user.AppointmentTime == "5 PM")))
+                            {
+                                <div class="d-flex justify-content-between">
+                                    <span class="col-md-8">
+                                        <strong> Patient Name:</strong>
+                                        @user.Name <strong> Timezone:</strong> @user.AppointmentTime
+                                    </span>
+                                    <span class="ms-4 col-md-4">
+                                        <a class="btn btn-primary btn-sm" asp-route-ongoing="ongoing" asp-route-id="@user.AppID" asp-action="PatientDetails" asp-controller="Doctor" asp-area="Doctor">
+                                            Ongoing
+                                        </a>
+                                        <button class="btn btn-primary btn-sm" onclick="Complete(@user.AppID)">
+                                            Treated
+                                        </button>
+                                    </span>
+                                </div>
+
+
+                            }
+                            else if (@user.Status == "Completed" && ((@hour >= 7 && @hour < 11 && @user.AppointmentTime == "9 AM") ||
+                            (@hour >= 9 && @hour < 14 && @user.AppointmentTime == "11 AM") ||
+                            (@hour >= 11 && @hour < 17 && @user.AppointmentTime == "2 PM") ||
+                            (@hour >= 14 && @hour < 19 && @user.AppointmentTime == "5 PM")))
+                            {
+                                <div class="d-flex justify-content-between">
+                                    <span class="col-md-8">
+                                        <strong> Patient Name:</strong>
+                                        @user.Name <strong> Timezone:</strong> @user.AppointmentTime
+                                    </span>
+                                    <span class="ms-4 col-md-4">
+                                        <button class="btn btn-primary btn-sm" onclick="Complete(@user.AppID)" disabled>
+                                            Treated
+                                        </button>
+                                    </span>
+                                </div>
+
+                            }
+
+
+
+                            <span class="mt-2"></span>
+
+                        }
 
                     }
                 </div>
@@ -89,7 +135,7 @@
             <div class="col-md-6 ">
                 @if (User.IsInRole("Doctor"))
                 {
-                    if(@chkHactive != null)
+                    if (@chkHactive != null)
                     {
                         <a onclick="NotAccess()" class="btn btn-success text-white">Create Appointment</a>
                     }
@@ -97,7 +143,7 @@
                     {
                         <a asp-area="Management" asp-action="AddEditAppointment" asp-controller="Management" class="btn btn-success ">Create Appointment</a>
                     }
-                    
+
                 }
                 else
                 {
@@ -233,17 +279,19 @@
                     }
                 });
         }
-         function Complete() {
-             if (@(ViewBag.id != null ? "true" : "false")){
+         function Complete(AppID) {
+              debugger
+             if (AppID !== ''){
            $.ajax({
                     url: '/Management/Management/UpdateStatusComplete',
-                    data: { appId:'@ViewBag.id'},
+                    data: { appId:AppID},
                     success: function (response) {
                         location.reload();
                     }
                 });
          }
         }
+
         function NotAccess(){
             swal.fire({
       title: "Hospital InActive!",
